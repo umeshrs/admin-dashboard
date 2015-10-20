@@ -9,3 +9,7 @@ Router.route('/', function () {
 },{
  layoutTemplate:"defaultLayout" 
 });
+
+Router.route('/chat', function () {
+  this.render('rocketChat');
+});
