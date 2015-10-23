@@ -22,8 +22,11 @@ Template.rocketChat.helpers({
 Template.rocketChat.events({
   'click #login-btn': function (event) {
     console.log("Login button");
+    var domain, port;
+    domain = "192.168.1.8";
+    port = "4000";
 
-    HTTP.post("http://192.168.1.7:4000/api/login",
+    HTTP.post("http://" + domain + ":" + port + "/api/login",
       {
         data: {
           password: "umesh",
@@ -34,7 +37,7 @@ Template.rocketChat.events({
           console.log(error);
         }
         console.log(result);
-        var url = "http://192.168.1.7:4000?token=" + result.data.data.authToken;
+        var url = "http://" + domain + ":" + port + "?token=" + result.data.data.authToken;
         console.log(url);
         Session.set("src", url);
     });
