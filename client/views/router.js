@@ -10,6 +10,10 @@ Router.route('/', function () {
  layoutTemplate:"defaultLayout" 
 });
 
+Router.route('/home', function () {
+  this.render('blankPage');
+});
+
 Router.route('/chat', function () {
   this.render('rocketChat');
 });

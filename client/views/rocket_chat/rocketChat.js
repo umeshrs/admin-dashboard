@@ -1,4 +1,4 @@
-Session.set("src", "");
+Session.setDefault("src", "");
 
 Template.rocketChat.helpers({
   version: function () {
