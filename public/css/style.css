@@ -3,3 +3,27 @@
 * Override Pages default styles or create your own styles here
 
 */
+
+.login-content-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%;
+  background-color: #FAFAFA;
+}
+
+.login-content-wrapper .content{
+  display: table-cell;
+  vertical-align: middle;
+  padding-bottom: 68px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.login-content-wrapper .footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: left 0.3s ease;
+  transition: left 0.3s ease;
+}

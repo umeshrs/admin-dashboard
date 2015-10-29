@@ -7,7 +7,7 @@ Router.route('/', function () {
   //eg : this.render('home');
   this.render('login');
 },{
- layoutTemplate:"defaultLayout" 
+ layoutTemplate:"loginLayout"
 });
 
 Router.route('/home', function () {
