@@ -3,11 +3,21 @@ Router.configure({
 });
 
 Router.route('/', function () {
-  //ADD YOU ROUTES HERE
-  //eg : this.render('home');
-  this.render('login');
-},{
- layoutTemplate:"loginLayout"
+  if (! Meteor.userId()) {
+    Router.go('login');
+  } else {
+    Router.go('home');
+  }
+});
+
+Router.route('/login', function () {
+  if (! Meteor.userId()) {
+    this.render('login');
+  } else {
+    Router.go('home');
+  }
+}, {
+  layoutTemplate: "loginLayout"
 });
 
 Router.route('/home', function () {
