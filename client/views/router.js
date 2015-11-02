@@ -21,13 +21,25 @@ Router.route('/login', function () {
 });
 
 Router.route('/home', function () {
-  this.render('blankPage');
+  if (! Meteor.userId()) {
+    Router.go('login');
+  } else {
+    this.render('blankPage');
+  }
 });
 
 Router.route('/chat', function () {
-  this.render('rocketChat');
+  if (! Meteor.userId()) {
+    Router.go('login');
+  } else {
+    this.render('rocketChat');
+  }
 });
 
 Router.route('/users', function () {
-  this.render('users');
+  if (! Meteor.userId()) {
+    Router.go('login');
+  } else {
+    this.render('users');
+  }
 });
