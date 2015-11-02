@@ -27,3 +27,7 @@ Router.route('/home', function () {
 Router.route('/chat', function () {
   this.render('rocketChat');
 });
+
+Router.route('/users', function () {
+  this.render('users');
+});
