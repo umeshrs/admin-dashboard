@@ -4,26 +4,23 @@
 
 */
 
-.login-content-wrapper {
-  display: table;
-  width: 100%;
-  height: 100%;
-  background-color: #FAFAFA;
+.login-wrapper {
+  -webkit-transition: left 0.3s ease;
+  transition: left 0.3s ease;
 }
 
-.login-content-wrapper .content{
+.login-wrapper .login-container {
+  display: table;
+}
+
+.login-wrapper .login-container > div {
   display: table-cell;
   vertical-align: middle;
   padding-bottom: 68px;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
 }
 
-.login-content-wrapper .footer {
+.login-wrapper .login-container .footer {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  -webkit-transition: left 0.3s ease;
-  transition: left 0.3s ease;
+  bottom: 0px;
+  left: 0px;
 }

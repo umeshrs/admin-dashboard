@@ -1,25 +1,35 @@
 <template name="login">
-  <form id="login-form" role="form">
-    <div class="form-group-attached">
-      <div class="row clearfix">
-        <div class="col-sm-8">
-          <div class="form-group form-group-default ">
-            <label for="login-username">Username</label>
-            <input type="text" class="form-control" id="login-username" autocomplete="off">
-          </div>
-        </div>
-      </div>
-      <div class="row clearfix">
-        <div class="col-sm-8">
-          <div class="form-group form-group-default ">
-            <label for="login-password">Password</label>
-            <input type="password" class="form-control" id="login-password">
-          </div>
-        </div>
-      </div>
-      <div class="row clearfix">
-        <button type="submit" class="btn btn-info btn-lg col-sm-8 col-sm-offset-2">Submit</button>
+  <!-- START Login Form -->
+  <form id="login-form" class="p-t-15" role="form" action="index.html">
+    <!-- START Form Control-->
+    <div class="form-group form-group-default">
+      <label for="login-username">Login</label>
+      <div class="controls">
+        <input type="text" id="login-username" class="form-control" name="username" placeholder="Username" autocomplete="off" required>
       </div>
     </div>
+    <!-- END Form Control-->
+    <!-- START Form Control-->
+    <div class="form-group form-group-default">
+      <label>Password</label>
+      <div class="controls">
+        <input type="password" id="login-password" class="form-control" name="password" placeholder="Password" required>
+      </div>
+    </div>
+    <!-- START Form Control-->
+    <div class="row">
+      <div class="col-md-6 no-padding">
+        <div class="checkbox ">
+          <input type="checkbox" value="1" id="checkbox1">
+          <label for="checkbox1">Keep Me Signed in</label>
+        </div>
+      </div>
+      <div class="col-md-6 text-right">
+        <a href="#" class="text-info small">Help? Contact Support</a>
+      </div>
+    </div>
+    <!-- END Form Control-->
+    <button class="btn btn-primary btn-cons m-t-10" type="submit">Sign in</button>
   </form>
+  <!--END Login Form-->
 </template>
