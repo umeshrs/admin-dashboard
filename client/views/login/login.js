@@ -23,5 +23,11 @@ Template.login.events({
         console.log("Login unsuccessful. Please try again.");
       }
     });
+  },
+  'focusin .form-group-default': function (event) {
+    $(event.currentTarget).addClass("focused");
+  },
+  'focusout .form-group-default': function (event) {
+    $(event.currentTarget).removeClass("focused");
   }
 });

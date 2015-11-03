@@ -1,20 +1,16 @@
 <template name="login">
   <!-- START Login Form -->
-  <form id="login-form" class="p-t-15" role="form" action="index.html">
+  <form id="login-form" class="p-t-15" role="form">
     <!-- START Form Control-->
-    <div class="form-group form-group-default">
-      <label for="login-username">Login</label>
-      <div class="controls">
-        <input type="text" id="login-username" class="form-control" name="username" placeholder="Username" autocomplete="off" required>
-      </div>
+    <div class="form-group form-group-default required">
+      <label for="login-username">Username</label>
+      <input type="text" id="login-username" class="form-control" name="username" placeholder="Username" autocomplete="off">
     </div>
     <!-- END Form Control-->
     <!-- START Form Control-->
-    <div class="form-group form-group-default">
-      <label>Password</label>
-      <div class="controls">
-        <input type="password" id="login-password" class="form-control" name="password" placeholder="Password" required>
-      </div>
+    <div class="form-group form-group-default required">
+      <label for="login-password">Password</label>
+      <input type="password" id="login-password" class="form-control" name="password" placeholder="Password">
     </div>
     <!-- START Form Control-->
     <div class="row">
