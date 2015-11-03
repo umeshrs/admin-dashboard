@@ -4,11 +4,6 @@
 
 */
 
-.login-wrapper {
-  -webkit-transition: left 0.3s ease;
-  transition: left 0.3s ease;
-}
-
 .login-wrapper .login-container {
   display: table;
 }
