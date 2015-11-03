@@ -52,6 +52,10 @@ Template.login.events({
   }
 });
 
+Template.login.onRendered(function () {
+  $("#login-username").focus();
+});
+
 function validateUsername() {
   if ($("#login-username").val().length > 0) {
     $( $("#login-username")[0].parentNode ).removeClass("has-error");
