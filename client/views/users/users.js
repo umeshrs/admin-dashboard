@@ -1,3 +1,5 @@
+Meteor.subscribe("usersData");
+
 Template.users.onRendered(function () {
   Session.setDefault("currentUser", {});
 });

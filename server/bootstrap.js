@@ -1,5 +1,20 @@
 Meteor.startup(function() {
+  Meteor.publish("usersData", function () {
+    var currentUser, userRole;
 
+    if (this.userId) {
+      currentUser = Meteor.users.findOne({ _id: this.userId }, { fields: { 'profile.role': 1 } });
+      userRole = currentUser.profile && currentUser.profile.role;
+      console.log(userRole);
+      if (userRole === "administrator") {
+        return Meteor.users.find({}, { fields: { 'emails': 1 } });
+      } else {
+        this.ready();
+      }
+    } else {
+      this.ready();
+    }
+  });
 });
 
 Meteor.methods({
