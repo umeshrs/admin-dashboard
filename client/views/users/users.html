@@ -15,10 +15,14 @@
     <tbody>
       {{#each users}}
         <tr>
-          <td></td>
-          <td></td>
+          <td>{{profile.name}}</td>
+          <td>
+            {{#each emails}}
+              {{address}}<br />
+            {{/each}}
+          </td>
           <td>{{username}}</td>
-          <td></td>
+          <td>{{profile.role}}</td>
           <td>
             <div class="btn-group">
               <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i></button>
