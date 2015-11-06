@@ -39,6 +39,22 @@ Meteor.methods({
     token = result.data.data.authToken;
     console.log("return value: ", { authToken: token });
     return { authToken: token };
+  },
+  addUser: function(options) {
+    var user, userRole, newUserId;
+    user = Meteor.user();
+    userRole = user && user.profile && user.profile.role;
+
+    if (userRole === "administrator") {
+      newUserId = Accounts.createUser(options);
+      if (newUserId) {
+        console.log("New user added. User id: ", newUserId);
+      } else {
+        console.log("Error adding new user to the database.");
+      }
+    } else {
+      console.log("You do not have permission to add new users.");
+    }
   }
 });
 

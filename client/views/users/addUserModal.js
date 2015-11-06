@@ -9,11 +9,24 @@ Template.addUserModal.helpers({
 });
 
 Template.addUserModal.events({
-  'click #add-user-modal-btn': function (event, template) {
-    var isValidInput = validateInput();
+  'click #add-user-modal-btn': function () {
+    var isValidInput, options;
+    isValidInput = validateInput();
     if (isValidInput) {
       Session.set("closeAddUserModal", "modal");
-      // code for user creation
+      options = {
+        username: $("#username").val(),
+        password: Accounts._hashPassword($("#password").val()),
+        email: $("#email").val(),
+        profile: {
+          name: $("#first-name").val() + " " + $("#last-name").val(),
+          role: $("#role").val(),
+          pharmacy: {
+            name: $("#pharmacy-name").val()
+          }
+        }
+      };
+      Meteor.call("addUser", options);
     } else {
       $("#add-user-form").before('<p id="add-user-form-error" class="error" for="first-name">Please fill in all the required fields.</p>');
     }
