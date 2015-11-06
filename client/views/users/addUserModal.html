@@ -12,19 +12,19 @@
             <p>Please fill out all the details and click on the "Add" button to add the new user to the database.</p>
           </div>
           <div class="modal-body">
-            <form role="form">
+            <form role="form" id="add-user-form">
               <div class="form-group-attached">
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group form-group-default required">
                       <label>First Name</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" id="first-name">
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group form-group-default required">
                       <label>Last Name</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" id="last-name">
                     </div>
                   </div>
                 </div>
@@ -32,7 +32,7 @@
                   <div class="col-sm-12">
                     <div class="form-group form-group-default required">
                       <label>Email</label>
-                      <input type="email" class="form-control">
+                      <input type="email" class="form-control" id="email">
                     </div>
                   </div>
                 </div>
@@ -40,7 +40,7 @@
                   <div class="col-sm-12">
                     <div class="form-group form-group-default required">
                       <label>Username</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" id="username">
                     </div>
                   </div>
                 </div>
@@ -48,27 +48,27 @@
                   <div class="col-sm-6">
                     <div class="form-group form-group-default required">
                       <label>Password</label>
-                      <input type="password" class="form-control">
+                      <input type="password" class="form-control" id="password">
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group form-group-default required">
                       <label>Confirm Password</label>
-                      <input type="password" class="form-control">
+                      <input type="password" class="form-control" id="confirm-password">
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-sm-8">
-                    <div class="form-group form-group-default required">
+                    <div class="form-group form-group-default">
                       <label>Pharmacy name</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" id="pharmacy-name">
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <div class="form-group form-group-default required">
                       <label>Role</label>
-                      <select class="full-width cs-select cs-skin-slide" data-init-plugin="cs-select">
+                      <select class="full-width cs-select cs-skin-slide" id="role" data-init-plugin="cs-select">
                         <option value="member">Member</option>
                         <option value="administrator">Administrator</option>
                       </select>
@@ -83,7 +83,7 @@
             <button type="button" class="btn btn-default" data-dismiss="modal">
               <span class="bold">Cancel</span>
             </button>
-            <button type="button" class="btn btn-success" id="add-user-modal-btn" data-dismiss="modal">
+            <button type="button" class="btn btn-success" id="add-user-modal-btn" data-dismiss="{{closeModal}}">
               <span class="bold">Add</span>
             </button>
           </div>
