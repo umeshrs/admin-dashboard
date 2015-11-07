@@ -26,7 +26,20 @@ Template.addUserModal.events({
           }
         }
       };
-      Meteor.call("addUser", options);
+      Meteor.call("addUser", options, function (error, result) {
+        var options;
+        if (error) {
+          console.log("Error adding new user: ", error);
+        } else {
+          options = {
+            style: "bar",
+            position: "top",
+            message: result + " has been add to the database.",
+            type: "success"
+          }
+          $('body').pgNotification(options).show();
+        }
+      });
     } else {
       $("#add-user-form").before('<p id="add-user-form-error" class="error" for="first-name">Please fill in all the required fields.</p>');
     }

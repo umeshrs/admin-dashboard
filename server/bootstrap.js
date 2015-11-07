@@ -49,6 +49,7 @@ Meteor.methods({
       newUserId = Accounts.createUser(options);
       if (newUserId) {
         console.log("New user added. User id: ", newUserId);
+        return Meteor.users.findOne({ _id: newUserId }, { fields: { 'profile.name': 1 } }).profile.name;
       } else {
         console.log("Error adding new user to the database.");
       }
