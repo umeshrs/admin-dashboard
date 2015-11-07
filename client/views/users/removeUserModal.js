@@ -4,6 +4,14 @@ Template.removeUserModal.events({
       if (error) {
         console.log("Error removing document: ", error);
       } else {
+        var options;
+        options = {
+          style: "bar",
+          position: "top",
+          message: Session.get("currentUser").profile.name + " has been removed from the database.",
+          type: "info"
+        }
+        $('body').pgNotification(options).show();
         console.log("Number of documents removed: " + result);
       }
     })
