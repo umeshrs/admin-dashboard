@@ -27,7 +27,6 @@ Template.addUserModal.events({
         }
       };
       Meteor.call("addUser", options, function (error, result) {
-        var options;
         if (error) {
           console.log("Error adding new user: ", error);
         } else {
@@ -65,8 +64,8 @@ Template.addUserModal.events({
   'input #password, focusout #password': function () {
     validatePassword();
   },
-  'input #confirm-password, focusout #confirm-password': function () {
-    validateConfirmPassword();
+  'input #confirm-password, focusout #confirm-password': function (event) {
+    validateConfirmPassword(event);
   }
 });
 
@@ -121,10 +120,19 @@ function validatePassword () {
   }
 }
 
-function validateConfirmPassword () {
+function validateConfirmPassword (event) {
   if ($("#confirm-password").val().length > 0) {
-    $( $("#confirm-password")[0].parentNode ).removeClass("has-error");
-    return true;
+    if ((event && event.type) !== "input" && ( $("#confirm-password").val() !== $("#password").val() )) {
+      $( $("#confirm-password")[0].parentNode ).addClass("has-error");
+      if (! $("#add-user-form-error.password-error").length > 0){
+        $("#add-user-form").before('<p id="add-user-form-error" class="error password-error" for="password">Entered passwords do not match.</p>');
+      }
+      return false;
+    } else {
+      $( $("#confirm-password")[0].parentNode ).removeClass("has-error");
+      $("#add-user-form-error.password-error").remove();
+      return true;
+    }
   } else {
     $( $("#confirm-password")[0].parentNode ).addClass("has-error");
     return false;
