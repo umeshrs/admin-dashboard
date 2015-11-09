@@ -1,3 +1,6 @@
+var rocketChatConnection;
+rocketChatConnection = DDP.connect('http://192.168.1.122:4000');
+
 Template.addUserModal.onRendered(function () {
   Session.set("closeAddUserModal", "");
 });
@@ -10,11 +13,10 @@ Template.addUserModal.helpers({
 
 Template.addUserModal.events({
   'click #add-user-modal-btn': function () {
-    var isValidInput, options, rocketChatConnection;
+    var isValidInput, options;
     isValidInput = validateInput();
     if (isValidInput) {
       Session.set("closeAddUserModal", "modal");
-      rocketChatConnection = DDP.connect('http://192.168.1.122:4000');
       options = {
         username: $("#username").val(),
         password: Accounts._hashPassword($("#password").val()),
@@ -42,14 +44,22 @@ Template.addUserModal.events({
         }
       });
 
+      // console.log("rocketChatConnection status: ", rocketChatConnection.status());
+
       rocketChatConnection.call("registerUser", {
         username: options.username,
         pass: options.password,
         email: options.email,
         name: options.profile.name
+      }, function (error, result) {
+        if (error) {
+          console.log("Error creating new user in rocket chat instance: ", error);
+        } else {
+          console.log("New user created in rocket chat instance: ", result);
+        }
       });
 
-      rocketChatConnection.disconnect();
+      // rocketChatConnection.disconnect();
     } else {
       $("#add-user-form").before('<p id="add-user-form-error" class="error" for="first-name">Please fill in all the required fields.</p>');
     }
