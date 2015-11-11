@@ -19,3 +19,4 @@ iron:router
 http
 accounts-ui
 accounts-password
+ongoworks:ddp-login

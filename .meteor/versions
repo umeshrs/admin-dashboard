@@ -50,6 +50,7 @@ mongo@1.1.0
 mrt:modernizr-meteor@2.6.2
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6
+ongoworks:ddp-login@0.2.1
 ordered-dict@1.0.3
 random@1.0.3
 reactive-dict@1.1.0
