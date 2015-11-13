@@ -36,6 +36,14 @@ Router.route('/chat', function () {
   }
 });
 
+Router.route('dashboard', function () {
+  if (! Meteor.userId()) {
+    Router.go('login');
+  } else {
+    this.render('wekan');
+  }
+});
+
 Router.route('/users', function () {
   if (! Meteor.userId()) {
     Router.go('login');
