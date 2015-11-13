@@ -47,7 +47,7 @@ function loginWithPassword(connection, selector, password, callback) {
     } else {
       // Logged in
       connection.setUserId(result.id);
-      onceUserCallback();
+      onceUserCallback(error, result);
     }
   }
 
