@@ -19,3 +19,8 @@
   bottom: 0px;
   left: 0px;
 }
+
+.page-container .page-content-wrapper .content {
+  height: 100vh;
+  padding-bottom: 68px;
+}
