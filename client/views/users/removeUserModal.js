@@ -1,5 +1,6 @@
-var rocketChatConnection;
-rocketChatConnection = DDP.connect('http://192.168.1.122:4000');
+var rocketChatConnection, wekanConnection;
+rocketChatConnection = DDP.connect("http://" + ROCKET_CHAT_DOMAIN + ":" + ROCKET_CHAT_PORT);
+wekanConnection = DDP.connect("http://" + WEKAN_DOMAIN + ":" + WEKAN_PORT);
 
 Template.removeUserModal.events({
   'click #remove-user-modal-btn': function () {
@@ -16,7 +17,7 @@ Template.removeUserModal.events({
           type: "info"
         }
         $('body').pgNotification(options).show();
-        console.log("Number of documents removed: " + result);
+        console.log(Session.get("currentUser").username + " removed from admin app instance. ");
       }
     });
 
@@ -30,12 +31,26 @@ Template.removeUserModal.events({
           if (error) {
             console.log("Error deleting user from rocket chat instance: ", error);
           } else {
-            console.log(Session.get("currentUser").username + " successfully removed from rocket chat instance.");
+            console.log(Session.get("currentUser").username + " removed from rocket chat instance.");
           }
         });
       }
     });
 
-    // rocketChatConnection.disconnect();
+    // console.log("wekanConnection status: ", wekanConnection.status());
+
+    wekanConnection.call("getUserId", Session.get("currentUser").username, function (error, result) {
+      if (error) {
+        console.log("Error getting wekan userId: ", error.reason);
+      } else {
+        wekanConnection.call("deleteUser", result, function (error, result) {
+          if (error) {
+            console.log("Error deleting user from wekan instance: ", error);
+          } else {
+            console.log(Session.get("currentUser").username + " removed from wekan instance.");
+          }
+        });
+      }
+    });
   }
 });
