@@ -1,5 +1,6 @@
-var rocketChatConnection;
-rocketChatConnection = DDP.connect('http://192.168.1.122:4000');
+var rocketChatConnection, wekanConnection;
+rocketChatConnection = DDP.connect("http://" + ROCKET_CHAT_DOMAIN + ":" + ROCKET_CHAT_PORT);
+wekanConnection = DDP.connect("http://" + WEKAN_DOMAIN + ":" + WEKAN_PORT);
 
 Template.addUserModal.onRendered(function () {
   Session.set("closeAddUserModal", "");
@@ -13,8 +14,9 @@ Template.addUserModal.helpers({
 
 Template.addUserModal.events({
   'click #add-user-modal-btn': function () {
-    var isValidInput, options;
+    var isValidInput, options, notificationOptions;
     isValidInput = validateInput();
+
     if (isValidInput) {
       Session.set("closeAddUserModal", "modal");
       options = {
@@ -34,17 +36,17 @@ Template.addUserModal.events({
         if (error) {
           console.log("Error adding new user: ", error);
         } else {
-          options = {
+          notificationOptions = {
             style: "bar",
             position: "top",
             message: result + " has been add to the database.",
             type: "success"
           }
-          $('body').pgNotification(options).show();
+          $('body').pgNotification(notificationOptions).show();
+
+          console.log(options.username + " added to admin app instance.");
         }
       });
-
-      // console.log("rocketChatConnection status: ", rocketChatConnection.status());
 
       rocketChatConnection.call("registerUser", {
         username: options.username,
@@ -55,11 +57,23 @@ Template.addUserModal.events({
         if (error) {
           console.log("Error creating new user in rocket chat instance: ", error);
         } else {
-          console.log("New user created in rocket chat instance: ", result);
+          console.log(options.username + " added to rocket chat instance.");
         }
       });
 
-      // rocketChatConnection.disconnect();
+      wekanConnection.call("addUser", {
+        username: options.username,
+        password: options.password,
+        email: options.email,
+        profile: { fullname: options.profile.name }
+      }, function (error, result) {
+        if (error) {
+          console.log("Error creating new user in wekan instance: ", error);
+        } else {
+          console.log(options.username + " added to wekan instance.");
+        }
+      });
+
     } else {
       $("#add-user-form").before('<p id="add-user-form-error" class="error" for="first-name">Please fill in all the required fields.</p>');
     }
