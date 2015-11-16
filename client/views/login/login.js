@@ -1,10 +1,9 @@
-var wekanConnection;
-wekanConnection = DDP.connect("http://192.168.1.122:5000");
+var wekanConnection = DDP.connect("http://" + WEKAN_DOMAIN + ":" + WEKAN_PORT);
 
 Template.login.events({
   'submit #login-form': function (event) {
     event.preventDefault();
-    var username, password, domain, port, url;
+    var username, password, url;
 
     if (isValidInput()) {
       username = $("#login-username").val();
@@ -29,9 +28,7 @@ Template.login.events({
               console.log("Please check if the rocket chat server is running correctly.");
             } else {
               console.log("Logged in to rocket chat: ", result);
-              domain = "192.168.1.122";
-              port = "4000";
-              url = "http://" + domain + ":" + port + "?token=" + result.authToken;
+              url = "http://" + ROCKET_CHAT_DOMAIN + ":" + ROCKET_CHAT_PORT + "?token=" + result.authToken;
               console.log(url);
               Session.set("src", url);
             }
@@ -44,9 +41,7 @@ Template.login.events({
             }
             else {
               console.log("Logged in to wekan: ", result);
-              domain = "192.168.1.122";
-              port = "5000";
-              url = "http://" + domain + ":" + port + "?token=" + (result && result.token);
+              url = "http://" + WEKAN_DOMAIN + ":" + WEKAN_PORT + "?token=" + (result && result.token);
               console.log(url);
               Session.set("wekanSrc", url);
             }

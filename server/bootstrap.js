@@ -25,10 +25,8 @@ Meteor.methods({
   },
   getToken: function (username, password) {
     console.log("inside getToken method.");
-    var domain, port, url, result, token;
-    domain = "192.168.1.122";
-    port = "4000";
-    url = "http://" + domain + ":" + port + "/api/login";
+    var url, result, token;
+    url = "http://" + ROCKET_CHAT_DOMAIN + ":" + ROCKET_CHAT_PORT + "/api/login";
     result = HTTP.post(url,
       {
         data: {
