@@ -1,4 +1,5 @@
 var wekanConnection = DDP.connect("http://" + WEKAN_DOMAIN + ":" + WEKAN_PORT);
+var reactionConnection = DDP.connect("http://" + REACTION_DOMAIN + ":" + REACTION_PORT);
 
 Template.login.events({
   'submit #login-form': function (event) {
@@ -44,6 +45,19 @@ Template.login.events({
               url = "http://" + WEKAN_DOMAIN + ":" + WEKAN_PORT + "?token=" + (result && result.token);
               console.log(url);
               Session.set("wekanSrc", url);
+            }
+          });
+
+          DDP.loginWithPassword(reactionConnection, {username: username}, password, function (error, result) {
+            if (error) {
+              console.log("Error logging in to reaction: ", error);
+              console.log("Please check if the reaction server is running correctly.");
+            }
+            else {
+              console.log("Logged in to reaction: ", result);
+              url = "http://" + REACTION_DOMAIN + ":" + REACTION_PORT + "?token=" + (result && result.token);
+              console.log(url);
+              Session.set("reactionSrc", url);
             }
           });
 
