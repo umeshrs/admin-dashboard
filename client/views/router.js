@@ -44,6 +44,14 @@ Router.route('dashboard', function () {
   }
 });
 
+Router.route('shop', function () {
+  if (! Meteor.userId()) {
+    Router.go('login');
+  } else {
+    this.render('reaction');
+  }
+});
+
 Router.route('/users', function () {
   if (! Meteor.userId()) {
     Router.go('login');
