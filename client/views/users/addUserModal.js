@@ -1,6 +1,7 @@
-var rocketChatConnection, wekanConnection;
+var rocketChatConnection, wekanConnection, reactionConnection;
 rocketChatConnection = DDP.connect("http://" + ROCKET_CHAT_DOMAIN + ":" + ROCKET_CHAT_PORT);
 wekanConnection = DDP.connect("http://" + WEKAN_DOMAIN + ":" + WEKAN_PORT);
+reactionConnection = DDP.connect("http://" + REACTION_DOMAIN + ":" + REACTION_PORT);
 
 Template.addUserModal.onRendered(function () {
   Session.set("closeAddUserModal", "");
@@ -71,6 +72,18 @@ Template.addUserModal.events({
           console.log("Error creating new user in wekan instance: ", error);
         } else {
           console.log(options.username + " added to wekan instance.");
+        }
+      });
+
+      reactionConnection.call("addUser", {
+        username: options.username,
+        password: options.password,
+        email: options.email,
+      }, function (error, result) {
+        if (error) {
+          console.log("Error creating new user in reaction instance: ", error);
+        } else {
+          console.log(options.username + " added to reaction instance.");
         }
       });
 
