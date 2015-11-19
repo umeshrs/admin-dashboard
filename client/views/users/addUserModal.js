@@ -3,23 +3,12 @@ rocketChatConnection = DDP.connect("http://" + ROCKET_CHAT_DOMAIN + ":" + ROCKET
 wekanConnection = DDP.connect("http://" + WEKAN_DOMAIN + ":" + WEKAN_PORT);
 reactionConnection = DDP.connect("http://" + REACTION_DOMAIN + ":" + REACTION_PORT);
 
-Template.addUserModal.onRendered(function () {
-  Session.set("closeAddUserModal", "");
-});
-
-Template.addUserModal.helpers({
-  closeModal: function () {
-    return Session.get("closeAddUserModal");
-  }
-});
-
 Template.addUserModal.events({
   'click #add-user-modal-btn': function () {
     var isValidInput, options, notificationOptions;
     isValidInput = validateInput();
 
     if (isValidInput) {
-      Session.set("closeAddUserModal", "modal");
       options = {
         username: $("#username").val(),
         password: Accounts._hashPassword($("#password").val()),
@@ -87,6 +76,7 @@ Template.addUserModal.events({
         }
       });
 
+      $("#add-user-modal").hide();  // close the modal if all input field values are valid
     } else {
       $("#add-user-form").before('<p id="add-user-form-error" class="error" for="first-name">Please fill in all the required fields.</p>');
     }
