@@ -40,3 +40,11 @@
   vertical-align: middle;
   font-size: 25px;
 }
+
+.content .table {
+  text-align: center;
+}
+
+.content .table th {
+  text-align: center;
+}
