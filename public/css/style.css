@@ -14,6 +14,10 @@
   padding-bottom: 68px;
 }
 
+.login-wrapper .login-container .logo {
+  text-align: right;
+}
+
 .login-wrapper .login-container .footer {
   position: absolute;
   bottom: 0px;
