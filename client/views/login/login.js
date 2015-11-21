@@ -28,35 +28,32 @@ Template.login.events({
               console.log("Error conencting to rocket chat server: ", error);
               console.log("Please check if the rocket chat server is running correctly.");
             } else {
-              console.log("Logged in to rocket chat: ", result);
+              console.log("Logged in to rocket chat. Token: ", result.authToken);
               url = "http://" + ROCKET_CHAT_DOMAIN + ":" + ROCKET_CHAT_PORT + "?token=" + result.authToken;
-              console.log(url);
               Session.set("src", url);
             }
           });
 
           DDP.loginWithPassword(wekanConnection, {username: username}, password, function (error, result) {
             if (error) {
-              console.log("Error logging in to wekan: ", error);
+              console.log("Error logging in to wekan. Error: ", error.message);
               console.log("Please check if the wekan server is running correctly.");
             }
             else {
-              console.log("Logged in to wekan: ", result);
+              console.log("Logged in to wekan. Token: ", result.token);
               url = "http://" + WEKAN_DOMAIN + ":" + WEKAN_PORT + "?token=" + (result && result.token);
-              console.log(url);
               Session.set("wekanSrc", url);
             }
           });
 
           DDP.loginWithPassword(reactionConnection, {username: username}, password, function (error, result) {
             if (error) {
-              console.log("Error logging in to reaction: ", error);
+              console.log("Error logging in to reaction. Error: ", error.message);
               console.log("Please check if the reaction server is running correctly.");
             }
             else {
-              console.log("Logged in to reaction: ", result);
+              console.log("Logged in to reaction. Token: ", result.token);
               url = "http://" + REACTION_DOMAIN + ":" + REACTION_PORT + "?token=" + (result && result.token);
-              console.log(url);
               Session.set("reactionSrc", url);
             }
           });
