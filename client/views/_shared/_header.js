@@ -7,5 +7,8 @@ Template.header.events({
         Router.go('/');
       }
     });
+  },
+  'click .header .brand': function () {
+    Router.go('/');
   }
 });
