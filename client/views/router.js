@@ -1,5 +1,6 @@
 Router.configure({
-  layoutTemplate: "defaultLayout"
+  layoutTemplate: "defaultLayout",
+  notFoundTemplate: "notFound"
 });
 
 Router.onBeforeAction(function () {
