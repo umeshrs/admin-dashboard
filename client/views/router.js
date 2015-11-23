@@ -2,12 +2,18 @@ Router.configure({
   layoutTemplate: "defaultLayout"
 });
 
-Router.route('/', function () {
+Router.onBeforeAction(function () {
   if (! Meteor.userId()) {
     Router.go('login');
   } else {
-    Router.go('home');
+    this.next();
   }
+}, {
+  except: ['login']
+});
+
+Router.route('/', function () {
+  Router.go('home');
 });
 
 Router.route('/login', function () {
@@ -21,41 +27,21 @@ Router.route('/login', function () {
 });
 
 Router.route('/home', function () {
-  if (! Meteor.userId()) {
-    Router.go('login');
-  } else {
-    this.render('blankPage');
-  }
+  this.render('blankPage');
 });
 
 Router.route('/chat', function () {
-  if (! Meteor.userId()) {
-    Router.go('login');
-  } else {
-    this.render('rocketChat');
-  }
+  this.render('rocketChat');
 });
 
 Router.route('dashboard', function () {
-  if (! Meteor.userId()) {
-    Router.go('login');
-  } else {
-    this.render('wekan');
-  }
+  this.render('wekan');
 });
 
 Router.route('shop', function () {
-  if (! Meteor.userId()) {
-    Router.go('login');
-  } else {
-    this.render('reaction');
-  }
+  this.render('reaction');
 });
 
 Router.route('/users', function () {
-  if (! Meteor.userId()) {
-    Router.go('login');
-  } else {
-    this.render('users');
-  }
+  this.render('users');
 });
