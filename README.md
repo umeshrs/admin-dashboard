@@ -45,7 +45,7 @@
 
   ```
   git clone https://github.com/umeshrs/reaction.git
-  cd rocket-chat
+  cd reaction
   meteor run --port 7000 --settings settings/settings.json
   ```
   *Note:* Don't forget to pass the settings file as an option to the `meteor run` command.
