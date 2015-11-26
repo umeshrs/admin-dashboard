@@ -75,3 +75,9 @@ Router.route('shop', function () {
 Router.route('/users', function () {
   this.render('users');
 });
+
+Router.route('/manage-surveys', {
+  action: function () {
+    this.render('manageSurveys');
+  }
+});
