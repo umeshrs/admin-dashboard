@@ -1,0 +1,29 @@
+<template name="manageSurveys">
+  <div class="survey-list-wrapper">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Date Created</th>
+          <th>Publish Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each surveys}}
+          <tr>
+            <td>{{title}}</td>
+            <td>{{dateCreated}}</td>
+            <td></td>
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i></button>
+                <button type="button" class="btn btn-default" id="remove-survey-btn" data-toggle="modal" data-target="#remove-survey-modal"><i class="fa fa-remove"></i></button>
+              </div>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>
