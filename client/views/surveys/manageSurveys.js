@@ -20,3 +20,9 @@ Template.manageSurveys.helpers({
     }]
   }
 });
+
+Template.manageSurveys.events({
+  'click #add-survey-btn': function () {
+    Router.go('/add-survey');
+  }
+});
