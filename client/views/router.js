@@ -81,3 +81,9 @@ Router.route('/manage-surveys', {
     this.render('manageSurveys');
   }
 });
+
+Router.route('/add-survey', {
+  action: function () {
+    this.render('addSurvey');
+  }
+});
