@@ -17,8 +17,15 @@
           </div>
         </div>
       </div>
-      {{> question}}
-      {{> question}}
+      <div class="questions-wrapper">
+        {{> question}}
+      </div>
+      <button type="button" class="btn btn-success btn-animated from-left fa fa-save pull-right m-t-15 m-r-20" id="save-survey-btn">
+        <span class="bold">Save</span>
+      </button>
+      <button type="button" class="btn btn-info btn-animated from-left fa fa-plus pull-right m-t-15 m-r-20" id="add-question-btn">
+        <span class="bold">Add Question</span>
+      </button>
     </form>
   </div>
 </template>
