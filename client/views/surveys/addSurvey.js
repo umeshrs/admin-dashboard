@@ -1,3 +1,10 @@
+Template.addSurvey.events({
+  'click #add-question-btn': function (event) {
+    var parentNode = $(event.target).siblings(".questions-wrapper")[0];
+    Blaze.render(Template.question, parentNode);
+  }
+});
+
 Template.question.events({
   'click .add-option': function (event) {
     var placeholder = "Option " + $(event.target).closest(".options-wrapper")[0].childElementCount;
