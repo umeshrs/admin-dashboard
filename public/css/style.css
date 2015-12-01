@@ -48,3 +48,7 @@
 .content .table th {
   text-align: center;
 }
+
+.survey-wrapper .options-wrapper .remove-option {
+  cursor: pointer;
+}
