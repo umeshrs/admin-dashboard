@@ -17,16 +17,23 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-          <div class="form-group form-group-default">
-            <input type="text" class="form-control question" placeholder="Question">
-          </div>
+      {{> question}}
+      {{> question}}
+    </form>
+  </div>
+</template>
+
+<template name="question">
+  <div class="question-wrapper">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="form-group form-group-default">
+          <input type="text" class="form-control question" placeholder="Question">
         </div>
       </div>
-      {{> option id="option1" placeholder="Option 1"}}
-      {{> option id="option2" placeholder="Option 2"}}
-      {{> option id="option3" placeholder="Option 3"}}
+    </div>
+    <div class="options-wrapper">
+      {{> option placeholder="Option 1"}}
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
           <div class="radio">
@@ -35,7 +42,7 @@
           </div>
         </div>
       </div>
-    </form>
+    </div>
   </div>
 </template>
 
@@ -43,8 +50,8 @@
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
       <div class="radio">
-        <input type="radio" name="options" id="{{id}}" value="{{id}}">
-        <label for="{{id}}">
+        <input type="radio" name="options">
+        <label>
           <input type="text" placeholder="{{placeholder}}">
         </label>
         <div class="remove-option fa fa-remove"></div>
