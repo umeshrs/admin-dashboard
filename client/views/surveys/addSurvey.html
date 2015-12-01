@@ -1,0 +1,54 @@
+<template name="addSurvey">
+  <div class="survey-list-wrapper">
+    <form role="form" id="add-survey-form">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="form-group form-group-default required">
+            <label>Form Title</label>
+            <input type="text" class="form-control" id="form-title">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="form-group form-group-default">
+            <label>Form Description</label>
+            <input type="text" class="form-control" id="form-description">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="form-group form-group-default">
+            <input type="text" class="form-control question" placeholder="Question">
+          </div>
+        </div>
+      </div>
+      {{> option id="option1" placeholder="Option 1"}}
+      {{> option id="option2" placeholder="Option 2"}}
+      {{> option id="option3" placeholder="Option 3"}}
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="radio">
+            <input type="radio" name="options" id="add-option">
+            <label for="add-option">Add option</label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</template>
+
+<template name="option">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="radio">
+        <input type="radio" name="options" id="{{id}}" value="{{id}}">
+        <label for="{{id}}">
+          <input type="text" placeholder="{{placeholder}}">
+        </label>
+        <div class="remove-option fa fa-remove"></div>
+      </div>
+    </div>
+  </div>
+</template>
