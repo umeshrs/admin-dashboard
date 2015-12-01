@@ -64,3 +64,19 @@
   padding: 20px 0px;
   background-color: white;
 }
+
+.survey-wrapper .question-wrapper .options-wrapper input[type="text"] {
+  padding-bottom: 5px;
+  border: 0px;
+  border-bottom: 2px solid transparent;
+}
+
+.survey-wrapper .question-wrapper .options-wrapper input[type="text"]:hover {
+  padding-bottom: 6px;
+  border-bottom: 1px dashed;
+}
+
+.survey-wrapper .question-wrapper .options-wrapper input[type="text"]:focus {
+  padding-bottom: 5px;
+  border-bottom: 2px solid;
+}
