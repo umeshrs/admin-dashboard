@@ -6,3 +6,9 @@ Template.question.events({
     Blaze.renderWithData(Template.option, { placeholder: placeholder }, parentNode, nextNode);
   }
 });
+
+Template.option.events({
+  'click .remove-option': function (event, template) {
+    Blaze.remove(template.view);
+  }
+});
