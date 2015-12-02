@@ -1,6 +1,6 @@
 Template.addSurvey.events({
   'click #add-question-btn': function (event) {
-    var parentNode = $(event.target).siblings(".questions-wrapper")[0];
+    var parentNode = $(event.target).closest(".btns-wrapper").siblings(".questions-wrapper")[0];
     Blaze.render(Template.question, parentNode);
   }
 });
