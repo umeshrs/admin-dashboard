@@ -49,19 +49,23 @@
   text-align: center;
 }
 
+.survey-wrapper {
+  padding: 30px 50px;
+  background-color: #EEEEEE;
+}
+
 .survey-wrapper .options-wrapper .remove-option {
   cursor: pointer;
 }
 
 .survey-wrapper .form-header {
-  margin: 20px 30px;
-  padding: 20px 0px;
+  padding: 30px 0px;
   background-color: white;
 }
 
 .survey-wrapper .question-wrapper {
-  margin: 20px 30px;
-  padding: 20px 0px;
+  margin: 30px 0px;
+  padding: 30px 0px;
   background-color: white;
 }
 
