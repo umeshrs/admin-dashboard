@@ -9,6 +9,9 @@ Template.manageSurveys.onRendered(function () {
 Template.manageSurveys.helpers({
   surveys: function () {
     return Surveys.find();
+  },
+  dateCreated: function () {
+    return this.createdAt.toLocaleString();
   }
 });
 
