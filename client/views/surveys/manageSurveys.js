@@ -17,3 +17,7 @@ Template.manageSurveys.events({
     Router.go('/add-survey');
   }
 });
+
+Template.switchery.onRendered(function () {
+  var switchery = new Switchery(this.find(".switchery"), {color: '#10CFBD'});
+});
