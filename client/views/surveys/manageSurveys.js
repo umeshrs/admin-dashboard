@@ -8,7 +8,7 @@ Template.manageSurveys.onRendered(function () {
 
 Template.manageSurveys.helpers({
   surveys: function () {
-    return Surveys.find();
+    return Surveys.find({}, { fields: { title: 1, createdAt: 1, published: 1 } });
   },
   dateCreated: function () {
     return this.createdAt.toLocaleString();
