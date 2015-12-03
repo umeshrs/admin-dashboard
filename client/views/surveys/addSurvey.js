@@ -2,6 +2,34 @@ Template.addSurvey.events({
   'click #add-question-btn': function (event) {
     var parentNode = $(event.target).closest(".btns-wrapper").siblings(".questions-wrapper")[0];
     Blaze.render(Template.question, parentNode);
+  },
+  'click #save-survey-btn': function (event) {
+    var survey = {}, questions, i, j, question, options;
+    survey.questions = [];
+    survey.title = $(event.target).closest("#add-survey-form").find("#form-title").val();
+    survey.description = $(event.target).closest("#add-survey-form").find("#form-description").val();
+    questions = $(event.target).closest("#add-survey-form").find(".question-wrapper");
+
+    for (i = 0; i < questions.length; i++) {
+      question = {};
+      question.text = $(questions[i]).find(".question").val();
+      question.options = [];
+      options = $(questions[i]).find(".option");
+
+      for (j = 0; j < options.length; j++) {
+        question.options.push($(options[j]).val());
+      }
+
+      survey.questions.push(question);
+    }
+
+    Surveys.insert({
+      title: survey.title,
+      description: survey.description,
+      questions: survey.questions,
+      published: true,
+      createdAt: new Date()
+    });
   }
 });
 
