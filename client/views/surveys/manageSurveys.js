@@ -14,5 +14,7 @@ Template.manageSurveys.events({
 });
 
 Template.switchery.onRendered(function () {
-  var switchery = new Switchery(this.find(".switchery"), {color: '#10CFBD'});
+  var checkbox = this.find(".switchery"), switchery;
+  checkbox.checked = Template.currentData().published ? true : false;
+  switchery = new Switchery(checkbox, { color: '#10CFBD', size: 'small' });
 });
