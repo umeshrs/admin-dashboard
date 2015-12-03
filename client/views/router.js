@@ -93,6 +93,13 @@ Router.route('/preview-survey/:_id', {
     this.render('viewSurvey');
   },
   data: function () {
-    return Surveys.findOne(this.params._id);
+    var data = Surveys.findOne(this.params._id);
+    if (data) {
+      data.questions = data.questions.map(function (question, index) {
+        question.index = index;
+        return question;
+      });
+    }
+    return data;
   }
 });
