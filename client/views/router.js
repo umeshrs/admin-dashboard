@@ -87,3 +87,12 @@ Router.route('/add-survey', {
     this.render('addSurvey');
   }
 });
+
+Router.route('/preview-survey/:_id', {
+  action: function () {
+    this.render('viewSurvey');
+  },
+  data: function () {
+    return Surveys.findOne(this.params._id);
+  }
+});
