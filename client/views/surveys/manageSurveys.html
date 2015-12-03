@@ -17,7 +17,7 @@
           <tr>
             <td>{{title}}</td>
             <td>{{dateCreated}}</td>
-            <td><input type="checkbox" class="switchery" checked /></td>
+            <td>{{> switchery}}</td>
             <td>
               <div class="btn-group">
                 <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i></button>
@@ -29,4 +29,8 @@
       </tbody>
     </table>
   </div>
+</template>
+
+<template name="switchery">
+  <input type="checkbox" class="switchery" checked />
 </template>
