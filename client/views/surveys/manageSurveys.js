@@ -18,3 +18,9 @@ Template.switchery.onRendered(function () {
   checkbox.checked = Template.currentData().published ? true : false;
   switchery = new Switchery(checkbox, { color: '#10CFBD', size: 'small' });
 });
+
+Template.switchery.events({
+  'change .switchery': function (event) {
+    Surveys.update(this._id, { $set: { published: event.target.checked } });
+  }
+});
