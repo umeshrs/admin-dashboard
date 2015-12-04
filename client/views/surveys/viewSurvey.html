@@ -3,12 +3,12 @@
     <div class="form-header">
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
-          <h1>Form Title</h1>
+          <h1>{{title}}</h1>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
-          <p>Form Description.</p>
+          <p>{{description}}</p>
         </div>
       </div>
     </div>
@@ -25,8 +25,8 @@
               <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">
                   <div class="radio radio-warning">
-                      <input type="radio" value="{{this}}" name="questionOptions" class="option">
-                      <label>{{this}}</label>
+                      <input type="radio" value="{{text}}" name="question{{../index}}" class="option" id="q{{../index}}o{{index}}">
+                      <label for="q{{../index}}o{{index}}">{{text}}</label>
                   </div>
                 </div>
               </div>
