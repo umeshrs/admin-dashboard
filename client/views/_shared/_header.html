@@ -40,7 +40,9 @@
                 <div class="notification-panel">
                   <!-- START Notification Body-->
                   <div class="notification-body scrollable">
+                  {{#each notifications}}
                     {{> notificationItem}}
+                  {{/each}}
                   </div>
                   <!-- END Notification Body-->
                   <!-- START Notification Footer-->
@@ -120,7 +122,7 @@
     <div class="heading open">
       <a href="#" class="text-danger">
         <i class="fa fa-exclamation-triangle m-r-10"></i>
-        <span class="bold">98% Server Load</span>
+        <span class="bold">{{text}}</span>
         <span class="fs-12 m-l-10">Take Action</span>
       </a>
       <span class="pull-right time">2 mins ago</span>
