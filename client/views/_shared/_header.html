@@ -118,14 +118,16 @@
 
 <template name="notificationItem">
   <!-- START Notification Item-->
-  <div class="notification-item  clearfix">
+  <div class="notification-item {{#if isUnread}}unread{{/if}} clearfix">
     <div class="heading open">
-      <a href="#" class="text-danger">
+      <a href="/view-survey/{{surveyId}}" class="text-{{type}}">
         <i class="fa fa-exclamation-triangle m-r-10"></i>
-        <span class="bold">{{text}}</span>
-        <span class="fs-12 m-l-10">Take Action</span>
+        <span class="bold">{{title}}</span>
+        <span class="fs-12 m-l-10">{{text}}</span>
       </a>
+      {{!--
       <span class="pull-right time">2 mins ago</span>
+      --}}
     </div>
     <div class="option">
       <a href="#" class="mark"></a>
