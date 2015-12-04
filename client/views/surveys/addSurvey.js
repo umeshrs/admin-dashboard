@@ -40,6 +40,7 @@ Template.addSurvey.events({
         notificationOptions.type = "error";
       } else {
         notificationOptions.message = "<b>Success!</b> New survey created.";
+        Meteor.call("pushNotifications", result);
       }
       $('body').pgNotification(notificationOptions).show();
     });
