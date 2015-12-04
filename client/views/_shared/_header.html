@@ -40,21 +40,7 @@
                 <div class="notification-panel">
                   <!-- START Notification Body-->
                   <div class="notification-body scrollable">
-                    <!-- START Notification Item-->
-                    <div class="notification-item  clearfix">
-                      <div class="heading">
-                        <a href="#" class="text-danger">
-                          <i class="fa fa-exclamation-triangle m-r-10"></i>
-                          <span class="bold">98% Server Load</span>
-                          <span class="fs-12 m-l-10">Take Action</span>
-                        </a>
-                        <span class="pull-right time">2 mins ago</span>
-                      </div>
-                      <div class="option">
-                        <a href="#" class="mark"></a>
-                      </div>
-                    </div>
-                    <!-- END Notification Item-->
+                    {{> notificationItem}}
                   </div>
                   <!-- END Notification Body-->
                   <!-- START Notification Footer-->
@@ -126,4 +112,22 @@
     </div>
   </div>
   <!-- END HEADER -->
+</template>
+
+<template name="notificationItem">
+  <!-- START Notification Item-->
+  <div class="notification-item  clearfix">
+    <div class="heading open">
+      <a href="#" class="text-danger">
+        <i class="fa fa-exclamation-triangle m-r-10"></i>
+        <span class="bold">98% Server Load</span>
+        <span class="fs-12 m-l-10">Take Action</span>
+      </a>
+      <span class="pull-right time">2 mins ago</span>
+    </div>
+    <div class="option">
+      <a href="#" class="mark"></a>
+    </div>
+  </div>
+  <!-- END Notification Item-->
 </template>
