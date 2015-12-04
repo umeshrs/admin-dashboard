@@ -97,6 +97,10 @@ Router.route('/preview-survey/:_id', {
     if (data) {
       data.questions = data.questions.map(function (question, index) {
         question.index = index;
+        question.options = question.options.map(function (option, index) {
+          option.index = index;
+          return option;
+        });
         return question;
       });
     }
