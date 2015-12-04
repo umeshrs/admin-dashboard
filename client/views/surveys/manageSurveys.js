@@ -1,6 +1,9 @@
 Template.manageSurveys.helpers({
   surveys: function () {
-    return Surveys.find({}, { fields: { title: 1, createdAt: 1, published: 1 } });
+    return Surveys.find({}, {
+      fields: { title: 1, createdAt: 1, published: 1 },
+      sort: { createdAt: 1 }
+    });
   },
   dateCreated: function () {
     return this.createdAt.toLocaleString();
