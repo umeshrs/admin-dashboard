@@ -6,7 +6,7 @@ Meteor.methods({
       surveyId: surveyId,
       title: (survey && survey.title),
       text: "Please take this survey.",
-      status: "unread",
+      isUnread: true,
       type: "info",
       createdAt: new Date()
     };
