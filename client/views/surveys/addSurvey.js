@@ -4,10 +4,10 @@ Template.addSurvey.events({
     Blaze.render(Template.question, parentNode);
   },
   'click #save-survey-btn': function (event) {
-    var survey = {}, questions, i, j, question, options;
-    survey.questions = [];
+    var survey = {}, questions, question, options, option, i, j;
     survey.title = $(event.target).closest("#add-survey-form").find("#form-title").val();
     survey.description = $(event.target).closest("#add-survey-form").find("#form-description").val();
+    survey.questions = [];
     questions = $(event.target).closest("#add-survey-form").find(".question-wrapper");
 
     for (i = 0; i < questions.length; i++) {
@@ -17,7 +17,9 @@ Template.addSurvey.events({
       options = $(questions[i]).find(".option");
 
       for (j = 0; j < options.length; j++) {
-        question.options.push($(options[j]).val());
+        option = {};
+        option.text = $(options[j]).val();
+        question.options.push(option);
       }
 
       survey.questions.push(question);
