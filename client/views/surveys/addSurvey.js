@@ -25,12 +25,23 @@ Template.addSurvey.events({
       survey.questions.push(question);
     }
 
-    Surveys.insert({
-      title: survey.title,
-      description: survey.description,
-      questions: survey.questions,
-      published: true,
-      createdAt: new Date()
+    survey.published = true;
+    survey.createdAt = new Date();
+
+    Surveys.insert(survey, function (error, result) {
+      var notificationOptions = {
+        style: "bar",
+        position: "top",
+        type: "success"
+      };
+      if (error) {
+        console.log("Error creating survey. Error: ", error.message);
+        notificationOptions.message = "<b>Error!</b> Something went wrong while creating the new survey. Please try again. " + error.message;
+        notificationOptions.type = "error";
+      } else {
+        notificationOptions.message = "<b>Success!</b> New survey created.";
+      }
+      $('body').pgNotification(notificationOptions).show();
     });
   }
 });
