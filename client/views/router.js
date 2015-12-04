@@ -107,3 +107,23 @@ Router.route('/preview-survey/:_id', {
     return data;
   }
 });
+
+Router.route('/view-survey/:_id', {
+  action: function () {
+    this.render('viewSurvey');
+  },
+  data: function () {
+    var data = Surveys.findOne(this.params._id);
+    if (data) {
+      data.questions = data.questions.map(function (question, index) {
+        question.index = index;
+        question.options = question.options.map(function (option, index) {
+          option.index = index;
+          return option;
+        });
+        return question;
+      });
+    }
+    return data;
+  }
+});
