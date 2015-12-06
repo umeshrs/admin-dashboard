@@ -1,0 +1,40 @@
+<template name="viewResponse">
+  <div class="survey-wrapper">
+    <div class="form-header">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <h1>{{title}} ({{#if responses}}{{responses}}{{else}}No responses{{/if}})</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <p>{{description}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="questions-wrapper">
+      {{#each questions}}
+        <div class="question-wrapper">
+          <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+              <div class="question">{{text}} <strong>({{#if responses}}{{responses}}{{else}}No responses{{/if}})</strong></div>
+            </div>
+          </div>
+          <div class="options-wrapper">
+            {{#each options}}
+              <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                  <div class="radio">
+                      <input type="radio" class="option">
+                      <label><span>{{text}} {{#if responses}}<strong>({{percentage}}%)</strong>{{/if}}</span></label>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</template>
+
