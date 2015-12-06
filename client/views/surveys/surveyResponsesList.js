@@ -9,3 +9,10 @@ Template.surveyResponsesList.helpers({
     return this.createdAt.toLocaleString();
   }
 });
+
+Template.surveyResponsesList.events({
+  'click .view-response-btn': function () {
+    console.log(this._id);
+    Router.go('/survey-responses/view-response/' + this._id);
+  }
+});
