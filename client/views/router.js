@@ -133,3 +133,12 @@ Router.route('/survey-responses', {
     this.render('surveyResponsesList');
   }
 });
+
+Router.route('/survey-responses/view-response/:_id', {
+  action: function () {
+    this.render('viewResponse');
+  },
+  data: function () {
+    return Surveys.findOne(this.params._id);
+  }
+});
