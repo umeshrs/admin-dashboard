@@ -127,3 +127,9 @@ Router.route('/view-survey/:_id', {
     return data;
   }
 });
+
+Router.route('/survey-responses', {
+  action: function () {
+    this.render('surveyResponsesList');
+  }
+});
