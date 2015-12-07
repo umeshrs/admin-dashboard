@@ -16,6 +16,15 @@ Template.manageSurveys.events({
   },
   'click .preview-survey-btn': function () {
     Router.go('/preview-survey/' + this._id);
+  },
+  'click .remove-survey-btn': function () {
+    Meteor.call("removeSurvey", this._id, function (error, result) {
+      if (error) {
+        console.log("Error invoking method 'removeSurvey':", error.message);
+      } else {
+        console.log(result + " document(s) removed from Surveys collection.");
+      }
+    });
   }
 });
 
