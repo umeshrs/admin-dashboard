@@ -56,8 +56,15 @@
 }
 
 .survey-wrapper .form-header {
-  padding: 30px 0px;
+  padding: 30px 0px 40px;
   background-color: white;
+}
+
+.survey-wrapper .form-group-default {
+  padding: 15px 0px 10px;
+  border: 0px;
+  border-bottom: 1px inset;
+  border-radius: 0px;
 }
 
 .survey-wrapper .question-wrapper {
@@ -117,7 +124,7 @@
 }
 
 .survey-wrapper .question-wrapper .options-wrapper .radio .add-option ~ span:hover {
-  border-bottom: 1px dashed;
+  border-bottom: 1px dotted;
 }
 
 .survey-wrapper .btns-wrapper {
