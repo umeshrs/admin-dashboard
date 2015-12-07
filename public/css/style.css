@@ -67,6 +67,16 @@
   border-radius: 0px;
 }
 
+.survey-wrapper .form-header h1 {
+  margin: 0px;
+}
+
+.survey-wrapper .form-header #form-title {
+  height: 44px;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 .survey-wrapper .question-wrapper {
   margin: 30px 0px;
   padding: 50px 0px;
