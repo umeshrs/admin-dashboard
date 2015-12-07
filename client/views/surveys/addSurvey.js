@@ -36,7 +36,7 @@ Template.addSurvey.events({
       };
       if (error) {
         console.log("Error creating survey. Error: ", error.message);
-        notificationOptions.message = "<b>Error!</b> Something went wrong while creating the new survey. Please try again. " + error.message;
+        notificationOptions.message = "<b>Error!</b> Something went wrong while creating the new survey. Please try again.";
         notificationOptions.type = "error";
       } else {
         Router.go('/manage-surveys');
