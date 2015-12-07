@@ -39,6 +39,7 @@ Template.addSurvey.events({
         notificationOptions.message = "<b>Error!</b> Something went wrong while creating the new survey. Please try again. " + error.message;
         notificationOptions.type = "error";
       } else {
+        Router.go('/manage-surveys');
         notificationOptions.message = "<b>Success!</b> New survey created.";
         Meteor.call("pushNotifications", result);
       }
