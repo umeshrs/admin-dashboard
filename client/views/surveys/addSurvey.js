@@ -70,7 +70,9 @@ Template.question.events({
     Blaze.renderWithData(Template.option, { placeholder: placeholder }, parentNode, nextNode);
   },
   'click .remove-question': function (event, template) {
+    var questionNode = $(event.target.closest(".question-wrapper"));
     Blaze.remove(template.view);
+    $(questionNode).remove();
   }
 });
 
