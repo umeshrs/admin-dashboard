@@ -1,0 +1,35 @@
+<template name="editSurvey">
+  <div class="survey-wrapper">
+    <form role="form" id="edit-survey-form" autocomplete="off">
+      <div class="form-header">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <div class="form-group form-group-default required">
+              <h1><input type="text" class="form-control" id="form-title" placeholder="Form title" value="{{title}}"></h1>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <div class="form-group form-group-default">
+              <input type="text" class="form-control" id="form-description" placeholder="Form description" value="{{description}}">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="questions-wrapper">
+        {{#each questions}}
+          {{> question text=text options=options}}
+        {{/each}}
+      </div>
+      <div class="btns-wrapper clearfix">
+        <button type="button" class="btn btn-success btn-animated from-left fa fa-save pull-right" id="save-survey-btn">
+          <span class="bold">Save</span>
+        </button>
+        <button type="button" class="btn btn-info btn-animated from-left fa fa-plus pull-right m-r-20" id="add-question-btn">
+          <span class="bold">Add Question</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</template>
