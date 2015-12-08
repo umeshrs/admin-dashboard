@@ -12,6 +12,21 @@ Template.viewSurvey.events({
       });
     }
 
-    Meteor.call("addResponse", this._id, response);
+    Meteor.call("addResponse", this._id, response, function (error, result) {
+      var notificationOptions = {
+        style: "bar",
+        position: "top",
+        type: "success"
+      };
+      if (error) {
+        console.log("Error submitting survey. Error: ", error.message);
+        notificationOptions.message = "<b>Error!</b> Could not submit your response. Please try again.";
+        notificationOptions.type = "error";
+      } else {
+        Router.go('/manage-surveys');
+        notificationOptions.message = "<b>Success!</b> Your response has been submitted.";
+      }
+      $('body').pgNotification(notificationOptions).show();
+    });
   }
 });
