@@ -29,32 +29,15 @@
           <img src="/img/logo.png" alt="logo" data-src="/img/logo.png" height="50">
           <div class="text">AEPK</div>
         </div>
-        <!-- BEGIN NOTIFICATION DROPDOWN -->
         <ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-20">
           <li class="p-r-15 inline">
             <div class="dropdown">
               <a href="javascript:;" id="notification-center" class="icon-set globe-fill" data-toggle="dropdown">
                 <span class="bubble"></span>
               </a>
-              <div class="dropdown-menu notification-toggle" role="menu" aria-labelledby="notification-center">
-                <div class="notification-panel">
-                  <!-- START Notification Body-->
-                  <div class="notification-body scrollable">
-                  {{#each notifications}}
-                    {{> notificationItem}}
-                  {{/each}}
-                  </div>
-                  <!-- END Notification Body-->
-                  <!-- START Notification Footer-->
-                  <div class="notification-footer text-center">
-                    <a href="#" class="">Read all notifications</a>
-                    <a data-toggle="refresh" class="portlet-refresh text-black pull-right" href="#">
-                      <i class="pg-refresh_new"></i>
-                    </a>
-                  </div>
-                  <!-- END Notification Footer-->
-                </div>
-              </div>
+              {{#if showNotificationDropdown}}
+                {{> notificationDropdown}}
+              {{/if}}
             </div>
           </li>
           {{!--
@@ -66,7 +49,6 @@
           </li>
           --}}
         </ul>
-        <!-- END NOTIFICATION DROPDOWN -->
         {{!--
         <a href="#" class="search-link" data-toggle="search"><i class="pg-search"></i>Type anywhere to <span class="bold">search</span></a>
         --}}
@@ -114,6 +96,30 @@
     </div>
   </div>
   <!-- END HEADER -->
+</template>
+
+<template name="notificationDropdown">
+  <!-- BEGIN NOTIFICATION DROPDOWN -->
+  <div class="dropdown-menu notification-toggle" role="menu" aria-labelledby="notification-center">
+    <div class="notification-panel">
+      <!-- START Notification Body-->
+      <div class="notification-body scrollable">
+        {{#each notifications}}
+          {{> notificationItem}}
+        {{/each}}
+      </div>
+      <!-- END Notification Body-->
+      <!-- START Notification Footer-->
+      <div class="notification-footer text-center">
+        <a href="#" class="">Read all notifications</a>
+        <a data-toggle="refresh" class="portlet-refresh text-black pull-right" href="#">
+          <i class="pg-refresh_new"></i>
+        </a>
+      </div>
+      <!-- END Notification Footer-->
+    </div>
+  </div>
+  <!-- END NOTIFICATION DROPDOWN -->
 </template>
 
 <template name="notificationItem">
