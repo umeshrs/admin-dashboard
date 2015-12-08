@@ -1,9 +1,3 @@
-Template.header.helpers({
-  notifications: function () {
-    return Meteor.user() ? Meteor.user().profile.notifications.reverse() : [];
-  }
-});
-
 Template.header.events({
   'click #logout': function (event) {
     Meteor.logout(function (error) {
@@ -16,5 +10,11 @@ Template.header.events({
   },
   'click .header .brand': function () {
     Router.go('/');
+  }
+});
+
+Template.notificationDropdown.helpers({
+  notifications: function () {
+    return Meteor.user() ? Meteor.user().profile.notifications.reverse() : [];
   }
 });
