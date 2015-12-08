@@ -1,3 +1,13 @@
+Template.header.onRendered(function () {
+  Session.set("showNotificationDropdown", false);
+});
+
+Template.header.helpers({
+  showNotificationDropdown: function () {
+    return Session.get("showNotificationDropdown");
+  }
+});
+
 Template.header.events({
   'click #logout': function (event) {
     Meteor.logout(function (error) {
@@ -10,6 +20,14 @@ Template.header.events({
   },
   'click .header .brand': function () {
     Router.go('/');
+  },
+  'click #notification-center': function (event, template) {
+    event.preventDefault();
+    if (template.$(event.target).closest(".dropdown").hasClass("open")) {
+      Session.set("showNotificationDropdown", false);
+    } else {
+      Session.set("showNotificationDropdown", true);
+    }
   }
 });
 
