@@ -38,12 +38,18 @@
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2">
         <div class="form-group form-group-default">
-          <input type="text" class="form-control question" placeholder="Question">
+          <input type="text" class="form-control question" placeholder="Question" value="{{text}}">
         </div>
       </div>
     </div>
     <div class="options-wrapper">
-      {{> option placeholder="Option 1"}}
+      {{#if options}}
+        {{#each options}}
+          {{> option placeholder="Option 1" text=text}}
+        {{/each}}
+      {{else}}
+        {{> option placeholder="Option 1"}}
+      {{/if}}
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
           <div class="radio">
@@ -64,7 +70,7 @@
       <div class="radio">
         <input type="radio" name="options">
         <label>
-          <input type="text" class="option" placeholder="{{placeholder}}">
+          <input type="text" class="option" placeholder="{{placeholder}}" value="{{text}}">
         </label>
         <div class="remove-option fa fa-remove fa-lg"></div>
       </div>
