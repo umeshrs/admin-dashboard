@@ -15,7 +15,7 @@ Template.manageSurveys.events({
     Router.go('/add-survey');
   },
   'click .preview-survey-btn': function () {
-    Router.go('/preview-survey/' + this._id);
+    Router.go('/manage-surveys/preview-survey/' + this._id);
   },
   'click .remove-survey-btn': function () {
     var surveyTitle = this.title;

@@ -88,7 +88,7 @@ Router.route('/add-survey', {
   }
 });
 
-Router.route('/preview-survey/:_id', {
+Router.route('/manage-surveys/preview-survey/:_id', {
   action: function () {
     this.render('viewSurvey');
   },
