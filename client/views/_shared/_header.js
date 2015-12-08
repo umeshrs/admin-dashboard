@@ -1,6 +1,6 @@
 Template.header.helpers({
   notifications: function () {
-    return Meteor.user() ? Meteor.user().profile.notifications : [];
+    return Meteor.user() ? Meteor.user().profile.notifications.reverse() : [];
   }
 });
 
