@@ -35,6 +35,9 @@ Template.manageSurveys.events({
       }
       $('body').pgNotification(notificationOptions).show();
     });
+  },
+  'click .edit-survey-btn': function (event) {
+    Router.go('/manage-surveys/edit-survey/' + this._id);
   }
 });
 

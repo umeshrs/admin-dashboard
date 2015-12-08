@@ -108,6 +108,15 @@ Router.route('/manage-surveys/preview-survey/:_id', {
   }
 });
 
+Router.route('/manage-surveys/edit-survey/:_id', {
+  action: function () {
+    this.render('editSurvey');
+  },
+  data: function () {
+    return Surveys.findOne(this.params._id);
+  }
+});
+
 Router.route('/view-survey/:_id', {
   action: function () {
     this.render('viewSurvey');
