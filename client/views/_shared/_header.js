@@ -36,3 +36,25 @@ Template.notificationDropdown.helpers({
     return Meteor.user() ? Meteor.user().profile.notifications.reverse() : [];
   }
 });
+
+Template.notificationItem.helpers({
+  age: function () {
+    var timeDiff = (Date.now() - this.createdAt) / (1000);
+    if (timeDiff < 60) {
+      return "< 1m ago";
+    } else {
+      timeDiff = timeDiff / 60;
+      if (timeDiff < 60) {
+        return Math.floor(timeDiff) + " m ago";
+      } else {
+        timeDiff = timeDiff / 60;
+        if (timeDiff < 24) {
+          return Math.floor(timeDiff) + " h ago";
+        } else {
+          timeDiff = timeDiff / 24;
+          return Math.floor(timeDiff) + " d ago";
+        }
+      }
+    }
+  }
+});
