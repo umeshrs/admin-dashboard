@@ -79,5 +79,6 @@ Template.question.events({
 Template.option.events({
   'click .remove-option': function (event, template) {
     Blaze.remove(template.view);
+    $(event.target).closest(".row").remove();
   }
 });
