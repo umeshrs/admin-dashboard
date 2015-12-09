@@ -50,6 +50,9 @@ Template.addSurvey.events({
       $('body').pgNotification(notificationOptions).show();
     });
   },
+  'click #cancel-btn': function () {
+    Router.go('/manage-surveys');
+  },
   'focusin .form-control': function (event, template) {
     template.$(event.target).closest(".form-group-default").css({"padding-bottom": "9px", "border-bottom": "2px solid"});
   },
