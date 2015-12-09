@@ -52,5 +52,8 @@ Template.editSurvey.events({
       }
       $('body').pgNotification(notificationOptions).show();
     });
+  },
+  'click #cancel-btn': function () {
+    Router.go('/manage-surveys');
   }
 });
