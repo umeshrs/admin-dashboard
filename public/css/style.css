@@ -144,3 +144,17 @@
 .page-sidebar .sidebar-menu .menu-items > li ul.sub-menu > li .icon-thumbnail.bg-primary {
   background-color: #6d5cae !important;
 }
+
+/* storeLocator styles */
+
+.content .map-container {
+  padding-left: 0px;
+}
+
+.content #stores-list-container {
+  padding-right: 0px;
+}
+
+.content #stores-list-container #stores-list {
+  overflow-y: scroll;
+}
