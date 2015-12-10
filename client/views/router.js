@@ -11,7 +11,7 @@ Meteor.startup(function () {
           username: "admin",
           password: Accounts._hashPassword("admin123"),
           email: "admin@test.com",
-          profile: { name: "Admin" }
+          profile: { name: "Admin", role: "administrator" }
         };
 
         Meteor.call("addDefaultUser", options, function (error, result) {
