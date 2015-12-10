@@ -17,7 +17,6 @@ fortawesome:fontawesome
 revox:pages-core
 iron:router
 http
-accounts-ui
 accounts-password
 ongoworks:ddp-login
 abpetkov:switchery
