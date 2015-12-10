@@ -7,5 +7,8 @@ function initializeMap () {
 
 Template.googleMaps.onRendered(function () {
   initializeMap();
-  $(".page-content-wrapper > .content #map-canvas").height($(window).innerHeight() - 128);
+  $("#map-canvas").height($(window).innerHeight() - 128);
+  $(window).resize(function () {
+    $("#map-canvas").height($(window).innerHeight() - 128);
+  });
 });
