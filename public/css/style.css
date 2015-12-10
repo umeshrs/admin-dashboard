@@ -140,3 +140,7 @@
 .survey-wrapper .btns-wrapper {
   margin-top: 30px;
 }
+
+.page-sidebar .sidebar-menu .menu-items > li ul.sub-menu > li .icon-thumbnail.bg-primary {
+  background-color: #6d5cae !important;
+}
