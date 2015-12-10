@@ -9,10 +9,10 @@ Template.rocketChat.helpers({
     return Session.get("version");
   },
   src: function () {
-    return Session.get("src");
+    return localStorage.getItem("rocketChatSrc");
   },
   style: function () {
-    if (Session.get("src") !== "") {
+    if (localStorage.getItem("rocketChatSrc") !== "") {
       return "display: block;";
     }
     return "display: none;";

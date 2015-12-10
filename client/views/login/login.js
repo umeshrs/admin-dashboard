@@ -30,7 +30,7 @@ Template.login.events({
             } else {
               console.log("Logged in to rocket chat. Token: ", result.authToken);
               url = "http://" + ROCKET_CHAT_DOMAIN + ":" + ROCKET_CHAT_PORT + "?token=" + result.authToken;
-              Session.set("src", url);
+              localStorage.setItem("rocketChatSrc", url);
             }
           });
 
@@ -42,7 +42,7 @@ Template.login.events({
             else {
               console.log("Logged in to wekan. Token: ", result.token);
               url = "http://" + WEKAN_DOMAIN + ":" + WEKAN_PORT + "?token=" + (result && result.token);
-              Session.set("wekanSrc", url);
+              localStorage.setItem("wekanSrc", url);
             }
           });
 
@@ -54,7 +54,7 @@ Template.login.events({
             else {
               console.log("Logged in to reaction. Token: ", result.token);
               url = "http://" + REACTION_DOMAIN + ":" + REACTION_PORT + "?token=" + (result && result.token);
-              Session.set("reactionSrc", url);
+              localStorage.setItem("reactionSrc", url);
             }
           });
 

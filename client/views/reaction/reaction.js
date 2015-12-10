@@ -1,5 +1,5 @@
 Template.reaction.helpers({
   src: function () {
-    return Session.get("reactionSrc");
+    return localStorage.getItem("reactionSrc");
   }
 });
