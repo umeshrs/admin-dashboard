@@ -57,7 +57,7 @@ Router.route('/login', {
 });
 
 Router.route('/home', function () {
-  this.render('blankPage');
+  this.render('storeLocator');
 });
 
 Router.route('/chat', function () {
