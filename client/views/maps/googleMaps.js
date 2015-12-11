@@ -89,11 +89,10 @@ function prepareMarkers () {
     }
 
     infoWindowContent += '<div class="btn-group pull-right">' +
-        '<button type="button" class="btn btn-default chat-btn"><i class="fa fa-comment"></i></button>' +
-        '<button type="button" class="btn btn-default dashboard-btn"><i class="fa fa-trello"></i></button>'
+        '<button type="button" class="btn btn-default chat-btn" title="Chat"><i class="fa fa-comment"></i></button>' +
+        '<button type="button" class="btn btn-default project-btn" title="Project"><i class="fa fa-trello"></i></button>'
       '</div>';
 
-    // markerIcon = iconBase + "green-dot.png";
     infoWindow[i] = new google.maps.InfoWindow({
       content: infoWindowContent
     });
@@ -143,7 +142,7 @@ Template.googleMaps.events({
   'click .chat-btn': function () {
     Router.go('/chat');
   },
-  'click .dashboard-btn': function () {
-    Router.go('/dashboard');
+  'click .project-btn': function () {
+    Router.go('/project');
   }
 });

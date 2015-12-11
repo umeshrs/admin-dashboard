@@ -64,7 +64,7 @@ Router.route('/chat', function () {
   this.render('rocketChat');
 });
 
-Router.route('dashboard', function () {
+Router.route('/project', function () {
   this.render('wekan');
 });
 
