@@ -70,23 +70,28 @@ function prepareMarkers () {
         infoWindowContent += '<p class="text-success">' +
           '<strong>Task</strong><br />' +
           'No pending task' +
-          '</p';
+          '</p>';
         break;
       case "PENDING":
         markerIcon = iconBase + 'orange-dot.png';
         infoWindowContent += '<p class="text-warning">' +
           '<strong>Task</strong><br />' +
           storesList[i].task.title +
-          '</p';
+          '</p>';
         break;
       case "OVERDUE":
         markerIcon = iconBase + 'red-dot.png';
         infoWindowContent += '<p class="text-danger">' +
           '<strong>Task</strong><br />' +
           storesList[i].task.title +
-          '</p';
+          '</p>';
         break;
     }
+
+    infoWindowContent += '<div class="btn-group pull-right">' +
+        '<button type="button" class="btn btn-default chat-btn"><i class="fa fa-comment"></i></button>' +
+        '<button type="button" class="btn btn-default dashboard-btn"><i class="fa fa-trello"></i></button>'
+      '</div>';
 
     // markerIcon = iconBase + "green-dot.png";
     infoWindow[i] = new google.maps.InfoWindow({
@@ -132,4 +137,13 @@ Template.googleMaps.onRendered(function () {
     prepareMarkers();
     addMarkers();
   });
+});
+
+Template.googleMaps.events({
+  'click .chat-btn': function () {
+    Router.go('/chat');
+  },
+  'click .dashboard-btn': function () {
+    Router.go('/dashboard');
+  }
 });
