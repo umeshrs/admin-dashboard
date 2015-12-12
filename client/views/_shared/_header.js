@@ -15,6 +15,10 @@ Template.header.events({
         console.log("Error logging out: ", error);
       } else {
         Router.go('/');
+        // 3rd party app token stored in localStorage
+        localStorage.removeItem("rocketChatSrc");
+        localStorage.removeItem("wekanSrc");
+        localStorage.removeItem("reactionSrc");
       }
     });
   },
