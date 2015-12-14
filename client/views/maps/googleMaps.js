@@ -208,7 +208,7 @@ function prepareMarkers () {
     marker[i] = new google.maps.Marker({
       position: new google.maps.LatLng(storesList[i].lat, storesList[i].lng),
       title: storesList[i].name,
-      animation: google.maps.Animation.BOUNCE,
+      animation: (storesList[i].task.status === "OVERDUE") ? google.maps.Animation.BOUNCE: null,
       icon: markerIcon
     });
 
