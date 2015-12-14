@@ -1,9 +1,117 @@
 markersListGlobal = [];
 
 function initializeMap () {
+  var styles = [
+    {
+      featureType: "road",
+      elementType: "geometry",
+      stylers: [
+        { visibility: "simplified" }
+      ]
+    }, {
+      featureType: "road.highway",
+      elementType: "geometry.stroke",
+      stylers: [
+        { visibility: "on" },
+        { color: "#b3b3b3" }
+      ]
+    }, {
+      featureType: "road.highway",
+      elementType: "geometry.fill",
+      stylers: [
+        { visibility: "on" },
+        { color: "#ffffff" }
+      ]
+    }, {
+      featureType: "road.arterial",
+      elementType: "geometry.stroke",
+      stylers: [
+        { visibility: "on" },
+        { color: "#d6d6d6" }
+      ]
+    }, {
+      featureType: "road.arterial",
+      elementType: "geometry.fill",
+      stylers: [
+        { visibility: "on" },
+        { color: "#ffffff" }
+      ]
+    }, {
+      featureType: "road.local",
+      elementType: "geometry.stroke",
+      stylers: [
+        { visibility: "on" },
+        { color: "#d7d7d7" }
+      ]
+    }, {
+      featureType: "road.local",
+      elementType: "geometry.fill",
+      stylers: [
+        { visibility: "on" },
+        { color: "#ffffff" },
+        { weight: 1.5 }
+      ]
+    }, {
+      featureType: "road",
+      elementType: "labels.icon",
+      stylers: [
+        { visibility: "off" }
+      ]
+    }, {
+      featureType: "road",
+      elementType: "labels.text.fill",
+      stylers: [
+        { color: "#696969" }
+      ]
+    }, {
+      featureType: "landscape",
+      elementType: "geometry.fill",
+      stylers: [
+        { color: "#efefef" }
+      ]
+    }, {
+      featureType: "administrative",
+      elementType: "geometry",
+      stylers: [
+        { color: "#a7a7a7" }
+      ]
+    }, {
+      featureType: "administrative",
+      elementType: "labels.text.fill",
+      stylers: [
+        { visibility: "on" },
+        { color: "#737373" }
+      ]
+    }, {
+      featureType: "poi",
+      elementType: "geometry.fill",
+      stylers: [
+        { color: "#ebebeb" }
+      ]
+    }, {
+      featureType: "poi",
+      elementType: "labels",
+      stylers: [
+        { visibility: "off" }
+      ]
+    }, {
+      featureType: "water",
+      elementType: "geometry.fill",
+      stylers: [
+        { color: "#d3d3d3" }
+      ]
+    }, {
+      featureType: "transit",
+      stylers: [
+        { visibility: "off" }
+      ]
+    }
+  ];
+
   map = new google.maps.Map(document.getElementById('map-canvas'), {
     center: new google.maps.LatLng(48.8588589, 2.335864),
-    zoom: 13
+    zoom: 13,
+    styles: styles
   });
 }
 
