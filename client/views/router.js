@@ -72,7 +72,7 @@ Router.route('shop', function () {
   this.render('reaction');
 });
 
-Router.route('/users', function () {
+Router.route('/members', function () {
   this.render('users');
 });
 
