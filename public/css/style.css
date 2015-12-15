@@ -30,16 +30,14 @@
   padding-bottom: 68px;
 }
 
-.page-container .header .header-inner .brand {
-  padding-left: 10px;
-  cursor: pointer;
+@media only screen and (min-width: 980px) {
+  body.menu-behind .header .brand {
+    width: 275px;
+  }
 }
-
-.header .header-inner .brand .text {
-  display: inline-block;
-  margin-bottom: 5px;
-  vertical-align: middle;
-  font-size: 25px;
+.page-container .header .header-inner .brand {
+  padding-left: 15px;
+  cursor: pointer;
 }
 
 .content .table {
