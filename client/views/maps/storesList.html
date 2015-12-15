@@ -1,5 +1,7 @@
 <template name="storesList">
   <h1>Stores</h1>
+  <input type="file" id="members-import-file" placeholder="Select file to import...">
+  <input type="button" id="import-btn" value="Import">
   <ul class="list-unstyled" id="stores-list">
     {{#each stores}}
       {{> store}}
@@ -10,7 +12,7 @@
 <template name="store">
   <li>
     <p>
-      <strong>{{name}}</strong><br />
+      <strong>{{storeName}}</strong><br />
       ({{lat}}, {{lng}})<br />
       {{address.street}}<br />
       {{address.postalCode}} {{address.city}}, {{address.country}}<br />
