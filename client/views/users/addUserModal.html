@@ -8,8 +8,7 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
               <i class="pg-close fs-14"></i>
             </button>
-            <h4>Add new user</h4>
-            <p>Please fill out all the details and click on the "Add" button to add the new user to the database.</p>
+            <h4>Créer un nouveau utilisateur</h4>
           </div>
           <div class="modal-body">
             <form role="form" id="add-user-form">
@@ -17,13 +16,13 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group form-group-default required">
-                      <label>First Name</label>
+                      <label>Prénom</label>
                       <input type="text" class="form-control" id="first-name">
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group form-group-default required">
-                      <label>Last Name</label>
+                      <label>Nom</label>
                       <input type="text" class="form-control" id="last-name">
                     </div>
                   </div>
@@ -39,7 +38,7 @@
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="form-group form-group-default required">
-                      <label>Username</label>
+                      <label>Nom d'utilisateur</label>
                       <input type="text" class="form-control" id="username">
                     </div>
                   </div>
@@ -47,13 +46,13 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group form-group-default required">
-                      <label>Password</label>
+                      <label>Mot de passe</label>
                       <input type="password" class="form-control" id="password">
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group form-group-default required">
-                      <label>Confirm Password</label>
+                      <label>Confirmation du mot de passe</label>
                       <input type="password" class="form-control" id="confirm-password">
                     </div>
                   </div>
@@ -61,7 +60,7 @@
                 <div class="row">
                   <div class="col-sm-8">
                     <div class="form-group form-group-default">
-                      <label>Pharmacy name</label>
+                      <label>Nom de la pharmacie</label>
                       <input type="text" class="form-control" id="pharmacy-name">
                     </div>
                   </div>
@@ -69,8 +68,8 @@
                     <div class="form-group form-group-default required">
                       <label>Role</label>
                       <select class="full-width cs-select cs-skin-slide" id="role" data-init-plugin="cs-select">
-                        <option value="member">Member</option>
-                        <option value="administrator">Administrator</option>
+                        <option value="member">Utilisateur</option>
+                        <option value="administrator">Administrateur</option>
                       </select>
                       <!-- <input type="text" class="form-control"> -->
                     </div>
@@ -81,10 +80,10 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">
-              <span class="bold">Cancel</span>
+              <span class="bold">Annuler</span>
             </button>
             <button type="button" class="btn btn-success" id="add-user-modal-btn">
-              <span class="bold">Add</span>
+              <span class="bold">Créer</span>
             </button>
           </div>
         </div><!-- /.modal-content -->
