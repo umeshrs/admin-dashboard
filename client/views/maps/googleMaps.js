@@ -202,7 +202,8 @@ function prepareMarkers () {
 
     infoWindowContent += '<div class="btn-group pull-right">' +
         '<button type="button" class="btn btn-default chat-btn" title="Chat"><i class="fa fa-comment"></i></button>' +
-        '<button type="button" class="btn btn-default project-btn" title="Project"><i class="fa fa-trello"></i></button>'
+        '<button type="button" class="btn btn-default project-btn" title="Project"><i class="fa fa-trello"></i></button>' +
+        '<button type="button" class="btn btn-default info-btn" title="Info"><i class="fa fa-info"></i></button>'
       '</div>';
 
     infoWindow[i] = new google.maps.InfoWindow({
