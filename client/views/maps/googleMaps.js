@@ -109,7 +109,7 @@ function initializeMap () {
   ];
 
   map = new google.maps.Map(document.getElementById('map-canvas'), {
-    center: new google.maps.LatLng(48.8588589, 2.335864),
+    center: new google.maps.LatLng(47.2, 2.335864),
     zoom: 6,
     zoomControl: true,
     mapTypeControl: false,
@@ -141,7 +141,8 @@ function updateMarkers () {
 function prepareMarkers () {
   var storesList, marker, i, j, infoWindow, infoWindowContent, iconBase, markerIcon, storesListElements;
 
-  storesList = Stores.find({}, { sort: { lat: -1 }}).fetch();
+  // storesList = Stores.find({}, { sort: { lat: -1 }}).fetch();
+  storesList = Members.find({}, { sort: { lat: -1 }}).fetch();
   marker = [];
   infoWindow = [];
   iconBase = "http://maps.google.com/mapfiles/ms/icons/";
@@ -170,19 +171,12 @@ function prepareMarkers () {
 
   for (var i = 0; i < storesList.length; i++) {
     infoWindowContent = '<p>' +
-      '<strong>' + storesList[i].name + '</strong><br />' +
+      '<strong>' + storesList[i].storeName + '</strong><br />' +
       storesList[i].address.street + '<br />' +
       storesList[i].address.postalCode + ' ' + storesList[i].address.city + ', ' + storesList[i].address.country + '<br />' +
       '</p>';
 
-    switch (storesList[i].task.status) {
-      case "NONE":
-        markerIcon = iconBase + 'green-dot.png';
-        infoWindowContent += '<p class="text-success">' +
-          '<strong>Task</strong><br />' +
-          'No pending task' +
-          '</p>';
-        break;
+    switch (storesList[i].task && storesList[i].task.status) {
       case "PENDING":
         markerIcon = iconBase + 'orange-dot.png';
         infoWindowContent += '<p class="text-warning">' +
@@ -195,6 +189,13 @@ function prepareMarkers () {
         infoWindowContent += '<p class="text-danger">' +
           '<strong>Task</strong><br />' +
           storesList[i].task.title +
+          '</p>';
+        break;
+      default:
+        markerIcon = iconBase + 'green-dot.png';
+        infoWindowContent += '<p class="text-success">' +
+          '<strong>Task</strong><br />' +
+          'No pending task' +
           '</p>';
         break;
     }
@@ -211,7 +212,7 @@ function prepareMarkers () {
     marker[i] = new google.maps.Marker({
       position: new google.maps.LatLng(storesList[i].lat, storesList[i].lng),
       title: storesList[i].name,
-      animation: (storesList[i].task.status === "OVERDUE") ? google.maps.Animation.BOUNCE: null,
+      animation: (storesList[i].task && storesList[i].task.status === "OVERDUE") ? google.maps.Animation.BOUNCE: null,
       icon: markerIcon
     });
 
@@ -224,7 +225,7 @@ function prepareMarkers () {
     // DOM elements
     storesListElements = $("#stores-list > li");
     for (j = 0; j < storesListElements.length; j++) {
-      if ($(storesListElements[j]).find("strong").html() === storesList[i].name) {
+      if ($(storesListElements[j]).find("strong").html() === storesList[i].storeName) {
         storesListElements[j].addEventListener('click', _.bind(infoWindowToggler, null, infoWindow[i], marker[i]));
       }
     }
@@ -244,7 +245,7 @@ Template.googleMaps.onRendered(function () {
     // do something only the first time the map is loaded
     google.maps.event.trigger(map, 'resize');
     // explicitly recenter the map when it is rendered
-    map.setCenter(new google.maps.LatLng(48.8588589, 2.335864));
+    map.setCenter(new google.maps.LatLng(47.2, 2.335864));
     clearMarkers();
     markersListGlobal = [];
     prepareMarkers();
