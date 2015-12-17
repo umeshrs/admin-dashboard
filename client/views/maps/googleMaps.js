@@ -212,7 +212,7 @@ function prepareMarkers () {
     infoWindow[i].ud_state = 0;
     marker[i] = new google.maps.Marker({
       position: new google.maps.LatLng(storesList[i].lat, storesList[i].lng),
-      title: storesList[i].name,
+      title: storesList[i].storeName,
       animation: (storesList[i].task && storesList[i].task.status === "OVERDUE") ? google.maps.Animation.BOUNCE: null,
       icon: markerIcon
     });
