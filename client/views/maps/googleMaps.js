@@ -1,4 +1,4 @@
-markersListGlobal = [];
+var markersListGlobal = [], infoWindow = {};
 
 function initializeMap () {
   var styles = [
@@ -116,6 +116,11 @@ function initializeMap () {
     streetViewControl: false,
     styles: styles
   });
+
+  infoWindow = new google.maps.InfoWindow({
+    maxWidth: 300,
+    isOpen: false
+  });
 }
 
 function addMarkers() {
@@ -139,33 +144,32 @@ function updateMarkers () {
 }
 
 function prepareMarkers () {
-  var storesList, marker, i, j, infoWindow, infoWindowContent, iconBase, markerIcon, storesListElements;
+  var storesList, marker, i, j, infoWindowContent, iconBase, markerIcon, storesListElements;
 
   // storesList = Stores.find({}, { sort: { lat: -1 }}).fetch();
   storesList = Members.find({}, { sort: { lat: -1 }}).fetch();
   marker = [];
-  infoWindow = [];
   iconBase = "http://maps.google.com/mapfiles/ms/icons/";
 
-  var infoWindowOpener = function (infoWindow, marker) {
-    if (infoWindow.ud_state === 0) {
-      infoWindow.open(map, marker);
-      infoWindow.ud_state = 1;
+  var infoWindowOpener = function (marker) {
+    infoWindow.setContent(marker.infoWindowContent);
+    infoWindow.open(map, marker);
+    infoWindow.isOpen = true;
+  };
+  var infoWindowCloser = function () {
+    if (infoWindow.isOpen) {
+      infoWindow.close();
+      infoWindow.isOpen = false;
     }
   };
-  var infoWindowCloser = function (infoWindow) {
-    if (infoWindow.ud_state === 1) {
+  var infoWindowToggler = function (marker) {
+    if (infoWindow.isOpen && infoWindow.content === marker.infoWindowContent) {
       infoWindow.close();
-      infoWindow.ud_state = 0;
-    }
-  };
-  var infoWindowToggler = function (infoWindow, marker) {
-    if (infoWindow.ud_state) {
-      infoWindow.close();
-      infoWindow.ud_state = 0;
+      infoWindow.isOpen = false;
     } else {
+      infoWindow.setContent(marker.infoWindowContent);
       infoWindow.open(map, marker);
-      infoWindow.ud_state = 1;
+      infoWindow.isOpen = true;
     }
   };
 
@@ -206,28 +210,23 @@ function prepareMarkers () {
         '<button type="button" class="btn btn-default info-btn" title="Info"><i class="fa fa-info"></i></button>'
       '</div>';
 
-    infoWindow[i] = new google.maps.InfoWindow({
-      content: infoWindowContent
-    });
-    infoWindow[i].ud_state = 0;
     marker[i] = new google.maps.Marker({
       position: new google.maps.LatLng(storesList[i].lat, storesList[i].lng),
       title: storesList[i].storeName,
-      animation: (storesList[i].task && storesList[i].task.status === "OVERDUE") ? google.maps.Animation.BOUNCE: null,
-      icon: markerIcon
+      animation: (storesList[i].task && storesList[i].task.status === "OVERDUE") ? google.maps.Animation.BOUNCE : null,
+      icon: markerIcon,
+      infoWindowContent: infoWindowContent
     });
 
-    marker[i].addListener('click', _.bind(infoWindowOpener, null, infoWindow[i], marker[i]));
+    marker[i].addListener('click', _.bind(infoWindowOpener, null, marker[i]));
 
-    infoWindow[i].addListener('closeclick', _.bind(infoWindowCloser, null, infoWindow[i]));
-
-    map.addListener('click', _.bind(infoWindowCloser, null, infoWindow[i]));
+    map.addListener('click', _.bind(infoWindowCloser, null));
 
     // DOM elements
     storesListElements = $("#stores-list > li");
     for (j = 0; j < storesListElements.length; j++) {
       if ($(storesListElements[j]).find("strong").html() === storesList[i].storeName) {
-        storesListElements[j].addEventListener('click', _.bind(infoWindowToggler, null, infoWindow[i], marker[i]));
+        storesListElements[j].addEventListener('click', _.bind(infoWindowToggler, null, marker[i]));
       }
     }
 
