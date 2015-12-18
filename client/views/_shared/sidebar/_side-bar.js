@@ -1,6 +1,4 @@
-Template.sideBar.events({
-  'click ul.menu-items a': function (event, template) {
-    template.$("ul.menu-items span.icon-thumbnail").removeClass("bg-primary");
-    template.$(event.target).closest("li").find("> span.icon-thumbnail").addClass("bg-primary");
-  }
+Template.sideBar.onRendered(function () {
+  var menuItem = Router.current().route._path.split("/", 2)[1];
+  $(".sidebar-menu ul.menu-items a[href*='" + menuItem + "']").siblings(".icon-thumbnail").addClass("bg-primary");
 });

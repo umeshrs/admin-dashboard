@@ -35,6 +35,9 @@ Router.onBeforeAction(function () {
   if (! Meteor.userId()) {
     Router.go('login');
   } else {
+    var menuItem = Router.current().route._path.split("/", 2)[1];
+    $("ul.menu-items span.icon-thumbnail").removeClass("bg-primary");
+    $("ul.menu-items a[href*='" + menuItem + "']").siblings(".icon-thumbnail").addClass("bg-primary");
     this.next();
   }
 }, {
