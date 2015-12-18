@@ -82,7 +82,7 @@ Router.route('/manage-surveys', {
   }
 });
 
-Router.route('/add-survey', {
+Router.route('/manage-surveys/add-survey', {
   action: function () {
     this.render('addSurvey');
   }

@@ -12,7 +12,7 @@ Template.manageSurveys.helpers({
 
 Template.manageSurveys.events({
   'click #add-survey-btn': function () {
-    Router.go('/add-survey');
+    Router.go('/manage-surveys/add-survey');
   },
   'click .preview-survey-btn': function () {
     Router.go('/manage-surveys/preview-survey/' + this._id);
