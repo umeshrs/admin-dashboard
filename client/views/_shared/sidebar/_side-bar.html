@@ -5,6 +5,7 @@
     </div>
     <!-- BEGIN SIDEBAR HEADER -->
     <div class="sidebar-header">
+      {{!--
       <img src="img/logo_white.png" alt="logo" class="brand" data-src="img/logo_white.png" data-src-retina="img/logo_white_2x.png" width="78" height="22">
       <div class="sidebar-header-controls">
         <button data-pages-toggle="#appMenu" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20" type="button"><i class="fa fa-angle-down fs-16"></i>
@@ -12,6 +13,7 @@
         <button data-toggle-pin="sidebar" class="btn btn-link visible-lg-inline" type="button"><i class="fa fs-12"></i>
         </button>
       </div>
+      --}}
     </div>
     <!-- END SIDEBAR HEADER -->
     <!-- BEGIN SIDEBAR MENU -->
@@ -19,48 +21,48 @@
       <ul class="menu-items">
         <li class="m-t-30">
           <a href="/home" class="detailed">
-            <span class="title">Accueil</span>
+            <span class="title">{{_ "Home"}}</span>
           </a>
           <span class="icon-thumbnail "><i class="pg-home"></i></span>
         </li>
         <li class="">
           <a href="/chat">
-            <span class="title">Messagerie instantanée</span>
+            <span class="title">{{_ "Chat"}}</span>
           </a>
           <span class="icon-thumbnail "><i class="pg-social"></i></span>
         </li>
         <li class="">
           <a href="/project">
-            <span class="title">Projets</span>
+            <span class="title">{{_ "Projects"}}</span>
           </a>
           <span class="icon-thumbnail "><i class="fa fa-trello"></i></span>
         </li>
         <li class="">
           <a href="/shop">
-            <span class="title">Produits</span>
+            <span class="title">{{_ "Products"}}</span>
           </a>
           <span class="icon-thumbnail "><i class="fa fa-shopping-cart"></i></span>
         </li>
         <li class="">
           <a href="javascript:;">
-            <span class="title">Sondages</span>
+            <span class="title">{{_ "Surveys"}}</span>
             <span class=" arrow"></span>
           </a>
           <span class="icon-thumbnail"><i class="pg-form"></i></span>
           <ul class="sub-menu">
             <li class="">
-              <a href="/manage-surveys">Gestion des Sondages</a>
+              <a href="/manage-surveys">{{_ "Manage surveys"}}</a>
               <span class="icon-thumbnail"><i class="fa fa-edit"></i></span>
             </li>
             <li class="">
-              <a href="/survey-responses">Responses au sondages</a>
+              <a href="/survey-responses">{{_ "Responses"}}</a>
               <span class="icon-thumbnail"><i class="fa fa-pie-chart"></i></span>
             </li>
           </ul>
         </li>
         <li class="">
           <a href="/members">
-            <span class="title">Utilisateurs</span>
+            <span class="title">{{_ "Members"}}</span>
           </a>
           <span class="icon-thumbnail "><i class="fa fa-users"></i></span>
         </li>
