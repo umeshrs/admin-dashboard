@@ -89,6 +89,7 @@ Router.route('/home', {
 Router.route('/chat', {
   name: "chat",
   label: "Chat",
+  parent: "home",
   action : function () {
     this.render('rocketChat');
   }
@@ -97,6 +98,7 @@ Router.route('/chat', {
 Router.route('/projects', {
   name: "projects",
   label: "Projects",
+  parent: "home",
   action: function () {
     this.render('wekan');
   }
@@ -105,6 +107,7 @@ Router.route('/projects', {
 Router.route('/products', {
   name: "products",
   label: "Products",
+  parent: "home",
   action: function () {
     this.render('reaction');
   }
@@ -113,6 +116,7 @@ Router.route('/products', {
 Router.route('/members', {
   name: "members",
   label: "Members",
+  parent: "home",
   action: function () {
     this.render('users');
   }
@@ -121,6 +125,7 @@ Router.route('/members', {
 Router.route('/manage-surveys', {
   name: "manage-surveys",
   label: "Manage surveys",
+  parent: "home",
   action: function () {
     this.render('manageSurveys');
   }
@@ -173,6 +178,7 @@ Router.route('/manage-surveys/edit-survey/:_id', {
 Router.route('/view-survey/:_id', {
   name: "view-survey",
   label: "View survey",
+  parent: "home",
   action: function () {
     this.render('viewSurvey');
   },
@@ -195,6 +201,7 @@ Router.route('/view-survey/:_id', {
 Router.route('/survey-responses', {
   name: "survey-responses",
   label: "Survey responses",
+  parent: "home",
   action: function () {
     this.render('surveyResponsesList');
   }

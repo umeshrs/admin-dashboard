@@ -5,9 +5,6 @@
       <div class="inner">
         <!-- START BREADCRUMB -->
         <ul class="breadcrumb">
-          <li>
-            <a href="{{pathFor route='home'}}">{{_ "Home"}}</a>
-          </li>
           {{#each parents}}
             <li>
               <a href="{{pathFor route=name}}">{{_ label}}</a>
