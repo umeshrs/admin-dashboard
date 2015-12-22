@@ -6,9 +6,15 @@
         <!-- START BREADCRUMB -->
         <ul class="breadcrumb">
           <li>
-            <a href="/">{{_ "Home"}}</a>
+            <a href="{{pathFor route='home'}}">{{_ "Home"}}</a>
           </li>
-          <li><a href="#" class="active">{{_ "Member management"}}</a>
+          {{#each parents}}
+            <li>
+              <a href="{{pathFor route=name}}">{{_ label}}</a>
+            </li>
+          {{/each}}
+          <li>
+            <a href="#" class="active">{{_ currentRouteLabel}}</a>
           </li>
         </ul>
         <!-- END BREADCRUMB -->
