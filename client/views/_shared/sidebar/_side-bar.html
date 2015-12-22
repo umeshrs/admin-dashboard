@@ -20,25 +20,25 @@
     <div class="sidebar-menu">
       <ul class="menu-items">
         <li class="m-t-30">
-          <a href="/home" class="detailed">
+          <a href="{{pathFor route='home'}}" class="detailed">
             <span class="title">{{_ "Home"}}</span>
           </a>
           <span class="icon-thumbnail "><i class="pg-home"></i></span>
         </li>
         <li class="">
-          <a href="/chat">
+          <a href="{{pathFor route='chat'}}">
             <span class="title">{{_ "Chat"}}</span>
           </a>
           <span class="icon-thumbnail "><i class="pg-social"></i></span>
         </li>
         <li class="">
-          <a href="/project">
+          <a href="{{pathFor route='projects'}}">
             <span class="title">{{_ "Projects"}}</span>
           </a>
           <span class="icon-thumbnail "><i class="fa fa-trello"></i></span>
         </li>
         <li class="">
-          <a href="/shop">
+          <a href="{{pathFor route='products'}}">
             <span class="title">{{_ "Products"}}</span>
           </a>
           <span class="icon-thumbnail "><i class="fa fa-shopping-cart"></i></span>
@@ -51,17 +51,17 @@
           <span class="icon-thumbnail"><i class="pg-form"></i></span>
           <ul class="sub-menu">
             <li class="">
-              <a href="/manage-surveys">{{_ "Manage surveys"}}</a>
+              <a href="{{pathFor route='manage-surveys'}}">{{_ "Manage surveys"}}</a>
               <span class="icon-thumbnail"><i class="fa fa-edit"></i></span>
             </li>
             <li class="">
-              <a href="/survey-responses">{{_ "Responses"}}</a>
+              <a href="{{pathFor route='survey-responses'}}">{{_ "Responses"}}</a>
               <span class="icon-thumbnail"><i class="fa fa-pie-chart"></i></span>
             </li>
           </ul>
         </li>
         <li class="">
-          <a href="/members">
+          <a href="{{pathFor route='members'}}">
             <span class="title">{{_ "Members"}}</span>
           </a>
           <span class="icon-thumbnail "><i class="fa fa-users"></i></span>
