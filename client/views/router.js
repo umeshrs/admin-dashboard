@@ -49,6 +49,7 @@ Router.route('/', function () {
 });
 
 Router.route('/login', {
+  name: "login",
   layoutTemplate: "loginLayout",
   action: function () {
     if (! Meteor.userId()) {
@@ -59,39 +60,67 @@ Router.route('/login', {
   }
 });
 
-Router.route('/home', function () {
-  this.render('storeLocator');
+Router.route('/home', {
+  name: "home",
+  label: "Home",
+  action: function () {
+    this.render('storeLocator');
+  }
 });
 
-Router.route('/chat', function () {
-  this.render('rocketChat');
+Router.route('/chat', {
+  name: "chat",
+  label: "Chat",
+  action : function () {
+    this.render('rocketChat');
+  }
 });
 
-Router.route('/project', function () {
-  this.render('wekan');
+Router.route('/projects', {
+  name: "projects",
+  label: "Projects",
+  action: function () {
+    this.render('wekan');
+  }
 });
 
-Router.route('shop', function () {
-  this.render('reaction');
+Router.route('/products', {
+  name: "products",
+  label: "Products",
+  action: function () {
+    this.render('reaction');
+  }
 });
 
-Router.route('/members', function () {
-  this.render('users');
+Router.route('/members', {
+  name: "members",
+  label: "Members",
+  action: function () {
+    this.render('users');
+  }
 });
 
 Router.route('/manage-surveys', {
+  name: "manage-surveys",
+  label: "Manage surveys",
   action: function () {
     this.render('manageSurveys');
   }
 });
 
 Router.route('/manage-surveys/add-survey', {
+  name: "add-survey",
+  label: "Add survey",
+  parent: "manage-surveys",
   action: function () {
     this.render('addSurvey');
   }
 });
 
 Router.route('/manage-surveys/preview-survey/:_id', {
+  name: "preview-survey",
+  label: "Preview survey",
+  parent: "manage-surveys",
   action: function () {
     this.render('viewSurvey');
   },
@@ -112,6 +141,9 @@ Router.route('/manage-surveys/preview-survey/:_id', {
 });
 
 Router.route('/manage-surveys/edit-survey/:_id', {
+  name: "edit-survey",
+  label: "Edit survey",
+  parent: "manage-surveys",
   action: function () {
     this.render('editSurvey');
   },
@@ -121,6 +153,8 @@ Router.route('/manage-surveys/edit-survey/:_id', {
 });
 
 Router.route('/view-survey/:_id', {
+  name: "view-survey",
+  label: "View survey",
   action: function () {
     this.render('viewSurvey');
   },
@@ -141,12 +175,17 @@ Router.route('/view-survey/:_id', {
 });
 
 Router.route('/survey-responses', {
+  name: "survey-responses",
+  label: "Survey responses",
   action: function () {
     this.render('surveyResponsesList');
   }
 });
 
 Router.route('/survey-responses/view-response/:_id', {
+  name: "view-response",
+  label: "View response",
+  parent: "survey-responses",
   action: function () {
     this.render('viewResponse');
   },
