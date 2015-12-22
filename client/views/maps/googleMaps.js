@@ -109,8 +109,8 @@ function initializeMap () {
   ];
 
   map = new google.maps.Map(document.getElementById('map-canvas'), {
-    center: new google.maps.LatLng(47.2, 2.335864),
-    zoom: 6,
+    center: new google.maps.LatLng(48.8588589, 2.335864),
+    zoom: 13,
     zoomControl: true,
     mapTypeControl: false,
     streetViewControl: false,
@@ -245,7 +245,7 @@ Template.googleMaps.onRendered(function () {
     // do something only the first time the map is loaded
     google.maps.event.trigger(map, 'resize');
     // explicitly recenter the map when it is rendered
-    map.setCenter(new google.maps.LatLng(47.2, 2.335864));
+    map.setCenter(new google.maps.LatLng(48.8588589, 2.335864));
     clearMarkers();
     markersListGlobal = [];
     prepareMarkers();
