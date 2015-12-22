@@ -26,6 +26,24 @@ Meteor.startup(function () {
   });
 });
 
+_.extend(Router, {
+  getParents: function () {
+    if (! this.current()) {
+      return;
+    }
+    var parents = [], currentRoute = this.current().route, route;
+
+    for (route = currentRoute && this.routes[currentRoute.options.parent]; ! _.isUndefined(route); route = this.routes[route.options.parent]) {
+      parents.push({
+        name: route.getName(),
+        label: route.options.label
+      });
+    }
+
+    return parents.reverse();
+  }
+});
+
 Router.configure({
   layoutTemplate: "defaultLayout",
   notFoundTemplate: "notFound"
