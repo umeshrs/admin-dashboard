@@ -1,12 +1,12 @@
 <template name="storesList">
   <h1>Stores</h1>
-  <input type="file" id="members-import-file" placeholder="Choisir un fichier csv à importer...">
-  <input type="button" id="import-btn" value="Importer la liste des pharmacies">
-  <ul class="list-unstyled" id="stores-list">
-    {{#each stores}}
-      {{> store}}
-    {{/each}}
-  </ul>
+  <div class="scrollbar-outer">
+    <ul class="list-unstyled" id="stores-list">
+      {{#each stores}}
+        {{> store}}
+      {{/each}}
+    </ul>
+  </div>
 </template>
 
 <template name="store">
