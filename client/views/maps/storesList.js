@@ -1,7 +1,7 @@
 Template.storesList.onRendered(function () {
-  $("#stores-list").height($(window).innerHeight() - 128 - $("#stores-list-container h1").outerHeight(true));
+  $("#stores-list").height($(window).innerHeight() - 60 - 56 - 68 - $("#stores-list-container h1").outerHeight(true));
   $(window).resize(function () {
-    $("#stores-list").height($(window).innerHeight() - 128 - $("#stores-list-container h1").outerHeight(true));
+    $("#stores-list").height($(window).innerHeight() - 60 - 56 - 68 - $("#stores-list-container h1").outerHeight(true));
   });
 });
 

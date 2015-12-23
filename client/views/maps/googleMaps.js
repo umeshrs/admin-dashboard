@@ -236,9 +236,9 @@ function prepareMarkers () {
 
 Template.googleMaps.onRendered(function () {
   initializeMap();
-  $("#map-canvas").height($(window).innerHeight() - 128);
+  $("#map-canvas").height($(window).innerHeight() - 60 - 56 - 68);
   $(window).resize(function () {
-    $("#map-canvas").height($(window).innerHeight() - 128);
+    $("#map-canvas").height($(window).innerHeight() - 60 - 56 - 68);
   });
 
   google.maps.event.addListenerOnce(map, 'idle', function(){
