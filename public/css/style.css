@@ -180,3 +180,11 @@
   color: white;
   cursor: pointer;
 }
+
+/* Jumbotron */
+
+.jumbotron {
+  margin: 0px;
+  background-color: #EEEEEE;
+  border-bottom: 1px solid rgba(221, 221, 221, 0.5);
+}
