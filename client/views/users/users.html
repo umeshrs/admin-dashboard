@@ -26,8 +26,8 @@
           <td>{{profile.role}}</td>
           <td>
             <div class="btn-group">
-              <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i></button>
-              <button type="button" class="btn btn-default" id="remove-user-btn" data-toggle="modal" data-target="#remove-user-modal"><i class="fa fa-remove"></i></button>
+              <button type="button" class="btn btn-warning" data-original-title="{{_ 'Edit user'}}" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-pencil"></i></button>
+              <button type="button" class="btn btn-danger" id="remove-user-btn" data-original-title="{{_ 'Remove user'}}" data-tooltip-toggle="tooltip" data-placement="bottom" data-toggle="modal" data-target="#remove-user-modal"><i class="fa fa-trash"></i></button>
             </div>
           </td>
         </tr>
