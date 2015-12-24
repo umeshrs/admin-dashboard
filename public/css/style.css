@@ -159,8 +159,9 @@
 }
 
 .content #stores-list-container #stores-list {
+  margin-bottom: 0px;
+  margin-right: 10px;
   padding-left: 20px;
-  overflow-y: scroll;
 }
 
 .content #stores-list-container #stores-list > li {
@@ -187,4 +188,47 @@
   margin: 0px;
   background-color: #EEEEEE;
   border-bottom: 1px solid rgba(221, 221, 221, 0.5);
+}
+
+/* Scrollbar styles */
+
+.scrollbar-outer > .scroll-element,
+.scrollbar-outer > .scroll-element div {
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: absolute !important;
+  z-index: 10 !important;
+}
+
+.scrollbar-outer > .scroll-element.scroll-y {
+  height: 100% !important;
+  right: 0 !important;
+  top: 0 !important;
+  width: 12px !important;
+}
+
+.scrollbar-outer > .scroll-element.scroll-y .scroll-element_outer {
+  width: 8px !important;
+  top: 0px !important;
+  left: 2px !important;
+  right: initial !important;
+  opacity: 1 !important;
+}
+
+.scrollbar-outer > .scroll-element.scroll-y:hover .scroll-element_outer {
+}
+
+.scrollbar-outer > .scroll-element .scroll-element_track {
+  background-color: #e6e6e6;
+}
+
+.scrollbar-outer > .scroll-element.scroll-y .scroll-bar {
+  width: inherit !important;
+  background-color: #c2c2c2;
+}
+
+.scrollbar-outer > .scroll-element.scroll-y .scroll-bar:hover,
+.scrollbar-outer > .scroll-element.scroll-y .scroll-bar:active {
+  background-color: #777;
 }
