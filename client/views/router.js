@@ -54,8 +54,8 @@ Router.onBeforeAction(function () {
     Router.go('login');
   } else {
     var menuItem = Router.current().route._path.split("/", 2)[1];
-    $("ul.menu-items span.icon-thumbnail").removeClass("bg-primary");
-    $("ul.menu-items a[href*='" + menuItem + "']").siblings(".icon-thumbnail").addClass("bg-primary");
+    $("ul.menu-items span.icon-thumbnail").removeClass("bg-complete");
+    $("ul.menu-items a[href*='" + menuItem + "']").siblings(".icon-thumbnail").addClass("bg-complete");
     this.next();
   }
 }, {
