@@ -227,3 +227,12 @@ Router.route('/rewards', {
     this.render('rewards');
   }
 });
+
+Router.route('/rewards/add-reward', {
+  name: "add-reward",
+  label: "Add Reward",
+  parent: "rewards",
+  action: function () {
+    this.render('addReward');
+  }
+});
