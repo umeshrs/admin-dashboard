@@ -218,3 +218,12 @@ Router.route('/survey-responses/view-response/:_id', {
     return Surveys.findOne(this.params._id);
   }
 });
+
+Router.route('/rewards', {
+  name: "rewards",
+  label: "Rewards",
+  parent: "home",
+  action: function () {
+    this.render('rewards');
+  }
+});

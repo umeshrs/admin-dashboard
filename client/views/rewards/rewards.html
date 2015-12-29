@@ -1,0 +1,47 @@
+<template name="rewards">
+  {{> breadcrumbs}}
+  <button type="button" class="btn btn-complete btn-animated from-left fa fa-plus pull-right m-t-20 m-r-30"
+    id="add-reward-btn">
+    <span class="bold">{{_ "Add Reward"}}</span>
+  </button>
+  <div class="clearfix"></div>
+  <hr>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>{{_ "Name"}}</th>
+        <th>{{_ "Valid till"}}</th>
+        <th>{{_ "Claim Count"}}</th>
+        <th>{{_ "Publish status"}}</th>
+        <th>{{_ "Actions"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each rewards}}
+        <tr>
+          <td>
+            {{title}}<br>
+            {{dateCreated}}
+          </td>
+          <td>{{validTill}}</td>
+          <td>{{claimCount}}</td>
+          <td>{{> switchery}}</td>
+          <td>
+            <div class="btn-group">
+              <button type="button" class="btn btn-warning edit-reward-btn" title="{{_ 'Edit reward'}}">
+                <i class="fa fa-pencil"></i>
+              </button>
+              <button type="button" class="btn btn-complete preview-reward-btn" title="{{_ 'Preview reward'}}">
+                <i class="fa fa-eye"></i>
+              </button>
+              <button type="button" class="btn btn-danger remove-reward-btn" title="{{_ 'Remove reward'}}"
+                data-toggle="modal" data-target="#remove-reward-modal">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</template>
