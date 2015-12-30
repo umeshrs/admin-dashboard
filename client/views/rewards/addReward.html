@@ -1,0 +1,56 @@
+<template name="addReward">
+  {{> breadcrumbs}}
+  <div class="container-fluid reward-wrapper">
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+        <form id="add-reward-form" class="form-horizontal" role="form" autocomplete="off">
+          <div class="form-group required">
+            <label for="reward-title" class="col-sm-3 control-label">{{_ "Title"}}</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="reward-title" placeholder="{{_ 'Reward title...'}}" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="reward-description" class="col-sm-3 control-label">{{_ "Description"}}</label>
+            <div class="col-sm-9">
+              <textarea class="form-control" id="reward-description" placeholder="{{_ 'Reward description...'}}"></textarea>
+            </div>
+          </div>
+          <div class="form-group required">
+            <label for="reward-points" class="col-sm-3 control-label">{{_ "Points needed"}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="reward-points" placeholder="100" required>
+            </div>
+            <label for="reward-count" class="col-sm-3 control-label text-right sm-m-t-15">{{_ "Number of rewards"}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="reward-count" placeholder="20" required>
+            </div>
+          </div>
+          <div class="form-group" aria-required="true">
+            <label for="valid-till" class="col-sm-3 control-label">{{_ "Valid till"}}</label>
+            <div class="col-sm-4">
+              <div class="input-group date">
+                <input type="text" class="form-control" id="valid-till" required>
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              </div>
+            </div>
+            <label for="published" class="col-sm-3 control-label text-right sm-m-t-15">{{_ "Published"}}</label>
+            <div class="col-sm-2 md-text-right" style="position: relative; top: 5px;">
+              {{> switchery}}
+            </div>
+          </div>
+          <div class="row m-t-20 m-b-20">
+            <div class="col-sm-9 col-sm-offset-3">
+              <button type="button" class="btn btn-success btn-animated from-left fa fa-save pull-right" id="save-reward-btn">
+                <span class="bold">{{_ "Save"}}</span>
+              </button>
+              <button type="button" class="btn btn-danger btn-animated from-left fa fa-close pull-right m-r-10" id="cancel-btn">
+                <span class="bold">{{_ "Cancel"}}</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
