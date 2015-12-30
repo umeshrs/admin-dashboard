@@ -238,3 +238,16 @@
 .btn-group > .btn:first-child:not(:last-child) {
   margin-right: 1px;
 }
+
+@media (min-width: 768px) {
+  .md-text-right {
+    text-align: right;
+  }
+}
+
+textarea#reward-description {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 100px;
+  max-height: 250px;
+}
