@@ -38,17 +38,14 @@ Template.manageSurveys.events({
   },
   'click .edit-survey-btn': function (event) {
     Router.go('/manage-surveys/edit-survey/' + this._id);
-  }
-});
-
-Template.switchery.onRendered(function () {
-  var checkbox = this.find(".switchery"), switchery;
-  checkbox.checked = Template.currentData().published ? true : false;
-  switchery = new Switchery(checkbox, { color: '#10CFBD', size: 'small' });
-});
-
-Template.switchery.events({
+  },
   'change .switchery': function (event) {
-    Surveys.update(this._id, { $set: { published: event.target.checked } });
+    Surveys.update(this.surveyId, { $set: { published: event.target.checked } }, function (error, result) {
+      if (error) {
+        console.log(`Error updating survey published status. Error: ${error.message}`);
+      } else {
+        console.log(`Updated publish status of ${result} survey(s).`);
+      }
+    });
   }
 });

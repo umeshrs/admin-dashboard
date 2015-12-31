@@ -18,7 +18,7 @@
           <tr>
             <td>{{title}}</td>
             <td>{{dateCreated}}</td>
-            <td>{{> switchery}}</td>
+            <td>{{> switchery checked=published surveyId=_id}}</td>
             <td>
               <div class="btn-group">
                 <button type="button" class="btn btn-default edit-survey-btn" title="Edit survey"><i class="fa fa-pencil"></i></button>
@@ -31,8 +31,4 @@
       </tbody>
     </table>
   </div>
-</template>
-
-<template name="switchery">
-  <input type="checkbox" class="switchery" />
 </template>
