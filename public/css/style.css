@@ -251,3 +251,20 @@ textarea#reward-description {
   min-height: 100px;
   max-height: 250px;
 }
+
+.datepicker.dropdown-menu {
+  padding: 16px 25px !important;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.datepicker-dropdown.datepicker-orient-top:after {
+  border-top: 6px solid #fafafa !important;
+}
+
+.datepicker table tr td, .datepicker table tr th {
+  color: #333;
+}
+
+.datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
+  color: #dbdbdb !important;
+}
