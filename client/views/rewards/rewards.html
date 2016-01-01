@@ -10,6 +10,7 @@
     <thead>
       <tr>
         <th>{{_ "Name"}}</th>
+        <th>{{_ "Created"}}</th>
         <th>{{_ "Valid till"}}</th>
         <th>{{_ "Claim Count"}}</th>
         <th>{{_ "Publish status"}}</th>
@@ -19,20 +20,15 @@
     <tbody>
       {{#each rewards}}
         <tr>
-          <td>
-            {{title}}<br>
-            {{dateCreated}}
-          </td>
-          <td>{{validTill}}</td>
+          <td>{{title}}</td>
+          <td>{{createdAt.toLocaleString}}</td>
+          <td>{{validTill.toLocaleString}}</td>
           <td>{{claimCount}}</td>
-          <td>{{> switchery}}</td>
+          <td>{{> switchery checked=published}}</td>
           <td>
             <div class="btn-group">
               <button type="button" class="btn btn-warning edit-reward-btn" title="{{_ 'Edit reward'}}">
                 <i class="fa fa-pencil"></i>
-              </button>
-              <button type="button" class="btn btn-complete preview-reward-btn" title="{{_ 'Preview reward'}}">
-                <i class="fa fa-eye"></i>
               </button>
               <button type="button" class="btn btn-danger remove-reward-btn" title="{{_ 'Remove reward'}}"
                 data-toggle="modal" data-target="#remove-reward-modal">
