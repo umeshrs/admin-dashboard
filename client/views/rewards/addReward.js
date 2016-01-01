@@ -45,5 +45,8 @@ Template.addReward.events({
       }
       $('body').pgNotification(notificationOptions).show();
     });
+  },
+  'click #cancel-btn': function () {
+    Router.go('/rewards');
   }
 });
