@@ -27,11 +27,13 @@
           <td>{{> switchery checked=published}}</td>
           <td>
             <div class="btn-group">
-              <button type="button" class="btn btn-warning edit-reward-btn" title="{{_ 'Edit reward'}}">
+              <button type="button" class="btn btn-warning edit-reward-btn" data-original-title="{{_ 'Edit reward'}}"
+                data-toggle="tooltip" data-placement="bottom">
                 <i class="fa fa-pencil"></i>
               </button>
-              <button type="button" class="btn btn-danger remove-reward-btn" title="{{_ 'Remove reward'}}"
-                data-toggle="modal" data-target="#remove-reward-modal">
+              <button type="button" class="btn btn-danger remove-reward-btn" data-original-title="{{_ 'Remove reward'}}"
+                data-toggle="modal" data-target="#remove-reward-modal"
+                data-tooltip-toggle="tooltip" data-placement="bottom">
                 <i class="fa fa-trash"></i>
               </button>
             </div>
