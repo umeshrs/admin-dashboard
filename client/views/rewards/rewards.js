@@ -19,5 +19,14 @@ Template.rewards.events({
   },
   'click .remove-reward-btn': function () {
     Session.set("currentReward", this);
+  },
+  'change .switchery': function () {
+    Meteor.call("toggleRewardPublishedStatus", this.rewardId, ! this.checked, function (error, result) {
+      if (error) {
+        console.log(`Error invoking method 'toggleRewardPublishedStatus'. Error: ${error.message}.`);
+      } else {
+        console.log(`Updated publish status of ${result} reward(s).`);
+      }
+    });
   }
 });

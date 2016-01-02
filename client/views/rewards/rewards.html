@@ -24,7 +24,7 @@
           <td>{{createdAt.toLocaleString}}</td>
           <td>{{validTill.toLocaleString}}</td>
           <td>{{claimCount}}</td>
-          <td>{{> switchery checked=published}}</td>
+          <td>{{> switchery checked=published rewardId=_id}}</td>
           <td>
             <div class="btn-group">
               <button type="button" class="btn btn-warning edit-reward-btn" data-original-title="{{_ 'Edit reward'}}"
