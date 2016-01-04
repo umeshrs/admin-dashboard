@@ -7,12 +7,13 @@ Template.addReward.onRendered(function () {
 });
 
 Template.addReward.events({
-  'click #save-reward-btn': function (event, template) {
+  'click #add-reward-save-btn': function (event, template) {
     let reward = {
       title: template.$("#reward-title").val(),
       description: template.$("#reward-description").val(),
       points: template.$("#reward-points").val(),
-      count: template.$("#reward-count").val(),
+      availableCount: template.$("#available-count").val(),
+      claimCount: 0,
       validTill: template.$(".date").datepicker('getDate'),
       published: template.$(".switchery")[0].checked,
       createdAt: new Date()
