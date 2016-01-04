@@ -17,6 +17,9 @@ Template.rewards.events({
   'click #add-reward-btn': function () {
     Router.go('/rewards/add-reward');
   },
+  'click .edit-reward-btn': function () {
+    Router.go(`/rewards/edit-reward/${this._id}`);
+  },
   'click .remove-reward-btn': function () {
     Session.set("currentReward", this);
   },
