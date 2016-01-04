@@ -21,8 +21,8 @@
       {{#each rewards}}
         <tr>
           <td>{{title}}</td>
-          <td>{{createdAt.toLocaleString}}</td>
-          <td>{{validTill.toLocaleString}}</td>
+          <td>{{dateToLocaleString createdAt}}</td>
+          <td>{{dateToLocaleString validTill}}</td>
           <td>{{claimCount}}</td>
           <td>{{> switchery checked=published rewardId=_id}}</td>
           <td>
