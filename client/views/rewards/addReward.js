@@ -3,6 +3,7 @@ Template.addReward.onRendered(function () {
     format: "dd/mm/yyyy",
     startDate: 'today',
     todayBtn: 'linked',
+    autoclose: true,
   });
 });
 
