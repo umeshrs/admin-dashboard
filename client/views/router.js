@@ -234,5 +234,22 @@ Router.route('/rewards/add-reward', {
   parent: "rewards",
   action: function () {
     this.render('addReward');
+  },
+  data: function () {
+    return { task: "add-reward" };
+  }
+});
+
+Router.route('/rewards/edit-reward/:_id', {
+  name: "edit-reward",
+  label: "Edit Reward",
+  parent: "rewards",
+  action: function () {
+    this.render('editReward');
+  },
+  data: function () {
+    let data = Rewards.findOne(this.params._id) || {};
+    data.task = "edit-reward";
+    return data;
   }
 });
