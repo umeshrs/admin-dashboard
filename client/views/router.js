@@ -224,7 +224,12 @@ Router.route('/rewards', {
   label: "Rewards",
   parent: "home",
   action: function () {
-    this.render('rewards');
+    var currentUser = Meteor.user();
+    if (currentUser.profile && currentUser.profile.role === "administrator") {
+      this.render('rewards');
+    } else {
+      this.render('viewRewards');
+    }
   }
 });
 
