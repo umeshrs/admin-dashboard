@@ -159,27 +159,30 @@
 }
 
 .content #stores-list-container #stores-list {
-  margin-bottom: 0px;
-  margin-right: 10px;
-  padding-left: 20px;
+  margin: 0px;
 }
 
 .content #stores-list-container #stores-list > li {
   padding: 0px;
+  padding-left: 20px;
+  cursor: pointer;
+  transition: padding 0.1s;
+}
+
+.content #stores-list-container #stores-list > li:hover {
+  padding-left: 30px;
+  background-color: #F0F0F0;
+  border-left: 10px solid #EE9318;
 }
 
 .content #stores-list-container #stores-list > li > p {
   margin: 0px;
   padding: 10px 5px;
-  border-radius: 2px;
   transition: all 0.2s;
 }
 
-.content #stores-list-container #stores-list > li > p:hover {
-  padding-left: 20px;
-  background-color: #333;
-  color: white;
-  cursor: pointer;
+.content #stores-list-container #stores-list > li:hover > p {
+  color: #000;
 }
 
 /* Jumbotron */
