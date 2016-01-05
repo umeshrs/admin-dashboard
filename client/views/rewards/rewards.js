@@ -2,7 +2,7 @@ Template.rewards.onRendered(function () {
   Tracker.autorun(function () {
     if (Rewards.find({}, { sort: { createdAt: 1} }).count() > 0) {
       $('[data-toggle="tooltip"]').tooltip({ container: 'body' });
-      $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body' });
+      $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
     }
   });
 });
@@ -18,9 +18,13 @@ Template.rewards.events({
     Router.go('/rewards/add-reward');
   },
   'click .edit-reward-btn': function () {
+    $('[data-toggle="tooltip"]').tooltip('hide');
+    $('[data-tooltip-toggle="tooltip"]').tooltip('hide');
     Router.go(`/rewards/edit-reward/${this._id}`);
   },
   'click .remove-reward-btn': function () {
+    $('[data-toggle="tooltip"]').tooltip('hide');
+    $('[data-tooltip-toggle="tooltip"]').tooltip('hide');
     Session.set("currentReward", this);
   },
   'change .switchery': function () {
