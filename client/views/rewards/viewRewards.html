@@ -1,0 +1,40 @@
+<template name="viewRewards">
+  {{> breadcrumbs}}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <h4>Points available: {{rewardPoints}}</h4>
+     </div>
+    </div>
+  </div>
+  <hr>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>{{_ "Name"}}</th>
+          <th>{{_ "Valid till"}}</th>
+          <th>{{_ "Points needed"}}</th>
+          <th>{{_ "Actions"}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each rewards}}
+          <tr>
+            <td>{{title}}</td>
+            <td>{{dateToLocaleString validTill}}</td>
+            <td>{{points}}</td>
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-complete claim-reward-btn" data-original-title="{{_ 'Claim reward'}}"
+                  data-toggle="tooltip" data-placement="bottom">
+                  <i class="fa fa-plus-square-o fa-lg"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>
