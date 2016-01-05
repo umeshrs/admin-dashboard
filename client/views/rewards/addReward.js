@@ -12,8 +12,8 @@ Template.addReward.events({
     let reward = {
       title: template.$("#reward-title").val(),
       description: template.$("#reward-description").val(),
-      points: template.$("#reward-points").val(),
-      availableCount: template.$("#available-count").val(),
+      points: +template.$("#reward-points").val(),
+      availableCount: +template.$("#available-count").val(),
       claimCount: 0,
       validTill: template.$(".date").datepicker('getDate'),
       published: template.$(".switchery")[0].checked,
