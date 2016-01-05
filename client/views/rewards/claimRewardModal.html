@@ -1,0 +1,28 @@
+<template name="claimRewardModal">
+  <!-- Claim Reward Modal -->
+  <div class="modal fade slide-up disable-scroll" id="claim-reward-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content-wrapper">
+        <div class="modal-content">
+          <div class="modal-header clearfix text-left bg-complete p-b-20">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <i class="pg-close"></i>
+            </button>
+            <h4 class="no-margin">{{title}}</h4>
+          </div>
+          <div class="modal-body p-t-25">
+            <p class="fs-14">{{description}}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              <span class="bold">{{_ "Cancel"}}</span>
+            </button>
+            <button type="button" class="btn btn-complete" id="claim-reward-modal-btn" data-dismiss="modal">
+              <span class="bold">{{_ "Claim"}}</span>
+            </button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-content-wrapper -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</template>
