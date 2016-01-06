@@ -8,7 +8,7 @@ Template.viewRewards.onRendered(function () {
 
 Template.viewRewards.helpers({
   rewardPoints() {
-    return Meteor.user().profile && Meteor.user().profile.rewardPoints;
+    return (Meteor.user() && Meteor.user().profile && Meteor.user().profile.rewardPoints) || 0;
   },
   rewards() {
     return Rewards.find({ published: true, availableCount: { $gt: 0 } }, {
