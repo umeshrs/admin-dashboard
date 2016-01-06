@@ -118,7 +118,12 @@ Router.route('/members', {
   label: "Members",
   parent: "home",
   action: function () {
-    this.render('users');
+    let currentUser = Meteor.user();
+    if (currentUser && currentUser.profile && currentUser.profile.role === "administrator") {
+      this.render('users');
+    } else {
+      this.render('notFound');
+    }
   }
 });
 
