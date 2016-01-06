@@ -17,3 +17,34 @@ Template.claimRewardModal.helpers({
     return Session.get("currentReward");
   }
 });
+
+Template.claimRewardModal.events({
+  'click #claim-reward-modal-btn': function () {
+    let userPoints = Meteor.user() && Meteor.user().profile && Meteor.user().profile.rewardPoints;
+    let notificationOptions = {
+      style: "bar",
+      position: "top",
+      type: "error"
+    };
+
+    if (userPoints && userPoints >= this.points) {
+      Rewards.update(this._id, {
+        $inc: {
+          claimCount: 1,
+          availableCount: -1
+        }
+      });
+      Meteor.users.update(Meteor.userId(), {
+        $set: { 'profile.rewardPoints': userPoints - this.points }
+      });
+      console.log(`Reward '${this.title}' has been claimed by ${Meteor.user().username}.`);
+      notificationOptions.message = `<b>Success!</b> You have claimed the reward '${this.title}'.`;
+      notificationOptions.type = "success";
+    } else {
+      console.log(`User does not have enough points to claim this reward.`);
+      notificationOptions.message = "<b>Oops!</b> Looks like you don't have enough points to claim this reward. " +
+        "Please choose another reward.";
+    }
+    $('body').pgNotification(notificationOptions).show();
+  }
+});
