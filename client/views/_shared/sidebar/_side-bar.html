@@ -60,12 +60,14 @@
             </li>
           </ul>
         </li>
-        <li class="">
-          <a href="{{pathFor route='members'}}">
-            <span class="title">{{_ "Members"}}</span>
-          </a>
-          <span class="icon-thumbnail "><i class="fa fa-users"></i></span>
-        </li>
+        {{#if isAdministrator}}
+          <li class="">
+            <a href="{{pathFor route='members'}}">
+              <span class="title">{{_ "Members"}}</span>
+            </a>
+            <span class="icon-thumbnail "><i class="fa fa-users"></i></span>
+          </li>
+        {{/if}}
         <li class="">
           <a href="{{pathFor route='rewards'}}">
             <span class="title">{{_ "Rewards"}}</span>
