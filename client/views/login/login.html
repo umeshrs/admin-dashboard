@@ -1,6 +1,6 @@
 <template name="login">
   <!-- START Login Form -->
-  <form id="login-form" class="p-t-15" role="form">
+  <form id="login-form" class="p-t-15 p-b-20" role="form">
     <!-- START Form Control-->
     <div class="form-group form-group-default required">
       <label for="login-username">Nom d'utilisateur</label>
@@ -14,18 +14,19 @@
     </div>
     <!-- START Form Control-->
     <div class="row">
-      <div class="col-md-6 no-padding">
+      <div class="col-xs-6">
         <div class="checkbox ">
           <input type="checkbox" value="1" id="checkbox1">
           <label for="checkbox1">Rester connecté</label>
         </div>
       </div>
-      <div class="col-md-6 text-right">
+      <div class="col-xs-6 text-right">
         <a href="#" class="text-info small">Besoin d'aide ?</a>
       </div>
     </div>
     <!-- END Form Control-->
-    <button class="btn btn-primary btn-cons m-t-10" type="submit">Se connecter</button>
+    <button class="btn btn-primary btn-cons pull-right m-t-10 m-r-0" type="submit">Se connecter</button>
+    <div class="clearfix"></div>
   </form>
   <!--END Login Form-->
 </template>
