@@ -20,7 +20,7 @@
     <tbody>
       {{#each rewards}}
         <tr>
-          <td>{{title}}</td>
+          <td>{{title}}&nbsp;&nbsp;&nbsp;<b class="fs-12">(x {{availableCount}})</b></td>
           <td>{{dateToLocaleString createdAt}}</td>
           <td>{{dateToLocaleString validTill}}</td>
           <td>{{claimCount}}</td>
