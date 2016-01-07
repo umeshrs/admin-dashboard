@@ -2,8 +2,8 @@ var rocketChatConnection, wekanConnection;
 rocketChatConnection = DDP.connect("http://" + ROCKET_CHAT_DOMAIN + ":" + ROCKET_CHAT_PORT);
 wekanConnection = DDP.connect("http://" + WEKAN_DOMAIN + ":" + WEKAN_PORT);
 
-Template.removeUserModal.events({
-  'click #remove-user-modal-btn': function () {
+Template.removeMemberModal.events({
+  'click #remove-member-modal-btn': function () {
 
     Meteor.users.remove({ _id: Session.get("currentUser")._id }, function (error, result) {
       if (error) {
