@@ -13,6 +13,9 @@ Template.members.helpers({
 });
 
 Template.members.events({
+  'click #add-member-btn': function () {
+    Router.go('/members/add-member');
+  },
   'click .remove-member-btn': function () {
     Session.set("currentUser", this);
   }
