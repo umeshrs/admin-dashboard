@@ -120,7 +120,7 @@ Router.route('/members', {
   action: function () {
     let currentUser = Meteor.user();
     if (currentUser && currentUser.profile && currentUser.profile.role === "administrator") {
-      this.render('users');
+      this.render('members');
     } else {
       this.render('notFound');
     }
