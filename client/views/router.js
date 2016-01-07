@@ -127,6 +127,20 @@ Router.route('/members', {
   }
 });
 
+Router.route('/members/add-member', {
+  name: "add-member",
+  label: "Add member",
+  parent: "members",
+  action: function () {
+    let currentUser = Meteor.user();
+    if (currentUser && currentUser.profile && currentUser.profile.role === "administrator") {
+      this.render('addMember');
+    } else {
+      this.render('notFound');
+    }
+  }
+});
+
 Router.route('/manage-surveys', {
   name: "manage-surveys",
   label: "Manage surveys",
