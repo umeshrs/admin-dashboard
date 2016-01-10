@@ -7,3 +7,9 @@ Template.addMember.onRendered(function () {
       })
   });
 });
+
+Template.addMember.events({
+  'click #cancel-btn': function () {
+    Router.go('/members');
+  }
+});
