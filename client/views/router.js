@@ -138,6 +138,9 @@ Router.route('/members/add-member', {
     } else {
       this.render('notFound');
     }
+  },
+  data: function () {
+    return { task: 'add-member' };
   }
 });
 
