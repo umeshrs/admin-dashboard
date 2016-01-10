@@ -1,0 +1,102 @@
+<template name="addMember">
+  {{> breadcrumbs}}
+  <div class="container-fluid member-wrapper">
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
+        <form id="add-member-form" class="form-horizontal" role="form" autocomplete="off">
+          <div class="form-group required">
+            <label for="title" class="col-sm-3 control-label">{{_ "Title"}}</label>
+            <div class="col-sm-2">
+              <select class="full-width" id="title" data-init-plugin="select2">
+                <option value="Mr">Mr</option>
+                <option value="Mrs">Mme</option>
+                <option value="Mlle">Mlle</option>
+                <option value="Mr&Mrs">Mr & Mme</option>
+              </select>
+            </div>
+            <label for="owner-name" class="col-sm-2 col-sm-offset-1 control-label">{{_ "Owner"}}</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" id="owner-name" placeholder="{{_ 'John Doe'}}"
+              value="{{ownerName}}" required>
+            </div>
+          </div>
+          <div class="form-group required">
+            <label for="pharmacy-name" class="col-sm-3 control-label">{{_ "Pharmacy name"}}</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" id="pharmacy-name" placeholder="{{_ 'Pharmacie de la Example'}}"
+              value="{{pharmacyName}}" required>
+            </div>
+            <label for="cip" class="col-sm-1 col-md-offset-1 control-label">{{_ "CIP"}}</label>
+            <div class="col-sm-3 col-md-2">
+              <input type="text" class="form-control" id="cip" placeholder="{{_ '1234567'}}"
+              value="{{CIP}}" required>
+            </div>
+          </div>
+          <div class="form-group required">
+            <label for="username" class="col-sm-3 control-label">{{_ "Username"}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="username" placeholder="{{_ 'john.doe'}}"
+              value="{{username}}" required>
+            </div>
+            <label for="email" class="col-sm-2 control-label">{{_ "Email"}}</label>
+            <div class="col-sm-4">
+              <input type="email" class="form-control" id="email" placeholder="{{_ 'john.doe@test.com'}}"
+              value="{{email}}" required>
+            </div>
+          </div>
+          <div class="form-group required">
+            <label for="password" class="col-sm-3 control-label">{{_ "Password"}}</label>
+            <div class="col-sm-3">
+              <input type="password" class="form-control" id="password" placeholder="{{_ 'Password'}}"
+              required>
+            </div>
+            <label for="confirm-password" class="col-sm-3 control-label">{{_ "Confirm password"}}</label>
+            <div class="col-sm-3">
+              <input type="confirm-password" class="form-control" id="confirm-password"
+              required>
+            </div>
+          </div>
+          <div class="form-group required">
+            <label for="street-address" class="col-sm-3 control-label">{{_ "Street"}}</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="street-address" placeholder="{{_ '12 Rue de la montagne'}}"
+              value="{{address.street}}" required>
+            </div>
+            <div class="clearfix m-b-20"></div>
+            <label for="city" class="col-sm-3 control-label">{{_ "City"}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="city" placeholder="{{_ 'Paris'}}"
+              value="{{address.city}}" required>
+            </div>
+            <label for="postal-code" class="col-sm-3 control-label">{{_ "Postal code"}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="postal-code" placeholder="{{_ '75001'}}"
+              value="{{address.postalCode}}" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="telephone" class="col-sm-3 control-label">{{_ "Telephone"}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="telephone" placeholder="{{_ '12345678'}}" value="{{telephone}}">
+            </div>
+            <label for="fax" class="col-sm-3 control-label">{{_ "Fax"}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="fax" placeholder="{{_ '12345678'}}" value="{{fax}}">
+            </div>
+          </div>
+          <div class="row m-t-20 m-b-20">
+            <div class="col-sm-9 col-sm-offset-3">
+              <button type="button" class="btn btn-success btn-animated from-left fa fa-save pull-right"
+               id="{{task}}-save-btn">
+                <span class="bold">{{_ "Save"}}</span>
+              </button>
+              <button type="button" class="btn btn-danger btn-animated from-left fa fa-close pull-right m-r-10" id="cancel-btn">
+                <span class="bold">{{_ "Cancel"}}</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
