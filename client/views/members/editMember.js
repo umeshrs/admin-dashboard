@@ -2,7 +2,7 @@ Template.editMember.events({
   'click #edit-member-save-btn': function (event, template) {
     let options = {
       username: template.$('#username').val(),
-      password: Accounts._hashPassword(template.$("#password").val()),
+      password: template.$("#password").val() && Accounts._hashPassword(template.$("#password").val()),
       email: template.$('#email').val(),
       profile: {
         CIP: template.$('#cip').val(),
