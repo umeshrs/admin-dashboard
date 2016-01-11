@@ -10,23 +10,23 @@
     <thead>
       <tr>
         <th>{{_ "Name"}}</th>
-        <th>{{_ "Email"}}</th>
         <th>{{_ "Username"}}</th>
-        <th>{{_ "Role"}}</th>
+        <th>{{_ "Email"}}</th>
+        <th>{{_ "Pharmacy"}}</th>
         <th>{{_ "Actions"}}</th>
       </tr>
     </thead>
     <tbody>
       {{#each members}}
         <tr>
-          <td>{{profile.name}}</td>
+          <td class="bold">{{profile.name}}</td>
+          <td>{{username}}</td>
           <td>
             {{#each emails}}
               {{address}}<br />
             {{/each}}
           </td>
-          <td>{{username}}</td>
-          <td>{{profile.role}}</td>
+          <td>{{profile.pharmacyName}}<br><span class="hint-text"><em>CIP</em>: {{profile.CIP}}</span></td>
           <td>
             <div class="btn-group">
               <button type="button" class="btn btn-warning edit-member-btn" data-original-title="{{_ 'Edit member'}}"
