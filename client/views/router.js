@@ -144,6 +144,35 @@ Router.route('/members/add-member', {
   }
 });
 
+Router.route('/members/edit-member/:_id', {
+  name: "edit-member",
+  label: "Edit member",
+  parent: "members",
+  action: function () {
+    this.render('editMember');
+  },
+  data: function () {
+    let member = Meteor.users.findOne(this.params._id) || {};
+    let data = {};
+    if (member) {
+      data._id = member._id;
+      data.username = member.username;
+      data.email = member.emails && member.emails[0] && member.emails[0].address;
+      if (member.profile) {
+        data.title = member.profile.title;
+        data.ownerName = member.profile.name;
+        data.pharmacyName = member.profile.pharmacyName;
+        data.CIP = member.profile.CIP;
+        data.address = member.profile.address;
+        data.telephone = member.profile.telephone;
+        data.fax = member.profile.fax;
+      }
+    }
+    data.task = 'edit-member';
+    return data;
+  }
+});
+
 Router.route('/manage-surveys', {
   name: "manage-surveys",
   label: "Manage surveys",
