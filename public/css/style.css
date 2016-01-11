@@ -286,3 +286,30 @@ textarea#reward-description {
 .table-responsive {
   border: none;
 }
+
+.member-wrapper,
+.reward-wrapper {
+  background-color: #FFF;
+}
+
+.form-horizontal .form-group {
+  border-bottom: 2px dashed #e6e6e6;
+  padding-top: 34px;
+  padding-bottom: 34px;
+}
+
+.form-horizontal .form-group .control-label {
+  opacity: 0.9;
+}
+
+.form-horizontal .form-group .form-control {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.select2-container .select2-choice {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.select2-drop-active {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
