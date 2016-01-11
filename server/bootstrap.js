@@ -7,7 +7,7 @@ Meteor.startup(function() {
       userRole = currentUser.profile && currentUser.profile.role;
       console.log(userRole);
       if (userRole === "administrator") {
-        return Meteor.users.find({}, { fields: { 'emails': 1 } });
+        return Meteor.users.find({}, { fields: { 'emails': 1, createdAt: 1 } });
       } else {
         this.ready();
       }
