@@ -1,6 +1,11 @@
 Template.viewSurvey.events({
   'click #cancel-btn': function () {
-    Router.go('/manage-surveys');
+    let currentUser = Meteor.user();
+    if (currentUser && currentUser.profile && currentUser.profile.role === "administrator") {
+      Router.go('/manage-surveys');
+    } else {
+      Router.go('/surveys');
+    }
   },
   'click #submit-response-btn': function (event, template) {
     var questions = template.$(".question-wrapper"), i, response = [];
