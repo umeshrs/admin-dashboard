@@ -6,6 +6,11 @@ Template.addMember.onRendered(function () {
           ignoreMobile: false
       })
   });
+
+  this.$("#cip").mask("9999999");
+  this.$("#postal-code").mask("99999");
+  this.$("#telephone").mask("09 99 99 99 99");
+  this.$("#fax").mask("09 99 99 99 99");
 });
 
 Template.addMember.events({
