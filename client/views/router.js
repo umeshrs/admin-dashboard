@@ -46,7 +46,8 @@ _.extend(Router, {
 
 Router.configure({
   layoutTemplate: "defaultLayout",
-  notFoundTemplate: "notFound"
+  notFoundTemplate: "notFound",
+  loadingTemplate: "loading"
 });
 
 Router.onBeforeAction(function () {
@@ -119,10 +120,16 @@ Router.route('/members', {
   parent: "home",
   action: function () {
     let currentUser = Meteor.user();
-    if (currentUser && currentUser.profile && currentUser.profile.role === "administrator") {
-      this.render('members');
-    } else {
+    if (currentUser) {
+      if (currentUser.profile && currentUser.profile.role === "administrator") {
+        this.render('members');
+      } else {
+        this.render('notFound');
+      }
+    } else if (currentUser === null) {
       this.render('notFound');
+    } else {
+      this.render('loading');
     }
   }
 });
@@ -133,10 +140,16 @@ Router.route('/members/add-member', {
   parent: "members",
   action: function () {
     let currentUser = Meteor.user();
-    if (currentUser && currentUser.profile && currentUser.profile.role === "administrator") {
-      this.render('addMember');
-    } else {
+    if (currentUser) {
+      if (currentUser.profile && currentUser.profile.role === "administrator") {
+        this.render('addMember');
+      } else {
+        this.render('notFound');
+      }
+    } else if (currentUser === null) {
       this.render('notFound');
+    } else {
+      this.render('loading');
     }
   },
   data: function () {
@@ -149,7 +162,18 @@ Router.route('/members/edit-member/:_id', {
   label: "Edit member",
   parent: "members",
   action: function () {
-    this.render('editMember');
+    let currentUser = Meteor.user();
+    if (currentUser) {
+      if (currentUser.profile && currentUser.profile.role === "administrator") {
+        this.render('editMember');
+      } else {
+        this.render('notFound');
+      }
+    } else if (currentUser === null) {
+      this.render('notFound');
+    } else {
+      this.render('loading');
+    }
   },
   data: function () {
     let member = Meteor.users.findOne(this.params._id) || {};
