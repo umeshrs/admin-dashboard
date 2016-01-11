@@ -11,7 +11,7 @@
       <tr>
         <th>{{_ "Name"}}</th>
         <th>{{_ "Username"}}</th>
-        <th>{{_ "Email"}}</th>
+        <th>{{_ "Address"}}</th>
         <th>{{_ "Pharmacy"}}</th>
         <th>{{_ "Actions"}}</th>
       </tr>
@@ -19,12 +19,18 @@
     <tbody>
       {{#each members}}
         <tr>
-          <td class="bold">{{profile.name}}</td>
+          <td>
+            <span class="bold">{{profile.name}}</span><br>
+            {{#each emails}}
+              <em>{{address}}</em><br>
+            {{/each}}
+          </td>
           <td>{{username}}</td>
           <td>
-            {{#each emails}}
-              {{address}}<br />
-            {{/each}}
+            {{#with profile.address}}
+              {{street}}<br>
+              {{postalCode}} <span class="text-uppercase">{{city}}</span>
+            {{/with}}
           </td>
           <td>{{profile.pharmacyName}}<br><span class="hint-text"><em>CIP</em>: {{profile.CIP}}</span></td>
           <td>
