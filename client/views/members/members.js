@@ -3,7 +3,7 @@ Meteor.subscribe("usersData");
 Template.members.onRendered(function () {
   Session.setDefault("currentUser", {});
   $('[data-toggle="tooltip"]').tooltip({ container: 'body' });
-  $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body' });
+  $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
 });
 
 Template.members.helpers({
