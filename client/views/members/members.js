@@ -17,6 +17,8 @@ Template.members.events({
     Router.go('/members/add-member');
   },
   'click .edit-member-btn': function () {
+    $('[data-toggle="tooltip"]').tooltip('hide');
+    $('[data-tooltip-toggle="tooltip"]').tooltip('hide');
     Router.go(`/members/edit-member/${this._id}`);
   },
   'click .remove-member-btn': function () {
