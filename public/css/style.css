@@ -282,3 +282,7 @@ textarea#reward-description {
   color: white;
   font-size: 20px;
 }
+
+.table-responsive {
+  border: none;
+}
