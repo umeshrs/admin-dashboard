@@ -44,21 +44,10 @@
           <span class="icon-thumbnail "><i class="fa fa-shopping-cart"></i></span>
         </li>
         <li class="">
-          <a href="javascript:;">
+          <a href="{{#if isAdministrator}}{{pathFor route='manage-surveys'}}{{else}}{{pathFor route='surveys'}}{{/if}}">
             <span class="title">{{_ "Surveys"}}</span>
-            <span class=" arrow"></span>
           </a>
-          <span class="icon-thumbnail"><i class="pg-form"></i></span>
-          <ul class="sub-menu">
-            <li class="">
-              <a href="{{pathFor route='manage-surveys'}}">{{_ "Manage surveys"}}</a>
-              <span class="icon-thumbnail"><i class="fa fa-edit"></i></span>
-            </li>
-            <li class="">
-              <a href="{{pathFor route='survey-responses'}}">{{_ "Responses"}}</a>
-              <span class="icon-thumbnail"><i class="fa fa-pie-chart"></i></span>
-            </li>
-          </ul>
+          <span class="icon-thumbnail "><i class="pg-form"></i></span>
         </li>
         {{#if isAdministrator}}
           <li class="">
