@@ -1,0 +1,29 @@
+<template name="surveys">
+  {{> breadcrumbs}}
+  <div class="table-responsive surveys-list-wrapper">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Date Created</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each surveys}}
+          <tr>
+            <td class="bold">{{title}}</td>
+            <td>{{dateToLocaleString createdAt}}</td>
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-complete view-survey-btn" title="View survey">
+                  <i class="fa fa-eye"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>
