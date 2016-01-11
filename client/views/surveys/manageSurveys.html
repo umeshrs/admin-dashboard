@@ -1,9 +1,12 @@
 <template name="manageSurveys">
   {{> breadcrumbs}}
   <div class="survey-list-wrapper">
-    <button type="button" class="btn btn-info btn-animated from-left fa fa-plus pull-right m-t-20 m-b-10 m-r-30" id="add-survey-btn">
-      <span class="bold">Add Survey</span>
-    </button>
+    <div class="btns-wrapper m-t-20 m-r-30 clearfix">
+      <button type="button" class="btn btn-complete btn-animated from-left fa fa-plus pull-right" id="add-survey-btn">
+        <span class="bold">{{_ "Add Survey"}}</span>
+      </button>
+    </div>
+    <hr>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -16,14 +19,24 @@
       <tbody>
         {{#each surveys}}
           <tr>
-            <td>{{title}}</td>
+            <td class="bold">{{title}}</td>
             <td>{{dateCreated}}</td>
             <td>{{> switchery checked=published surveyId=_id}}</td>
             <td>
               <div class="btn-group">
-                <button type="button" class="btn btn-default edit-survey-btn" title="Edit survey"><i class="fa fa-pencil"></i></button>
-                <button type="button" class="btn btn-default preview-survey-btn" title="Preview survey"><i class="fa fa-eye"></i></button>
-                <button type="button" class="btn btn-default remove-survey-btn" title="Remove survey" data-toggle="modal" data-target="#remove-survey-modal"><i class="fa fa-remove"></i></button>
+                <button type="button" class="btn btn-warning edit-survey-btn" data-original-title="{{_ 'Edit survey'}}"
+                  data-toggle="tooltip" data-placement="bottom">
+                  <i class="fa fa-pencil"></i>
+                </button>
+                <button type="button" class="btn btn-complete preview-survey-btn"
+                  data-original-title="{{_ 'Preview survey'}}" data-toggle="tooltip" data-placement="bottom">
+                  <i class="fa fa-eye"></i>
+                </button>
+                <button type="button" class="btn btn-danger remove-survey-btn" data-original-title="{{_ 'Remove survey'}}"
+                  data-toggle="modal" data-target="#remove-survey-modal"
+                  data-tooltip-toggle="tooltip" data-placement="bottom">
+                  <i class="fa fa-remove"></i>
+                </button>
               </div>
             </td>
           </tr>
