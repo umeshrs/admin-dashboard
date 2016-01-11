@@ -250,6 +250,27 @@ Router.route('/manage-surveys/edit-survey/:_id', {
   }
 });
 
+Router.route('/manage-surveys/view-response/:_id', {
+  name: "view-response",
+  label: "View response",
+  parent: "manage-surveys",
+  action: function () {
+    this.render('viewResponse');
+  },
+  data: function () {
+    return Surveys.findOne(this.params._id);
+  }
+});
+
+Router.route('/surveys', {
+  name: "surveys",
+  label: "Surveys",
+  parent: "home",
+  action: function () {
+    this.render('surveys');
+  }
+});
+
 Router.route('/view-survey/:_id', {
   name: "view-survey",
   label: "View survey",
@@ -270,27 +291,6 @@ Router.route('/view-survey/:_id', {
       });
     }
     return data;
-  }
-});
-
-Router.route('/survey-responses', {
-  name: "survey-responses",
-  label: "Survey responses",
-  parent: "home",
-  action: function () {
-    this.render('surveyResponsesList');
-  }
-});
-
-Router.route('/survey-responses/view-response/:_id', {
-  name: "view-response",
-  label: "View response",
-  parent: "survey-responses",
-  action: function () {
-    this.render('viewResponse');
-  },
-  data: function () {
-    return Surveys.findOne(this.params._id);
   }
 });
 
