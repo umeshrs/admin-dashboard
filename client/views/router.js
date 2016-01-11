@@ -271,10 +271,10 @@ Router.route('/surveys', {
   }
 });
 
-Router.route('/view-survey/:_id', {
+Router.route('surveys/view-survey/:_id', {
   name: "view-survey",
   label: "View survey",
-  parent: "home",
+  parent: "surveys",
   action: function () {
     this.render('viewSurvey');
   },
