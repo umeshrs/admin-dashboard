@@ -1,9 +1,8 @@
 Meteor.methods({
-  removeSurvey: function (surveyId) {
-    console.log("Request to remove survey with id " + surveyId);
-    var currentUser = Meteor.user();
+  removeSurvey(surveyId) {
+    let currentUser = Meteor.user();
     if (! currentUser) {
-      throw new Meteor.Error("not-logged-in", "User must be logged in to delete a survey.");
+      throw new Meteor.Error("not-logged-in", "User must be logged in to remove a survey");
     }
     else {
       if (currentUser.profile && currentUser.profile.role === "administrator") {
@@ -11,7 +10,7 @@ Meteor.methods({
         return Surveys.remove(surveyId);
       }
       else {
-        throw new Meteor.Error("not-authorized", "You are not authorized to delete a survey.");
+        throw new Meteor.Error("not-authorized", "User not authorized to remove a survey");
       }
     }
   }
