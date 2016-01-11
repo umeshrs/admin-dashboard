@@ -14,9 +14,6 @@ Template.manageSurveys.helpers({
       sort: { createdAt: 1 }
     });
   },
-  dateCreated: function () {
-    return this.createdAt.toLocaleString();
-  }
 });
 
 Template.manageSurveys.events({

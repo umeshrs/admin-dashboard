@@ -20,7 +20,7 @@
         {{#each surveys}}
           <tr>
             <td class="bold">{{title}}</td>
-            <td>{{dateCreated}}</td>
+            <td>{{dateToLocaleString createdAt}}</td>
             <td>{{> switchery checked=published surveyId=_id}}</td>
             <td>
               <div class="btn-group">
