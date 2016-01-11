@@ -1,3 +1,12 @@
+Template.manageSurveys.onRendered(function () {
+  Tracker.autorun(function () {
+    if (Surveys.find({}, { sort: { createdAt: 1} }).count() > 0) {
+      $('[data-toggle="tooltip"]').tooltip({ container: 'body' });
+      $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
+    }
+  });
+});
+
 Template.manageSurveys.helpers({
   surveys: function () {
     return Surveys.find({}, {
@@ -15,9 +24,13 @@ Template.manageSurveys.events({
     Router.go('/manage-surveys/add-survey');
   },
   'click .preview-survey-btn': function () {
+    $('[data-toggle="tooltip"]').tooltip('hide');
+    $('[data-tooltip-toggle="tooltip"]').tooltip('hide');
     Router.go('/manage-surveys/preview-survey/' + this._id);
   },
   'click .remove-survey-btn': function () {
+    $('[data-toggle="tooltip"]').tooltip('hide');
+    $('[data-tooltip-toggle="tooltip"]').tooltip('hide');
     var surveyTitle = this.title;
     Meteor.call("removeSurvey", this._id, function (error, result) {
       var notificationOptions = {
@@ -37,6 +50,8 @@ Template.manageSurveys.events({
     });
   },
   'click .edit-survey-btn': function (event) {
+    $('[data-toggle="tooltip"]').tooltip('hide');
+    $('[data-tooltip-toggle="tooltip"]').tooltip('hide');
     Router.go('/manage-surveys/edit-survey/' + this._id);
   },
   'change .switchery': function (event) {
