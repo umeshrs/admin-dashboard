@@ -17,26 +17,6 @@ Meteor.startup(function() {
   });
 });
 
-Meteor.methods({
-  addUser: function(options) {
-    var user, userRole, newUserId;
-    user = Meteor.user();
-    userRole = user && user.profile && user.profile.role;
-
-    if (userRole === "administrator") {
-      newUserId = Accounts.createUser(options);
-      if (newUserId) {
-        console.log("New user added. User id: ", newUserId);
-        return Meteor.users.findOne({ _id: newUserId }, { fields: { 'profile.name': 1 } }).profile.name;
-      } else {
-        console.log("Error adding new user to the database.");
-      }
-    } else {
-      console.log("You do not have permission to add new users.");
-    }
-  }
-});
-
 Meteor.users.allow({
   remove: function (userId, doc) {
     var currentUser, userRole;
