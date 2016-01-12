@@ -1,7 +1,33 @@
 {
-  "Add member": "Ajouter un membre",
-  "Member management": "Gestion de membre",
-  "Name": "Nom",
-  "Username": "Nom d'utilisateur",
-  "Role": "Rôle"
+  "ADD_MEMBER": "Ajouter un membre",
+  "MEMBER_MANAGEMENT": "Gestion de membre",
+  "NAME": "Nom",
+  "USERNAME": "Nom d'utilisateur",
+  "ROLE": "Rôle",
+
+  // addMember
+  "OWNER_NAME": "Proprétaire",
+  "OWNER_NAME_PLACEHOLDER": "",
+  "PHARMACY_NAME": "Pharmacie",
+  "PHARMACY_NAME_PLACEHOLDER": "",
+  "CIP": "CIP",
+  "CIP_PLACEHOLDER": "2100101",
+  "USERNAME": "Nom d'utilisateur",
+  "USERNAME_PLACEHOLDER": "",
+  "EMAIL": "Email",
+  "EMAIL_PLACEHOLDER": "",
+  "PASSWORD": "Mot de passe",
+  "PASSWORD_PLACEHOLDER": "",
+  "CONFIRM_PASSWORD": "Confirmation du mot de passe",
+  "CONFIRM_PASSWORD_PLACEHOLDER": "",
+  "STREET": "Rue",
+  "STREET_PLACEHOLDER": "",
+  "CITY": "Ville",
+  "CITY_PLACEHOLDER": "",
+  "POSTAL_CODE": "Code postal",
+  "POSTAL_CODE_PLACEHOLDER": "75001",
+  "TELEPHONE": "Téléone",
+  "TELEPHONE_PLACEHOLDER": "01 23 45 67 89",
+  "FAX": "Fax",
+  "FAX_PLACEHOLDER": "01 23 45 67 89"
 }
