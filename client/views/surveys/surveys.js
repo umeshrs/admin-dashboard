@@ -1,6 +1,6 @@
 Template.surveys.onRendered(function () {
   Tracker.autorun(function () {
-    if (Surveys.find({}, { fields: { _id: 1 }, sort: { createdAt: 1} }).count() > 0) {
+    if (Surveys.find({ published: true }, { fields: { _id: 1 }, sort: { createdAt: 1} }).count() > 0) {
       $('[data-toggle="tooltip"]').tooltip({ container: 'body' });
     }
   });
@@ -8,7 +8,7 @@ Template.surveys.onRendered(function () {
 
 Template.surveys.helpers({
   surveys: function () {
-    return Surveys.find({}, {
+    return Surveys.find({ published: true }, {
       fields: { title: 1, createdAt: 1 },
       sort: { createdAt: 1 }
     });
