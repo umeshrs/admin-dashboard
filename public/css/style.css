@@ -313,3 +313,13 @@ textarea#reward-description {
 .select2-drop-active {
   border: 1px solid rgba(0, 0, 0, 0.25);
 }
+
+/* Footer */
+
+.copyright {
+  padding: 16px 0;
+}
+
+.copyright p {
+  line-height: 35px;
+}
