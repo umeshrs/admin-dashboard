@@ -23,7 +23,7 @@ Meteor.methods({
           throw new Meteor.Error("reaction-down", "Not connected to reaction commerce server");
         } else {
           // insert user into users collection if current user is logged in AND has a role of administrator
-          // AND a connections to 3rd party apps are active
+          // AND connections to 3rd party apps are active
 
           rocketChatConnection.call("registerUser", {
             username: options.username,
