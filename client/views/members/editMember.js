@@ -10,7 +10,7 @@ Template.editMember.events({
         name: template.$('#owner-name').val(),
         pharmacyName: template.$('#pharmacy-name').val(),
         address: {
-          street: template.$('#street-address').val(),
+          street: template.$('#street').val(),
           city: template.$('#city').val(),
           postalCode: template.$('#postal-code').val()
         },
