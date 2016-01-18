@@ -19,6 +19,8 @@ Meteor.methods({
           throw new Meteor.Error("rocket-chat-down", "Not connected to rocket chat server");
         } else if (! wekanConnection.status().connected) {
           throw new Meteor.Error("wekan-down", "Not connected to wekan server");
+        } else if (! reactionConnection.status().connected) {
+          throw new Meteor.Error("reaciton-down", "Not connected to wekan server");
         } else {
           // remove user only if current user is logged in AND has a role of administrator
           // AND connections to 3rd party apps (rocket chat and wekan at the moment) are active
@@ -46,6 +48,20 @@ Meteor.methods({
                   console.log(`Error invoking wekan method 'deleteUser'. Error: ${error.message}.`);
                 } else {
                   console.log(`${username} removed from wekan instance.`);
+                }
+              });
+            }
+          });
+
+          reactionConnection.call("getUserId", username, function (error, result) {
+            if (error) {
+              console.log(`Error invoking reaction method 'getUserId'. Error: ${error.message}.`);
+            } else {
+              reactionConnection.call("deleteUser", result, function (error, result) {
+                if (error) {
+                  console.log(`Error invoking reaction method 'deleteUser'. Error: ${error.message}.`);
+                } else {
+                  console.log(`${username} removed from reaction instance.`);
                 }
               });
             }
