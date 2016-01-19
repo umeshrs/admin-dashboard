@@ -19,7 +19,7 @@ Template.editMember.events({
       }
     };
 
-    Meteor.call("updateUser", this._id, options, function (error, result) {
+    Meteor.call("updateUser", this._id, this.username, options, function (error, result) {
       let notificationOptions = {
         style: "bar",
         position: "top",
