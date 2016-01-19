@@ -1,4 +1,8 @@
 Template.addMember.onRendered(function () {
+  if (this.data && this.data.title) {
+    this.$("#title").val(this.data.title);
+  }
+
   $('[data-init-plugin="select2"]').select2({
       minimumResultsForSearch: ($(this).attr('data-disable-search') == 'true' ? -1 : 1)
   }).on('select2-opening', function() {
