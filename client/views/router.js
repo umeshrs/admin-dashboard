@@ -197,6 +197,26 @@ Router.route('/members/edit-member/:_id', {
   }
 });
 
+Router.route('/members/import-members', {
+  name: "import-members",
+  label: "Import members",
+  parent: "members",
+  action: function () {
+    let currentUser = Meteor.user();
+    if (currentUser) {
+      if (currentUser.profile && currentUser.profile.role === "administrator") {
+        this.render('importMembers');
+      } else {
+        this.render('notFound');
+      }
+    } else if (currentUser === null) {
+      this.render('notFound');
+    } else {
+      this.render('loading');
+    }
+  }
+});
+
 Router.route('/manage-surveys', {
   name: "manage-surveys",
   label: "Manage surveys",
