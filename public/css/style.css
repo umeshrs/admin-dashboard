@@ -354,3 +354,13 @@ textarea#reward-description {
 .copyright p {
   line-height: 35px;
 }
+
+/* importMembers */
+
+input[type="file"] {
+  height: 42px;
+}
+
+.progress {
+  height: 10px;
+}
