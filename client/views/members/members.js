@@ -20,6 +20,9 @@ Template.members.events({
   'click #add-member-btn': function () {
     Router.go('/members/add-member');
   },
+  'click #import-members-btn': function () {
+    Router.go('/members/import-members');
+  },
   'click .edit-member-btn': function () {
     $('[data-toggle="tooltip"]').tooltip('hide');
     $('[data-tooltip-toggle="tooltip"]').tooltip('hide');
