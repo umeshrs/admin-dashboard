@@ -204,9 +204,13 @@ function validateEmail() {
 function validatePassword() {
   if (! $("#password").val().length > 0) {
     $("#password").addClass('has-error');
-    if (! $("#password-error").length) {
-      $("#password").after(`<label id="password-error" class="error" for="password">${TAPi18n.__("PASSWORD_EMPTY_ERROR")}</label>`);
-    }
+    $("#password-error").remove();
+    $("#password").after(`<label id="password-error" class="error" for="password">${TAPi18n.__("PASSWORD_EMPTY_ERROR")}</label>`);
+    return false;
+  } else if ($("#password").val().length > 0 && $("#password").val().length < 6) {
+    $("#password").addClass('has-error');
+    $("#password-error").remove();
+    $("#password").after(`<label id="password-error" class="error" for="password">${TAPi18n.__("PASSWORD_LENGTH_ERROR")}</label>`);
     return false;
   } else {
     $("#password").removeClass('has-error');
@@ -218,9 +222,13 @@ function validatePassword() {
 function validateConfirmPasswrod() {
   if (! $("#confirm-password").val().length > 0) {
     $("#confirm-password").addClass('has-error');
-    if (! $("#confirm-password-error").length) {
-      $("#confirm-password").after(`<label id="confirm-password-error" class="error" for="confirm-password">${TAPi18n.__("CONFIRM_PASSWORD_EMPTY_ERROR")}</label>`);
-    }
+    $("#confirm-password-error").remove();
+    $("#confirm-password").after(`<label id="confirm-password-error" class="error" for="confirm-password">${TAPi18n.__("CONFIRM_PASSWORD_EMPTY_ERROR")}</label>`);
+    return false;
+  } else if ($("#confirm-password").val() !== $("#password").val()) {
+    $("#confirm-password").addClass('has-error');
+    $("#confirm-password-error").remove();
+    $("#confirm-password").after(`<label id="confirm-password-error" class="error" for="confirm-password">${TAPi18n.__("PASSWORD_MISMATCH_ERROR")}</label>`);
     return false;
   } else {
     $("#confirm-password").removeClass('has-error');
