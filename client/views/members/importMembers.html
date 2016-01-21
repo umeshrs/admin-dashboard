@@ -13,7 +13,12 @@
           </div>
           <div class="form-group required">
             <div class="progress">
-              <div class="progress-bar progress-bar-complete" role="progressbar" style="width: 40%"></div>
+              <div class="progress-bar progress-bar-complete" role="progressbar" style="width: {{percent}}%"></div>
+            </div>
+            <label class="col-sm-4 control-label">{{_ "Members imported"}}</label>
+            <div class="col-sm-8 members-imported-stats">
+              <span>{{membersImported}} / {{membersCount}}</span>
+              <span class="pull-right">{{percent}} <span class="fs-16">%</span></span>
             </div>
           </div>
           <div class="row m-t-20 m-b-20">
