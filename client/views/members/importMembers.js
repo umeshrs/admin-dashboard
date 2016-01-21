@@ -18,6 +18,14 @@ Template.importMembers.helpers({
 
 Template.importMembers.events({
   'click #import-members-btn': function () {
+    // delay import if import button is clicked the second time onwards
+    // used to wait till progress bar reset transition is complete
+    let delay = Session.get("progressPercent") ? 1000 : 0;
+
+    Session.set("progressPercent", 0);
+    Session.set("membersImported", 0);
+    Session.set("membersCount", 0);
+
     let result = isValidFile();
 
     if (result.error) {
@@ -49,6 +57,7 @@ Template.importMembers.events({
       skipEmptyLines: true,
       complete: function (results) {
         Session.set("membersCount", results.data.length);
+        let httpRequestCount = 0;
         console.log(results);
 
         function addMember(memberDetails) {
@@ -56,6 +65,7 @@ Template.importMembers.events({
 
           HTTP.call("GET", "https://maps.googleapis.com/maps/api/geocode/json", { query: query }, function (error, result) {
             let member = {}, address = {}, title = "";
+            httpRequestCount++;
             console.log("----------------------");
             if (error) {
               console.log("Could not get result from geocoding API. Error: ", error.message);
@@ -134,6 +144,20 @@ Template.importMembers.events({
               });
               console.log("----------------------");
             }
+
+            if (Session.equals("membersCount", httpRequestCount)) {
+              // completed all requests
+              let notificationOptions = {
+                style: "bar",
+                position: "top",
+                type: "success",
+                message: TAPi18n.__("IMPORT_SUCCESS_NOTIFICATION_MESSAGE", Session.get("membersCount"))
+              };
+
+              Meteor.setTimeout(function () {
+                $('body').pgNotification(notificationOptions).show();
+              }, 1000);
+            }
           });
         }
 
@@ -144,14 +168,6 @@ Template.importMembers.events({
 
       }
     };
-
-    // delay import if import button is clicked the second time onwards
-    // used to wait till progress bar reset transition is complete
-    let delay = Session.get("progressPercent") ? 1000 : 0;
-
-    Session.set("progressPercent", 0);
-    Session.set("membersImported", 0);
-    Session.set("membersCount", 0);
 
     Meteor.setTimeout(function () {
       $('#file').parse({
