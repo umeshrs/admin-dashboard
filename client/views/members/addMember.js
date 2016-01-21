@@ -134,9 +134,12 @@ isValidInput = function () {
 function validateName() {
   if (! $("#owner-name").val().length > 0) {
     $("#owner-name").addClass("has-error");
-    if (! $("#owner-name-error").length ) {
-      $("#owner-name").after(`<label id="owner-name-error" class="error" for="owner-name">${TAPi18n.__("OWNER_NAME_EMPTY_ERROR")}</label>`);
-    }
+    Tracker.autorun(function () {
+      if (TAPi18n.__("OWNER_NAME_EMPTY_ERROR")) {
+        $("#owner-name-error").remove();
+        $("#owner-name").after(`<label id="owner-name-error" class="error" for="owner-name">${TAPi18n.__("OWNER_NAME_EMPTY_ERROR")}</label>`);
+      }
+    });
     return false;
   } else {
     $("#owner-name").removeClass("has-error");
@@ -148,9 +151,12 @@ function validateName() {
 function validatePharmacy() {
   if (! $("#pharmacy-name").val().length > 0) {
     $("#pharmacy-name").addClass("has-error");
-    if (! $("#pharmacy-name-error").length) {
-      $("#pharmacy-name").after(`<label id="pharmacy-name-error" class="error" for="pharmacy-name">${TAPi18n.__("PHARMACY_NAME_EMPTY_ERROR")}</label>`);
-    }
+    Tracker.autorun(function () {
+      if (TAPi18n.__("PHARMACY_NAME_EMPTY_ERROR")) {
+        $("#pharmacy-name-error").remove();
+        $("#pharmacy-name").after(`<label id="pharmacy-name-error" class="error" for="pharmacy-name">${TAPi18n.__("PHARMACY_NAME_EMPTY_ERROR")}</label>`);
+      }
+    });
     return false;
   } else {
     $("#pharmacy-name").removeClass("has-error");
@@ -162,9 +168,12 @@ function validatePharmacy() {
 function validateCIP() {
   if (! (isNaN(parseInt($("#cip").val())) ? 0 : parseInt($("#cip").val()).toString().length) > 0) {
     $("#cip").addClass('has-error');
-    if (! $("#cip-error").length) {
-      $("#cip").after(`<label id="cip-error" class="error" for="cip">${TAPi18n.__("CIP_EMPTY_ERROR")}</label>`);
-    }
+    Tracker.autorun(function () {
+      if (TAPi18n.__("CIP_EMPTY_ERROR")) {
+        $("#cip-error").remove();
+        $("#cip").after(`<label id="cip-error" class="error" for="cip">${TAPi18n.__("CIP_EMPTY_ERROR")}</label>`);
+      }
+    });
     return false;
   } else {
     $("#cip").removeClass('has-error');
@@ -176,9 +185,12 @@ function validateCIP() {
 function validateUsername() {
   if (! $("#username").val().length > 0) {
     $("#username").addClass('has-error');
-    if (! $("#username-error").length) {
-      $("#username").after(`<label id="username-error" class="error" for="username">${TAPi18n.__("USERNAME_EMPTY_ERROR")}</label>`);
-    }
+    Tracker.autorun(function () {
+      if (TAPi18n.__("USERNAME_EMPTY_ERROR")) {
+        $("#username-error").remove();
+        $("#username").after(`<label id="username-error" class="error" for="username">${TAPi18n.__("USERNAME_EMPTY_ERROR")}</label>`);
+      }
+    });
     return false;
   } else {
     $("#username").removeClass('has-error');
@@ -190,9 +202,12 @@ function validateUsername() {
 function validateEmail() {
   if (! $("#email").val().length > 0) {
     $("#email").addClass('has-error');
-    if (! $("#email-error").length) {
-      $("#email").after(`<label id="email-error" class="error" for="email">${TAPi18n.__("EMAIL_EMPTY_ERROR")}</label>`);
-    }
+    Tracker.autorun(function () {
+      if (TAPi18n.__("EMAIL_EMPTY_ERROR")) {
+        $("#email-error").remove();
+        $("#email").after(`<label id="email-error" class="error" for="email">${TAPi18n.__("EMAIL_EMPTY_ERROR")}</label>`);
+      }
+    });
     return false;
   } else {
     $("#email").removeClass('has-error');
@@ -204,13 +219,21 @@ function validateEmail() {
 function validatePassword() {
   if (! $("#password").val().length > 0) {
     $("#password").addClass('has-error');
-    $("#password-error").remove();
-    $("#password").after(`<label id="password-error" class="error" for="password">${TAPi18n.__("PASSWORD_EMPTY_ERROR")}</label>`);
+    Tracker.autorun(function () {
+      if (TAPi18n.__("PASSWORD_EMPTY_ERROR")) {
+        $("#password-error").remove();
+        $("#password").after(`<label id="password-error" class="error" for="password">${TAPi18n.__("PASSWORD_EMPTY_ERROR")}</label>`);
+      }
+    });
     return false;
   } else if ($("#password").val().length > 0 && $("#password").val().length < 6) {
     $("#password").addClass('has-error');
-    $("#password-error").remove();
-    $("#password").after(`<label id="password-error" class="error" for="password">${TAPi18n.__("PASSWORD_LENGTH_ERROR")}</label>`);
+    Tracker.autorun(function () {
+      if (TAPi18n.__("PASSWORD_LENGTH_ERROR")) {
+        $("#password-error").remove();
+        $("#password").after(`<label id="password-error" class="error" for="password">${TAPi18n.__("PASSWORD_LENGTH_ERROR")}</label>`);
+      }
+    });
     return false;
   } else {
     $("#password").removeClass('has-error');
@@ -222,13 +245,21 @@ function validatePassword() {
 function validateConfirmPasswrod() {
   if (! $("#confirm-password").val().length > 0) {
     $("#confirm-password").addClass('has-error');
-    $("#confirm-password-error").remove();
-    $("#confirm-password").after(`<label id="confirm-password-error" class="error" for="confirm-password">${TAPi18n.__("CONFIRM_PASSWORD_EMPTY_ERROR")}</label>`);
+    Tracker.autorun(function () {
+      if (TAPi18n.__("CONFIRM_PASSWORD_EMPTY_ERROR")) {
+        $("#confirm-password-error").remove();
+        $("#confirm-password").after(`<label id="confirm-password-error" class="error" for="confirm-password">${TAPi18n.__("CONFIRM_PASSWORD_EMPTY_ERROR")}</label>`);
+      }
+    });
     return false;
   } else if ($("#confirm-password").val() !== $("#password").val()) {
     $("#confirm-password").addClass('has-error');
-    $("#confirm-password-error").remove();
-    $("#confirm-password").after(`<label id="confirm-password-error" class="error" for="confirm-password">${TAPi18n.__("PASSWORD_MISMATCH_ERROR")}</label>`);
+    Tracker.autorun(function () {
+      if (TAPi18n.__("PASSWORD_MISMATCH_ERROR")) {
+        $("#confirm-password-error").remove();
+        $("#confirm-password").after(`<label id="confirm-password-error" class="error" for="confirm-password">${TAPi18n.__("PASSWORD_MISMATCH_ERROR")}</label>`);
+      }
+    });
     return false;
   } else {
     $("#confirm-password").removeClass('has-error');
@@ -240,13 +271,15 @@ function validateConfirmPasswrod() {
 function validateStreet() {
   if (! $("#street").val().length > 0) {
     $("#street").addClass('has-error');
-    if (! $("#street-error").length) {
-      $("#street").after(`<label id="street-error" class="error" for="street">${TAPi18n.__("STREET_EMPTY_ERROR")}</label>`);
-    }
+    Tracker.autorun(function () {
+      if (TAPi18n.__("STREET_EMPTY_ERROR")) {
+        $("#street-error").remove();
+        $("#street").after(`<label id="street-error" class="error" for="street">${TAPi18n.__("STREET_EMPTY_ERROR")}</label>`);
+      }
+    });
     return false;
   } else {
     $("#street").removeClass('has-error');
-    $("#street-error").remove();
     return true;
   }
 }
@@ -254,13 +287,15 @@ function validateStreet() {
 function validateCity() {
   if (! $("#city").val().length > 0) {
     $("#city").addClass('has-error');
-    if (! $("#city-error").length) {
-      $("#city").after(`<label id="city-error" class="error" for="city">${TAPi18n.__("CITY_EMPTY_ERROR")}</label>`);
-    }
+    Tracker.autorun(function () {
+      if (TAPi18n.__("CITY_EMPTY_ERROR")) {
+        $("#city-error").remove();
+        $("#city").after(`<label id="city-error" class="error" for="city">${TAPi18n.__("CITY_EMPTY_ERROR")}</label>`);
+      }
+    });
     return false;
   } else {
     $("#city").removeClass('has-error');
-    $("#city-error").remove();
     return true;
   }
 }
@@ -268,9 +303,12 @@ function validateCity() {
 function validatePostalCode() {
   if (! (isNaN(parseInt($("#postal-code").val())) ? 0 : parseInt($("#postal-code").val()).toString().length) > 0) {
     $("#postal-code").addClass('has-error');
-    if (! $("#postal-code-error").length) {
-      $("#postal-code").after(`<label id="postal-code-error" class="error" for="postal-code">${TAPi18n.__("POSTAL_CODE_EMPTY_ERROR")}</label>`);
-    }
+    Tracker.autorun(function () {
+      if (TAPi18n.__("CIP_EMPTY_ERROR")) {
+        $("#postal-code-error").remove();
+        $("#postal-code").after(`<label id="postal-code-error" class="error" for="postal-code">${TAPi18n.__("POSTAL_CODE_EMPTY_ERROR")}</label>`);
+      }
+    });
     return false;
   } else {
     $("#postal-code").removeClass('has-error');
