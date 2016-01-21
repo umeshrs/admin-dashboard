@@ -43,5 +43,11 @@
   "TELEPHONE": "Téléone",
   "TELEPHONE_PLACEHOLDER": "01 23 45 67 89",
   "FAX": "Fax",
-  "FAX_PLACEHOLDER": "01 23 45 67 89"
+  "FAX_PLACEHOLDER": "01 23 45 67 89",
+
+  // importMembers
+  "IMPORT": "Import",
+  "NO_FILE_ERROR": "Please choose a file.",
+  "INVALID_FILE_TYPE_ERROR": "Invalid file type. Please choose a CSV file.",
+  "IMPORT_SUCCESS_NOTIFICATION_MESSAGE": "<b>Success!</b> %s member(s) have been imported."
 }
