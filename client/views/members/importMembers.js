@@ -18,13 +18,30 @@ Template.importMembers.helpers({
 
 Template.importMembers.events({
   'click #import-members-btn': function () {
-    // delay import if import button is clicked the second time onwards
-    // used to wait till progress bar reset transition is complete
-    let delay = Session.get("progressPercent") ? 1000 : 0;
+    let result = isValidFile();
 
-    Session.set("progressPercent", 0);
-    Session.set("membersImported", 0);
-    Session.set("membersCount", 0);
+    if (result.error) {
+      if (result.error.error === "no-file") {
+        console.log(result.error.message);
+        $("#file").addClass("has-error");
+        Tracker.autorun(function () {
+          if (TAPi18n.__("NO_FILE_ERROR")) {
+            $("#file-error").remove();
+            $("#file").after(`<label id="file-error" class="error" for="file">${TAPi18n.__("NO_FILE_ERROR")}</label>`);
+          }
+        });
+      } else if (result.error.error === "invalid-file-type") {
+        $("#file").addClass("has-error");
+        Tracker.autorun(function () {
+          if (TAPi18n.__("INVALID_FILE_TYPE_ERROR")) {
+            $("#file-error").remove();
+            $("#file").after(`<label id="file-error" class="error" for="file">${TAPi18n.__("INVALID_FILE_TYPE_ERROR")}</label>`);
+          }
+        });
+        console.log(result.error.message);
+      }
+      return;
+    }
 
     let config = {
       header: true,
@@ -128,6 +145,14 @@ Template.importMembers.events({
       }
     };
 
+    // delay import if import button is clicked the second time onwards
+    // used to wait till progress bar reset transition is complete
+    let delay = Session.get("progressPercent") ? 1000 : 0;
+
+    Session.set("progressPercent", 0);
+    Session.set("membersImported", 0);
+    Session.set("membersCount", 0);
+
     Meteor.setTimeout(function () {
       $('#file').parse({
         config: config,
@@ -145,5 +170,28 @@ Template.importMembers.events({
   },
   'click #cancel-btn': function () {
     Router.go('/members');
+  },
+  'change #file': function () {
+    // clear file error when a file input value changes
+    $("#file").removeClass("has-error");
+    $("#file-error").remove();
   }
 });
+
+function isValidFile() {
+  let result = {};
+
+  if (! $("#file")[0].files.length) {
+    result.error = {};
+    result.error.error = "no-file";
+    result.error.message = "No file uploaded.";
+  } else if ($("#file")[0].files[0] && $("#file")[0].files[0].type !== "text/csv") {
+    result.error = {};
+    result.error.error = "invalid-file-type";
+    result.error.message = "Invalid file type. Only CSV file is accepted.";
+  } else {
+    result.result = true;
+  }
+
+  return result;
+}
