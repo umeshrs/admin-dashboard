@@ -1,0 +1,13 @@
+{
+  "BACKGROUND_CAPTION_TEXT": "INTRANET APTIPHAR - GROUPEMENT AEPK EURL",
+  "BACKGROUND_CAPTION_SUB_TEXT": "Réalisé par A3Soft",
+  "SIGN_IN_MESSAGE": "Connectez-vous à votre compte AEPK.",
+  "STAY_CONNECTED": "Rester connecté",
+  "HELP": "Besoin d'aide?",
+  "SIGN_IN": "Se connecter",
+
+  "USERNAME_EMPTY_ERROR": "S'il vous plaît entrer nom d'utilisateur.",
+  "USERNAME_NOT_FOUND_ERROR": "Ce nom d'utilisateur n'est pas enregistré.",
+  "PASSWORD_EMPTY_ERROR": "S'il vous plaît entrez le mot de passe.",
+  "PASSWORD_INCORRECT_ERROR": "Le mot de passe n'est pas valide."
+}

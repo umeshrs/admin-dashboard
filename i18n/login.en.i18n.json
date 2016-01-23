@@ -1,0 +1,13 @@
+{
+  "BACKGROUND_CAPTION_TEXT": "We help you save lives.",
+  "BACKGROUND_CAPTION_SUB_TEXT": "Images displayed are solely for representation purposes only. All work copyright of respective owner.",
+  "SIGN_IN_MESSAGE": "Sign into your AEPK account.",
+  "STAY_CONNECTED": "Keep me signed in",
+  "HELP": "Need help?",
+  "SIGN_IN": "Sign in",
+
+  "USERNAME_EMPTY_ERROR": "Please enter your username.",
+  "USERNAME_NOT_FOUND_ERROR": "Sorry, we do not recognise that username.",
+  "PASSWORD_EMPTY_ERROR": ">Please enter your password.",
+  "PASSWORD_INCORRECT_ERROR": "Incorrect password."
+}
