@@ -1,8 +1,11 @@
 {
-  "ADD_MEMBER": "Ajouter un membre",
-  "MEMBER_MANAGEMENT": "Gestion de membre",
+  "Add member": "Ajouter un membre",
+  "Import members": "Membres d'importation",
+  "Edit member": "Modifier membre",
+  "Remove member": "Supprimer membre",
   "NAME": "Nom",
   "USERNAME": "Nom d'utilisateur",
+  "Pharmacy": "Pharmacie",
   "ADDRESS": "Adresse",
   "ROLE": "Rôle",
 
@@ -14,7 +17,7 @@
   "OWNER_NAME": "Proprétaire",
   "OWNER_NAME_PLACEHOLDER": "",
   "OWNER_NAME_EMPTY_ERROR": "S'il vous plaît entrez le nom du propriétaire.",
-  "PHARMACY_NAME": "Pharmacie",
+  "PHARMACY_NAME": "Nom de l'officine",
   "PHARMACY_NAME_PLACEHOLDER": "",
   "PHARMACY_NAME_EMPTY_ERROR": "S'il vous plaît entrez le nom de la pharmacie.",
   "CIP": "CIP",
@@ -42,14 +45,13 @@
   "POSTAL_CODE": "Code postal",
   "POSTAL_CODE_PLACEHOLDER": "",
   "POSTAL_CODE_EMPTY_ERROR": "S'il vous plaît entrer le code postal.",
-  "TELEPHONE": "Téléone",
+  "TELEPHONE": "Téléphone",
   "TELEPHONE_PLACEHOLDER": "",
   "FAX": "Fax",
   "FAX_PLACEHOLDER": "",
 
   // importMembers
   "IMPORT": "Importer",
-  "Import members": "Membres d'importation",
   "Choose CSV file": "Choisir un fichier CSV à importer",
   "NO_FILE_ERROR": "S'il vous plaît choisir un fichier.",
   "INVALID_FILE_TYPE_ERROR": "Type de fichier invalide. S'il vous plaît choisir un fichier CSV.",
