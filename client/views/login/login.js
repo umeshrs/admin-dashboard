@@ -14,10 +14,10 @@ Template.login.events({
         if (error) {
           if (error.reason === "User not found") {
             $( $("#login-username")[0].parentNode ).addClass("has-error");
-            $( $("#login-username")[0].parentNode ).after('<p id="username-error" class="error login-error" for="username">Sorry, we do not recognise that username.</p>');
+            $( $("#login-username")[0].parentNode ).after(`<p id="username-error" class="error login-error" for="username">${TAPi18n.__("USERNAME_NOT_FOUND_ERROR")}</p>`);
           } else if (error.reason === "Incorrect password") {
             $( $("#login-password")[0].parentNode ).addClass("has-error");
-            $( $("#login-password")[0].parentNode ).after('<p id="password-error" class="error login-error" for="password">Incorrect password.</p>');
+            $( $("#login-password")[0].parentNode ).after(`<p id="password-error" class="error login-error" for="password">${TAPi18n.__("PASSWORD_INCORRECT_ERROR")}</p>`);
           } else {
             console.log("Error logging in: ", error);
           }
@@ -104,7 +104,7 @@ function validateUsername() {
       $("#username-error").remove();
     }
     if (! $("#username-error").length > 0) {
-      $( $("#login-username")[0].parentNode ).after('<p id="username-error" class="error" for="username">Please enter your username.</p>');
+      $( $("#login-username")[0].parentNode ).after(`<p id="username-error" class="error" for="username">${TAPi18n.__("USERNAME_EMPTY_ERROR")}</p>`);
     }
     return false;
   }
@@ -121,7 +121,7 @@ function validatePassword() {
       $("#password-error").remove();
     }
     if (! $("#password-error").length > 0) {
-      $( $("#login-password")[0].parentNode ).after('<p id="password-error" class="error" for="password">Please enter your password.</p>');
+      $( $("#login-password")[0].parentNode ).after(`<p id="password-error" class="error" for="password">${TAPi18n.__("PASSWORD_EMPTY_ERROR")}</p>`);
     }
     return false;
   }

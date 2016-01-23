@@ -7,11 +7,11 @@
       <!-- END Background Pic-->
       <!-- START Background Caption-->
       <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">
-        <h2 class="semi-bold text-white">
-          We help you save lives.
-        </h2>
+        <h5 class="semi-bold text-white">
+          {{_ "BACKGROUND_CAPTION_TEXT"}}
+        </h5>
         <p class="small">
-          Images displayed are solely for representation purposes only. All work copyright of respective owner.
+          {{_ "BACKGROUND_CAPTION_SUB_TEXT"}}
         </p>
       </div>
       <!-- END Background Caption-->
@@ -21,10 +21,10 @@
     <!-- START Login Right Container-->
     <div class="login-container bg-white">
       <div class="p-l-50 sm-p-l-15 p-r-50 sm-p-r-15 sm-p-t-10">
-        <div class="logo">
+        <div class="logo text-center">
           <img src="/img/logo.png" alt="logo" data-src="/img/logo.png" height="50">
         </div>
-        <p class="p-t-35">Sign into your AEPK account.</p>
+        <p class="p-t-35">{{_ "SIGN_IN_MESSAGE"}}</p>
         {{> yield}}
         {{> footer}}
       </div>
