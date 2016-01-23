@@ -4,6 +4,7 @@ Template.footer.onRendered(function () {
     TAPi18n.setLanguage(this.$("#language").val());
     localStorage.setItem("language", this.$("#language").val());
   } else {
+    TAPi18n.setLanguage(localStorage.getItem("language"));
     this.$("#language").val(localStorage.getItem("language"));
   }
 
