@@ -11,15 +11,7 @@ Template.viewRewards.helpers({
     return (Meteor.user() && Meteor.user().profile && Meteor.user().profile.rewardPoints) || 0;
   },
   rewards() {
-    return Rewards.find({ published: true, availableCount: { $gt: 0 } }, {
-      fields: {
-        title: 1,
-        description: 1,
-        validTill: 1,
-        points: 1,
-        createdAt: 1
-      },
-      sort: { createdAt: 1} });
+    return Rewards.find({}, { sort: { points: 1 } });
   }
 });
 
