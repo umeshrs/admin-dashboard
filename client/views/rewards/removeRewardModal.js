@@ -22,7 +22,7 @@ Template.removeRewardModal.events({
         }
       } else {
         console.log(`${result} reward(s) removed from rewards collection.`);
-        notificationOptions.message = `<b>Success!</b> ${Session.get("currentReward").title} has been removed.`;
+        notificationOptions.message = `<b>Success!</b> ${Session.get("currentReward") && Session.get("currentReward").title} has been removed.`;
         notificationOptions.type = "success";
       }
       $('body').pgNotification(notificationOptions).show();
