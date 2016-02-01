@@ -342,7 +342,18 @@ Router.route('/rewards/add-reward', {
   label: "Add Reward",
   parent: "rewards",
   action: function () {
-    this.render('addReward');
+    let currentUser = Meteor.user();
+    if (currentUser) {
+      if (currentUser.profile && currentUser.profile.role === "administrator") {
+        this.render('addReward');
+      } else {
+        this.render('notFound');
+      }
+    } else if (currentUser === null) {
+      this.render('notFound');
+    } else {
+      this.render('loading');
+    }
   },
   data: function () {
     return { task: "add-reward" };
@@ -354,7 +365,18 @@ Router.route('/rewards/edit-reward/:_id', {
   label: "Edit Reward",
   parent: "rewards",
   action: function () {
-    this.render('editReward');
+    let currentUser = Meteor.user();
+    if (currentUser) {
+      if (currentUser.profile && currentUser.profile.role === "administrator") {
+        this.render('editReward');
+      } else {
+        this.render('notFound');
+      }
+    } else if (currentUser === null) {
+      this.render('notFound');
+    } else {
+      this.render('loading');
+    }
   },
   data: function () {
     let data = Rewards.findOne(this.params._id) || {};
