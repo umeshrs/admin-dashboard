@@ -318,12 +318,21 @@ Router.route('/rewards', {
   name: "rewards",
   label: "Rewards",
   parent: "home",
+  waitOn: function () {
+    return Meteor.subscribe("rewards");
+  },
   action: function () {
-    var currentUser = Meteor.user();
-    if (currentUser.profile && currentUser.profile.role === "administrator") {
-      this.render('rewards');
+    let currentUser = Meteor.user();
+    if (currentUser) {
+      if (currentUser.profile && currentUser.profile.role === "administrator") {
+        this.render('rewards');
+      } else {
+        this.render('viewRewards');
+      }
+    } else if (currentUser === null) {
+      this.render('notFound');
     } else {
-      this.render('viewRewards');
+      this.render('loading');
     }
   }
 });
