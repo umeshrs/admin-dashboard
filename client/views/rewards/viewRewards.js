@@ -1,6 +1,6 @@
 Template.viewRewards.onRendered(function () {
   Tracker.autorun(function () {
-    if (Rewards.find({ published: true }, {}).count() > 0) {
+    if (Rewards.find().count() > 0) {
       $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
     }
   });
