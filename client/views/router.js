@@ -364,6 +364,9 @@ Router.route('/rewards/edit-reward/:_id', {
   name: "edit-reward",
   label: "Edit Reward",
   parent: "rewards",
+  waitOn: function () {
+    return Meteor.subscribe("reward", this.params._id);
+  },
   action: function () {
     let currentUser = Meteor.user();
     if (currentUser) {
