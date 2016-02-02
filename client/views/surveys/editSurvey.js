@@ -46,7 +46,7 @@ Template.editSurvey.events({
         notificationOptions.message = "<b>Error!</b> " + error.reason;
         notificationOptions.type = "error";
       } else {
-        Router.go('/manage-surveys');
+        Router.go('/surveys');
         console.log(result + " document(s) updated in Surveys collection.");
         notificationOptions.message = "<b>Success!</b> Changes made to the survey have been saved.";
       }
@@ -54,6 +54,6 @@ Template.editSurvey.events({
     });
   },
   'click #cancel-btn': function () {
-    Router.go('/manage-surveys');
+    Router.go('/surveys');
   }
 });
