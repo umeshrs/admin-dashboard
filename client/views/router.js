@@ -332,27 +332,18 @@ Router.route('/surveys/preview-survey/:_id', {
   }
 });
 
-Router.route('/surveys/view-response/:_id', {
-  name: "view-response",
-  label: "View response",
-  parent: "surveys",
-  action: function () {
-    this.render('viewResponse');
-  },
-  data: function () {
-    return Surveys.findOne(this.params._id);
-  }
-});
-
 Router.route('surveys/view-survey/:_id', {
   name: "view-survey",
   label: "View survey",
   parent: "surveys",
+  waitOn: function () {
+    return Meteor.subscribe("survey", this.params._id);
+  },
   action: function () {
     this.render('viewSurvey');
   },
   data: function () {
-    var data = Surveys.findOne(this.params._id);
+    let data = Surveys.findOne(this.params._id);
     if (data) {
       data.questions = data.questions.map(function (question, index) {
         question.index = index;
@@ -364,6 +355,18 @@ Router.route('surveys/view-survey/:_id', {
       });
     }
     return data;
+  }
+});
+
+Router.route('/surveys/view-response/:_id', {
+  name: "view-response",
+  label: "View response",
+  parent: "surveys",
+  action: function () {
+    this.render('viewResponse');
+  },
+  data: function () {
+    return Surveys.findOne(this.params._id);
   }
 });
 
