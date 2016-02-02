@@ -164,6 +164,9 @@ Router.route('/members/edit-member/:_id', {
   name: "edit-member",
   label: "Edit member",
   parent: "members",
+  waitOn: function () {
+    return Meteor.subscribe("member", this.params._id);
+  },
   action: function () {
     let currentUser = Meteor.user();
     if (currentUser) {
