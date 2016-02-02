@@ -300,10 +300,21 @@ Router.route('/surveys/preview-survey/:_id', {
   label: "Preview survey",
   parent: "surveys",
   action: function () {
-    this.render('viewSurvey');
+    let currentUser = Meteor.user();
+    if (currentUser) {
+      if (currentUser.profile && currentUser.profile.role === "administrator") {
+        this.render('viewSurvey');
+      } else {
+        this.render('notFound');
+      }
+    } else if (currentUser === null) {
+      this.render('notFound');
+    } else {
+      this.render('loading');
+    }
   },
   data: function () {
-    var data = Surveys.findOne(this.params._id);
+    let data = Surveys.findOne(this.params._id);
     if (data) {
       data.questions = data.questions.map(function (question, index) {
         question.index = index;
