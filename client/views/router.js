@@ -230,6 +230,9 @@ Router.route('/surveys', {
   name: "surveys",
   label: "Surveys",
   parent: "home",
+  waitOn: function () {
+    return Meteor.subscribe("surveys");
+  },
   action: function () {
     let currentUser = Meteor.user();
     if (currentUser) {
