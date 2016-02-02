@@ -299,6 +299,9 @@ Router.route('/surveys/preview-survey/:_id', {
   name: "preview-survey",
   label: "Preview survey",
   parent: "surveys",
+  waitOn: function () {
+    return Meteor.subscribe("survey", this.params._id);
+  },
   action: function () {
     let currentUser = Meteor.user();
     if (currentUser) {
