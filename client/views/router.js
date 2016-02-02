@@ -118,6 +118,9 @@ Router.route('/members', {
   name: "members",
   label: "Members",
   parent: "home",
+  waitOn: function () {
+    return Meteor.subscribe("members");
+  },
   action: function () {
     let currentUser = Meteor.user();
     if (currentUser) {
