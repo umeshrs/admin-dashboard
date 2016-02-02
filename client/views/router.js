@@ -82,6 +82,9 @@ Router.route('/login', {
 Router.route('/home', {
   name: "home",
   label: "Home",
+  waitOn: function () {
+    return Meteor.subscribe("members");
+  },
   action: function () {
     this.render('storeLocator');
   }
