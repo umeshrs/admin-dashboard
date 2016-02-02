@@ -6,7 +6,9 @@ Meteor.publish("survey", function (surveyId) {
         fields: { responses: 0 }
       });
     } else {
-      return [];
+      return Surveys.find(surveyId, {
+        fields: { responses: 0, published: 0 }
+      });
     }
   } else {
     return [];
