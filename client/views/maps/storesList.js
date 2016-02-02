@@ -8,7 +8,10 @@ Template.storesList.onRendered(function () {
 });
 
 Template.storesList.helpers({
-  stores: function () {
-    return Members.find({}, {sort: {createdAt: 1}});
+  stores() {
+    return Meteor.users.find({ 'profile.role': "member" }, {
+      fields: { 'profile.pharmacyName': 1, 'profile.address': 1 },
+      sort: { createdAt: 1 }
+    });
   }
 });

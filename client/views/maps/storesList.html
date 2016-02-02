@@ -12,10 +12,12 @@
 <template name="store">
   <li>
     <p>
-      <strong>{{storeName}}</strong><br />
-      ({{lat}}, {{lng}})<br />
-      {{address.street}}<br />
-      {{address.postalCode}} {{address.city}}, {{address.country}}<br />
+      <strong>{{profile.pharmacyName}}</strong><br />
+      {{#with profile.address}}
+        ({{lat}}, {{lng}})<br />
+        {{street}}<br />
+        {{postalCode}} {{city}}{{#if country}}, {{country}}{{/if}}<br />
+      {{/with}}
     </p>
   </li>
 </template>
