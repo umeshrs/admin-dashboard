@@ -226,28 +226,39 @@ Router.route('/members/import-members', {
   }
 });
 
-Router.route('/manage-surveys', {
-  name: "manage-surveys",
-  label: "Manage surveys",
+Router.route('/surveys', {
+  name: "surveys",
+  label: "Surveys",
   parent: "home",
   action: function () {
-    this.render('manageSurveys');
+    let currentUser = Meteor.user();
+    if (currentUser) {
+      if (currentUser.profile && currentUser.profile.role === "administrator") {
+        this.render('manageSurveys');
+      } else {
+        this.render('surveys');
+      }
+    } else if (currentUser === null) {
+      this.render('notFound');
+    } else {
+      this.render('loading');
+    }
   }
 });
 
-Router.route('/manage-surveys/add-survey', {
+Router.route('/surveys/add-survey', {
   name: "add-survey",
   label: "Add survey",
-  parent: "manage-surveys",
+  parent: "surveys",
   action: function () {
     this.render('addSurvey');
   }
 });
 
-Router.route('/manage-surveys/preview-survey/:_id', {
+Router.route('/surveys/preview-survey/:_id', {
   name: "preview-survey",
   label: "Preview survey",
-  parent: "manage-surveys",
+  parent: "surveys",
   action: function () {
     this.render('viewSurvey');
   },
@@ -267,10 +278,10 @@ Router.route('/manage-surveys/preview-survey/:_id', {
   }
 });
 
-Router.route('/manage-surveys/edit-survey/:_id', {
+Router.route('/surveys/edit-survey/:_id', {
   name: "edit-survey",
   label: "Edit survey",
-  parent: "manage-surveys",
+  parent: "surveys",
   action: function () {
     this.render('editSurvey');
   },
@@ -279,24 +290,15 @@ Router.route('/manage-surveys/edit-survey/:_id', {
   }
 });
 
-Router.route('/manage-surveys/view-response/:_id', {
+Router.route('/surveys/view-response/:_id', {
   name: "view-response",
   label: "View response",
-  parent: "manage-surveys",
+  parent: "surveys",
   action: function () {
     this.render('viewResponse');
   },
   data: function () {
     return Surveys.findOne(this.params._id);
-  }
-});
-
-Router.route('/surveys', {
-  name: "surveys",
-  label: "Surveys",
-  parent: "home",
-  action: function () {
-    this.render('surveys');
   }
 });
 

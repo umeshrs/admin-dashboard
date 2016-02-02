@@ -18,12 +18,12 @@ Template.manageSurveys.helpers({
 
 Template.manageSurveys.events({
   'click #add-survey-btn': function () {
-    Router.go('/manage-surveys/add-survey');
+    Router.go('/surveys/add-survey');
   },
   'click .preview-survey-btn': function () {
     $('[data-toggle="tooltip"]').tooltip('hide');
     $('[data-tooltip-toggle="tooltip"]').tooltip('hide');
-    Router.go('/manage-surveys/preview-survey/' + this._id);
+    Router.go('/surveys/preview-survey/' + this._id);
   },
   'click .remove-survey-btn': function () {
     $('[data-toggle="tooltip"]').tooltip('hide');
@@ -33,12 +33,12 @@ Template.manageSurveys.events({
   'click .edit-survey-btn': function (event) {
     $('[data-toggle="tooltip"]').tooltip('hide');
     $('[data-tooltip-toggle="tooltip"]').tooltip('hide');
-    Router.go('/manage-surveys/edit-survey/' + this._id);
+    Router.go('/surveys/edit-survey/' + this._id);
   },
   'click .view-responses-btn': function (event) {
     $('[data-toggle="tooltip"]').tooltip('hide');
     $('[data-tooltip-toggle="tooltip"]').tooltip('hide');
-    Router.go('/manage-surveys/view-response/' + this._id);
+    Router.go('/surveys/view-response/' + this._id);
   },
   'change .switchery': function (event) {
     Surveys.update(this.surveyId, { $set: { published: event.target.checked } }, function (error, result) {
