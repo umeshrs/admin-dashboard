@@ -363,7 +363,18 @@ Router.route('/surveys/view-response/:_id', {
   label: "View response",
   parent: "surveys",
   action: function () {
-    this.render('viewResponse');
+    let currentUser = Meteor.user();
+    if (currentUser) {
+      if (currentUser.profile && currentUser.profile.role === "administrator") {
+        this.render('viewResponse');
+      } else {
+        this.render('notFound');
+      }
+    } else if (currentUser === null) {
+      this.render('notFound');
+    } else {
+      this.render('loading');
+    }
   },
   data: function () {
     return Surveys.findOne(this.params._id);
