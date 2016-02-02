@@ -261,6 +261,6 @@ Template.googleMaps.events({
     Router.go('/chat');
   },
   'click .project-btn': function () {
-    Router.go('/project');
+    Router.go('/projects');
   }
 });
