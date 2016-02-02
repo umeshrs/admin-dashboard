@@ -1,11 +1,6 @@
 Template.viewSurvey.events({
   'click #cancel-btn': function () {
-    let currentUser = Meteor.user();
-    if (currentUser && currentUser.profile && currentUser.profile.role === "administrator") {
-      Router.go('/manage-surveys');
-    } else {
-      Router.go('/surveys');
-    }
+    Router.go('/surveys');
   },
   'click #submit-response-btn': function (event, template) {
     var questions = template.$(".question-wrapper"), i, response = [];
@@ -28,12 +23,7 @@ Template.viewSurvey.events({
         notificationOptions.message = "<b>Error!</b> Could not submit your response. Please try again.";
         notificationOptions.type = "error";
       } else {
-        let currentUser = Meteor.user();
-        if (currentUser && currentUser.profile && currentUser.profile.role === "administrator") {
-          Router.go('/manage-surveys');
-        } else {
-          Router.go('/surveys');
-        }
+        Router.go('/surveys');
         notificationOptions.message = "<b>Success!</b> Your response has been submitted.";
       }
       $('body').pgNotification(notificationOptions).show();
