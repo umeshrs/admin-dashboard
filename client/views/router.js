@@ -254,7 +254,18 @@ Router.route('/surveys/add-survey', {
   label: "Add survey",
   parent: "surveys",
   action: function () {
-    this.render('addSurvey');
+    let currentUser = Meteor.user();
+    if (currentUser) {
+      if (currentUser.profile && currentUser.profile.role === "administrator") {
+        this.render('addSurvey');
+      } else {
+        this.render('notFound');
+      }
+    } else if (currentUser === null) {
+      this.render('notFound');
+    } else {
+      this.render('loading');
+    }
   }
 });
 
