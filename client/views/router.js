@@ -362,6 +362,9 @@ Router.route('/surveys/view-response/:_id', {
   name: "view-response",
   label: "View response",
   parent: "surveys",
+  waitOn: function () {
+    return Meteor.subscribe("survey", this.params._id);
+  },
   action: function () {
     let currentUser = Meteor.user();
     if (currentUser) {
