@@ -22,11 +22,31 @@
         {{> question}}
       </div>
       <div class="btns-wrapper clearfix">
+        <button type="button" class="btn btn-complete btn-animated from-left fa fa-plus pull-right" id="add-question-btn">
+          <span class="bold">Ajouter une question</span>
+        </button>
+      </div>
+      <div class="date-wrapper clearfix">
+        <div class="row">
+          <label for="publish-date" class="col-sm-2">{{_ "Publish on"}}</label>
+          <div class="col-sm-3">
+            <div class="input-group date">
+              <input type="text" class="form-control" id="publish-date" placeholder="dd/mm/yyyy" required>
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            </div>
+          </div>
+          <label for="expiry-date" class="col-sm-2 col-sm-offset-2">{{_ "Expires on"}}</label>
+          <div class="col-sm-3">
+            <div class="input-group date">
+              <input type="text" class="form-control" id="expiry-date" placeholder="dd/mm/yyyy" required>
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btns-wrapper clearfix">
         <button type="button" class="btn btn-success btn-animated from-left fa fa-save pull-right" id="save-survey-btn">
           <span class="bold">Enregistrer</span>
-        </button>
-        <button type="button" class="btn btn-info btn-animated from-left fa fa-plus pull-right m-r-20" id="add-question-btn">
-          <span class="bold">Ajouter une question</span>
         </button>
         <button type="button" class="btn btn-danger btn-animated from-left fa fa-remove pull-right m-r-20" id="cancel-btn">
           <span class="bold">Annuler</span>

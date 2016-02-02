@@ -1,5 +1,12 @@
 Template.addSurvey.onRendered(function () {
   this.$("#form-title").focus();
+
+  this.$('.date').datepicker({
+    format: "dd/mm/yyyy",
+    startDate: 'today',
+    todayBtn: 'linked',
+    autoclose: true,
+  });
 });
 
 Template.addSurvey.events({
