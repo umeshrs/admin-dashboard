@@ -269,6 +269,32 @@ Router.route('/surveys/add-survey', {
   }
 });
 
+Router.route('/surveys/edit-survey/:_id', {
+  name: "edit-survey",
+  label: "Edit survey",
+  parent: "surveys",
+  waitOn: function () {
+    return Meteor.subscribe("survey", this.params._id);
+  },
+  action: function () {
+    let currentUser = Meteor.user();
+    if (currentUser) {
+      if (currentUser.profile && currentUser.profile.role === "administrator") {
+        this.render('editSurvey');
+      } else {
+        this.render('notFound');
+      }
+    } else if (currentUser === null) {
+      this.render('notFound');
+    } else {
+      this.render('loading');
+    }
+  },
+  data: function () {
+    return Surveys.findOne(this.params._id);
+  }
+});
+
 Router.route('/surveys/preview-survey/:_id', {
   name: "preview-survey",
   label: "Preview survey",
@@ -289,18 +315,6 @@ Router.route('/surveys/preview-survey/:_id', {
       });
     }
     return data;
-  }
-});
-
-Router.route('/surveys/edit-survey/:_id', {
-  name: "edit-survey",
-  label: "Edit survey",
-  parent: "surveys",
-  action: function () {
-    this.render('editSurvey');
-  },
-  data: function () {
-    return Surveys.findOne(this.params._id);
   }
 });
 
