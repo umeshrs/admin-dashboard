@@ -1,5 +1,3 @@
-Meteor.subscribe("usersData");
-
 Template.members.onRendered(function () {
   Session.setDefault("currentUser", {});
   Tracker.autorun(function () {
