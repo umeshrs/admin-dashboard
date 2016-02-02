@@ -144,12 +144,14 @@ function updateMarkers () {
 }
 
 function prepareMarkers () {
-  var storesList, marker, i, j, infoWindowContent, iconBase, markerIcon, storesListElements;
+  let storesList, iconBase, storesListElements;
 
-  // storesList = Stores.find({}, { sort: { lat: -1 }}).fetch();
-  storesList = Members.find({}, { sort: { lat: -1 }}).fetch();
-  marker = [];
+  storesList = Meteor.users.find({ 'profile.role': "member" }, {
+    fields: { 'profile.pharmacyName': 1, 'profile.address': 1 },
+    sort: { lat: -1 } }).fetch();
   iconBase = "http://maps.google.com/mapfiles/ms/icons/";
+  // DOM elements
+  storesListElements = $("#stores-list > li");
 
   var infoWindowOpener = function (marker) {
     infoWindow.setContent(marker.infoWindowContent);
@@ -173,12 +175,17 @@ function prepareMarkers () {
     }
   };
 
-  for (var i = 0; i < storesList.length; i++) {
-    infoWindowContent = '<p>' +
-      '<strong>' + storesList[i].storeName + '</strong><br />' +
-      storesList[i].address.street + '<br />' +
-      storesList[i].address.postalCode + ' ' + storesList[i].address.city + ', ' + storesList[i].address.country + '<br />' +
-      '</p>';
+  for (let i = 0; i < storesList.length; i++) {
+    let marker, infoWindowContent, markerIcon;
+    infoWindowContent = '<p><strong>' + storesList[i].profile.pharmacyName + '</strong><br />';
+    if (storesList[i].profile && storesList[i].profile.address) {
+      infoWindowContent += storesList[i].profile.address.street + '<br />' +
+      storesList[i].profile.address.postalCode + ' ' + storesList[i].profile.address.city;
+      if (storesList[i].profile.address.country) {
+        infoWindowContent += ', ' + storesList[i].profile.address.country;
+      }
+    }
+    infoWindowContent += '<br /></p>';
 
     switch (storesList[i].task && storesList[i].task.status) {
       case "PENDING":
@@ -210,28 +217,27 @@ function prepareMarkers () {
         '<button type="button" class="btn btn-default info-btn" title="Info"><i class="fa fa-info"></i></button>'
       '</div>';
 
-    marker[i] = new google.maps.Marker({
-      position: new google.maps.LatLng(storesList[i].lat, storesList[i].lng),
-      title: storesList[i].storeName,
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(storesList[i].profile && storesList[i].profile.address && storesList[i].profile.address.lat,
+        storesList[i].profile && storesList[i].profile.address && storesList[i].profile.address.lng),
+      title: storesList[i].profile && storesList[i].profile.pharmacyName,
       animation: (storesList[i].task && storesList[i].task.status === "OVERDUE") ? google.maps.Animation.BOUNCE : null,
       icon: markerIcon,
       infoWindowContent: infoWindowContent
     });
 
-    marker[i].addListener('click', _.bind(infoWindowOpener, null, marker[i]));
+    marker.addListener('click', _.bind(infoWindowOpener, null, marker));
 
-    map.addListener('click', _.bind(infoWindowCloser, null));
-
-    // DOM elements
-    storesListElements = $("#stores-list > li");
-    for (j = 0; j < storesListElements.length; j++) {
-      if ($(storesListElements[j]).find("strong").html() === storesList[i].storeName) {
-        storesListElements[j].addEventListener('click', _.bind(infoWindowToggler, null, marker[i]));
+    for (let j = 0; j < storesListElements.length; j++) {
+      if ($(storesListElements[j]).find("strong").html() === storesList[i].profile.pharmacyName) {
+        storesListElements[j].addEventListener('click', _.bind(infoWindowToggler, null, marker));
       }
     }
 
-    markersListGlobal.push(marker[i]);
+    markersListGlobal.push(marker);
   }
+
+  map.addListener('click', _.bind(infoWindowCloser, null));
 }
 
 Template.googleMaps.onRendered(function () {
@@ -246,10 +252,7 @@ Template.googleMaps.onRendered(function () {
     google.maps.event.trigger(map, 'resize');
     // explicitly recenter the map when it is rendered
     map.setCenter(new google.maps.LatLng(48.8588589, 2.335864));
-    clearMarkers();
-    markersListGlobal = [];
-    prepareMarkers();
-    addMarkers();
+    updateMarkers();
   });
 });
 
