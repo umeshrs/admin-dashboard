@@ -43,7 +43,7 @@ Template.addSurvey.events({
         notificationOptions.message = "<b>Error!</b> Something went wrong while creating the new survey. Please try again.";
         notificationOptions.type = "error";
       } else {
-        Router.go('/manage-surveys');
+        Router.go('/surveys');
         notificationOptions.message = "<b>Success!</b> New survey created.";
         Meteor.call("pushNotifications", result);
       }
@@ -51,7 +51,7 @@ Template.addSurvey.events({
     });
   },
   'click #cancel-btn': function () {
-    Router.go('/manage-surveys');
+    Router.go('/surveys');
   },
   'focusin .form-control': function (event, template) {
     template.$(event.target).closest(".form-group-default").css({"padding-bottom": "9px", "border-bottom": "2px solid"});
