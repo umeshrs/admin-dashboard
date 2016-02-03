@@ -4,8 +4,9 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Date Created</th>
+          <th>{{_ "Title"}}</th>
+          <th>{{_ "Publish date"}}</th>
+          <th>{{_ "Expiry date"}}</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -13,7 +14,8 @@
         {{#each surveys}}
           <tr>
             <td class="bold">{{title}}</td>
-            <td>{{dateToLocaleString createdAt}}</td>
+            <td>{{dateToLocaleDateString publishDate}}</td>
+            <td>{{dateToLocaleDateString expiryDate}}</td>
             <td>
               <div class="btn-group">
                 <button type="button" class="btn btn-complete view-survey-btn" data-original-title="View survey"

@@ -8,7 +8,7 @@ Template.surveys.onRendered(function () {
 
 Template.surveys.helpers({
   surveys: function () {
-    return Surveys.find({}, { sort: { createdAt: 1 } });
+    return Surveys.find({}, { sort: { publishDate: 1 } });
   },
 });
 
