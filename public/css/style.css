@@ -393,3 +393,14 @@ input[type="file"] {
   line-height: 35px;
   font-size: 35px;
 }
+
+/*Notifcation dropdown*/
+
+.header .bubble {
+  width: 10px;
+  height: 10px;
+  background-color: #EE9318;
+  opacity: 0.8;
+  top: -5px;
+  right: 7px;
+}
