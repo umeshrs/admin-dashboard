@@ -36,14 +36,5 @@ Template.manageSurveys.events({
     $('[data-toggle="tooltip"]').tooltip('hide');
     $('[data-tooltip-toggle="tooltip"]').tooltip('hide');
     Router.go('/surveys/view-response/' + this._id);
-  },
-  'change .switchery': function (event) {
-    Surveys.update(this.surveyId, { $set: { published: event.target.checked } }, function (error, result) {
-      if (error) {
-        console.log(`Error updating survey published status. Error: ${error.message}`);
-      } else {
-        console.log(`Updated publish status of ${result} survey(s).`);
-      }
-    });
   }
 });
