@@ -12,8 +12,9 @@
         <tr>
           <th>{{_ "Title"}}</th>
           <th>{{_ "Date created"}}</th>
+          <th>{{_ "Publish date"}}</th>
+          <th>{{_ "Expiry date"}}</th>
           <th>{{_ "Responses"}}</th>
-          <th>{{_ "Publish status"}}</th>
           <th>{{_ "Actions"}}</th>
         </tr>
       </thead>
@@ -22,8 +23,9 @@
           <tr>
             <td class="bold">{{title}}</td>
             <td>{{dateToLocaleString createdAt}}</td>
+            <td>{{dateToLocaleDateString publishDate}}</td>
+            <td>{{dateToLocaleDateString expiryDate}}</td>
             <td>{{responses}}</td>
-            <td>{{> switchery checked=published surveyId=_id}}</td>
             <td>
               <div class="btn-group">
                 <button type="button" class="btn btn-warning edit-survey-btn" data-original-title="{{_ 'Edit survey'}}"

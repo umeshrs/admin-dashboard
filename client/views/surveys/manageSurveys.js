@@ -9,10 +9,7 @@ Template.manageSurveys.onRendered(function () {
 
 Template.manageSurveys.helpers({
   surveys: function () {
-    return Surveys.find({}, {
-      fields: { title: 1, createdAt: 1, responses: 1, published: 1 },
-      sort: { createdAt: 1 }
-    });
+    return Surveys.find({}, { sort: { createdAt: 1 } });
   },
 });
 
