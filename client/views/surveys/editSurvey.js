@@ -44,6 +44,9 @@ Template.editSurvey.events({
 
     survey.publishDate = template.$("#publish-date").closest(".date").datepicker('getDate');
     survey.expiryDate = template.$("#expiry-date").closest(".date").datepicker('getDate');
+    survey.expiryDate.setHours(23);
+    survey.expiryDate.setMinutes(59);
+    survey.expiryDate.setSeconds(59);
 
     Meteor.call("updateSurvey", this._id, survey, function (error, result) {
       let notificationOptions = {
