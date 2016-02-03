@@ -6,8 +6,9 @@ Meteor.publish("surveys", function () {
         fields: { description: 0, questions: 0 }
       });
     } else {
-      return Surveys.find({ published: true }, {
-        fields: { title: 1, createdAt: 1 }
+      let currentDate = new Date();
+      return Surveys.find({ publishDate: { $lte: currentDate }, expiryDate: { $gte: currentDate } }, {
+        fields: { title: 1, publishDate: 1, expiryDate: 1 }
       });
     }
   } else {
