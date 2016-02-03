@@ -42,6 +42,9 @@ Template.notificationDropdown.helpers({
 });
 
 Template.notificationItem.helpers({
+  getData() {
+    return { _id: this.surveyId };
+  },
   age: function () {
     var timeDiff = (Date.now() - this.createdAt) / (1000);
     if (timeDiff < 60) {
