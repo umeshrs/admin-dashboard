@@ -21,20 +21,20 @@ Template.editSurvey.events({
     Blaze.render(Template.question, parentNode);
   },
   'click #save-survey-btn': function (event, template) {
-    var survey = {}, questions, question, options, option, i, j;
+    let survey = {};
     survey.title = template.$("#form-title").val();
     survey.description = template.$("#form-description").val();
     survey.questions = [];
-    questions = template.$(".question-wrapper");
+    let questions = template.$(".question-wrapper");
 
-    for (i = 0; i < questions.length; i++) {
-      question = {};
+    for (let i = 0; i < questions.length; i++) {
+      let question = {};
       question.text = template.$(questions[i]).find(".question").val();
       question.options = [];
-      options = template.$(questions[i]).find(".option");
+      let options = template.$(questions[i]).find(".option");
 
-      for (j = 0; j < options.length; j++) {
-        option = {};
+      for (let j = 0; j < options.length; j++) {
+        let option = {};
         option.text = template.$(options[j]).val();
         question.options.push(option);
       }
@@ -42,20 +42,33 @@ Template.editSurvey.events({
       survey.questions.push(question);
     }
 
+    survey.publishDate = template.$("#publish-date").closest(".date").datepicker('getDate');
+    survey.expiryDate = template.$("#expiry-date").closest(".date").datepicker('getDate');
+
     Meteor.call("updateSurvey", this._id, survey, function (error, result) {
-      var notificationOptions = {
+      let notificationOptions = {
         style: "bar",
         position: "top",
-        type: "success"
+        type: "error"
       };
       if (error) {
-        console.log("Error invoking method 'updateSurvey':", error.message);
-        notificationOptions.message = "<b>Error!</b> " + error.reason;
-        notificationOptions.type = "error";
+        console.log(`Error invoking method 'updateSurvey'. Error: ${error.message}.`);
+        switch (error.error) {
+          case "not-logged-in":
+            notificationOptions.message = "<b>Oops!</b> You must be logged in to edit a survey.";
+            break;
+          case "not-authorized":
+            notificationOptions.message = "<b>Oops!</b> You are not authorized to edit a survey.";
+            break;
+          default:
+            notificationOptions.message = "<b>Oops!</b> Something went wrong while editing the survey. Please try again.";
+            break;
+        }
       } else {
         Router.go('/surveys');
-        console.log(result + " document(s) updated in Surveys collection.");
+        console.log(`${result} document(s) updated in surveys collection.`);
         notificationOptions.message = "<b>Success!</b> Changes made to the survey have been saved.";
+        notificationOptions.type = "success";
       }
       $('body').pgNotification(notificationOptions).show();
     });
