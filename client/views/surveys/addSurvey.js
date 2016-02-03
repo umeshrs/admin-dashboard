@@ -39,9 +39,7 @@ Template.addSurvey.events({
     survey.published = false;
     survey.publishDate = template.$("#publish-date").closest(".date").datepicker('getDate');
     survey.expiryDate = template.$("#expiry-date").closest(".date").datepicker('getDate');
-    survey.expiryDate.setHours(23);
-    survey.expiryDate.setMinutes(59);
-    survey.expiryDate.setSeconds(59);
+    survey.expiryDate.setHours(23, 59, 59, 999);
     survey.createdAt = new Date();
 
     Meteor.call("insertSurvey", survey, function (error, result) {
@@ -69,7 +67,11 @@ Template.addSurvey.events({
         notificationOptions.message = "<b>Success!</b> New survey added.";
         notificationOptions.type = "success";
 
-        Meteor.call("pushNotifications", result);
+        // publish survey if survey's publish date is today
+        if (survey.publishDate.getTime() === new Date().setHours(0, 0, 0, 0)) {
+          Meteor.call("publishSurveys");
+        }
+
       }
       $('body').pgNotification(notificationOptions).show();
     });
