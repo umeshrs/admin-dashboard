@@ -37,7 +37,7 @@ Template.header.events({
 
 Template.notificationDropdown.helpers({
   notifications: function () {
-    return Meteor.user() ? Meteor.user().profile.notifications.reverse() : [];
+    return Meteor.user() ? ( Array.isArray(Meteor.user().profile.notifications) ? Meteor.user().profile.notifications.reverse() : [] ) : [];
   }
 });
 
