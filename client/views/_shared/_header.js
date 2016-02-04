@@ -3,6 +3,16 @@ Template.header.onRendered(function () {
 });
 
 Template.header.helpers({
+  unreadNotificationCount() {
+    let notifications = (Meteor.user() && Meteor.user().profile && Meteor.user().profile.notifications) || [];
+    let unreadCount = 0;
+    notifications.forEach(function (notification) {
+      if (! notification.read) {
+        unreadCount++;
+      }
+    });
+    return unreadCount;
+  },
   showNotificationDropdown: function () {
     return Session.get("showNotificationDropdown");
   }
