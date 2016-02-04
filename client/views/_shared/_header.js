@@ -80,3 +80,15 @@ Template.notificationItem.helpers({
     }
   }
 });
+
+Template.notificationItem.events({
+  'click .notification-item a': function (event, template) {
+    Meteor.call("markNotificationAsRead", this._id, function (error, result) {
+      if (error) {
+        console.log(`Something went wrong while marking this notification as read. Error: ${error.message}.`);
+      } else {
+        console.log(`${result} notification marked as read.`);
+      }
+    });
+  }
+});
