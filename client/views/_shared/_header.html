@@ -28,11 +28,11 @@
         <div class="brand inline">
           <img src="/img/logo.png" alt="logo" data-src="/img/logo.png" height="50">
         </div>
-        <ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-20">
-          <li class="p-r-15 inline">
+        <ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-30">
+          <li class="inline">
             <div class="dropdown">
-              <a href="javascript:;" id="notification-center" class="fa fa-bell fs-16" data-toggle="dropdown">
-                <span class="bubble"></span>
+              <a id="notification-center" class="fa fa-bell fs-16" data-toggle="dropdown">
+                {{#if unreadNotificationCount}}<span class="bubble"></span>{{/if}}
               </a>
               {{#if showNotificationDropdown}}
                 {{> notificationDropdown}}
@@ -123,10 +123,10 @@
 
 <template name="notificationItem">
   <!-- START Notification Item-->
-  <div class="notification-item {{#if isUnread}}unread{{/if}} clearfix">
+  <div class="notification-item {{#unless read}}unread{{/unless}} clearfix">
     <div class="heading open">
-      <a href="{{pathFor route='view-survey' data=getData}}" class="text-{{type}}">
-        <i class="fa fa-file-text-o m-r-10"></i>
+      <a href="{{pathFor route='view-survey' data=getData}}" class="text-{{label}}">
+        <i class="fa fa-{{icon}} m-r-10"></i>
         <span class="bold">{{title}}</span>
         <span class="fs-12 m-l-10">{{text}}</span>
       </a>
