@@ -15,6 +15,7 @@ Meteor.methods({
 
         // push survey notification to all members
         let notification = {
+          _id: Random.id(),
           type: "survey",
           title: survey.title,
           text: "Please take this survey.",
