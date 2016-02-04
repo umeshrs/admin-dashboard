@@ -133,7 +133,10 @@
       <span class="pull-right time">{{age}}</span>
     </div>
     <div class="option">
-      <a href="#" class="mark" data-toggle="tooltip" data-placement="right" title="Mark as read"></a>
+      {{#unless read}}
+        <a href="#" class="fa fa-check fs-14" data-toggle="tooltip" data-placement="right"
+          data-original-title="{{_ 'Mark as read'}}"></a>
+      {{/unless}}
     </div>
   </div>
   <!-- END Notification Item-->
