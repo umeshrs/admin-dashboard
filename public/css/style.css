@@ -397,10 +397,28 @@ input[type="file"] {
 /*Notifcation dropdown*/
 
 .header .bubble {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   background-color: #EE9318;
-  opacity: 0.8;
-  top: -5px;
-  right: 7px;
+  border: 1px solid #fff;
+  position: absolute;
+  top: -2px;
+  right: -3px;
+}
+
+.notification-list > li {
+  padding-left: 0px;
+}
+
+.dropdown #notification-center {
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.notification-item .heading > a {
+  display: inline-block;
+}
+
+.notification-panel .notification-body .notification-item .heading {
+  opacity: 0.5;
 }
