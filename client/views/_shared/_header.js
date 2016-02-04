@@ -45,6 +45,11 @@ Template.notificationItem.helpers({
   getData() {
     return { _id: this.surveyId };
   },
+  icon() {
+    if (this.type === "survey") {
+      return "file-text-o";
+    }
+  },
   age: function () {
     var timeDiff = (Date.now() - this.createdAt) / (1000);
     if (timeDiff < 60) {
