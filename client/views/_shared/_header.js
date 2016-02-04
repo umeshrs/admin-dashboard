@@ -51,6 +51,10 @@ Template.notificationDropdown.helpers({
   }
 });
 
+Template.notificationItem.onRendered(function () {
+  this.$('[data-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
+});
+
 Template.notificationItem.helpers({
   getData() {
     return { _id: this.surveyId };
@@ -83,6 +87,7 @@ Template.notificationItem.helpers({
 
 Template.notificationItem.events({
   'click .notification-item a': function (event, template) {
+    template.$('[data-toggle="tooltip"]').tooltip('hide');
     Meteor.call("markNotificationAsRead", this._id, function (error, result) {
       if (error) {
         console.log(`Something went wrong while marking this notification as read. Error: ${error.message}.`);
