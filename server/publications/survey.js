@@ -5,7 +5,7 @@ Meteor.publish("survey", function (surveyId) {
       return Surveys.find(surveyId);
     } else {
       let currentDate = new Date();
-      return Surveys.find({ _id: surveyId, publishDate: { $lte: currentDate }, expiryDate: { $gte: currentDate } }, {
+      return Surveys.find({ _id: surveyId, published: true, publishDate: { $lte: currentDate }, expiryDate: { $gte: currentDate } }, {
         fields: { responses: 0, published: 0 }
       });
     }
