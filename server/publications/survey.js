@@ -4,7 +4,8 @@ Meteor.publish("survey", function (surveyId) {
     if (currentUser.profile && currentUser.profile.role === "administrator") {
       return Surveys.find(surveyId);
     } else {
-      return Surveys.find(surveyId, {
+      let currentDate = new Date();
+      return Surveys.find({ _id: surveyId, publishDate: { $lte: currentDate }, expiryDate: { $gte: currentDate } }, {
         fields: { responses: 0, published: 0 }
       });
     }
