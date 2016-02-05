@@ -147,7 +147,7 @@ function prepareMarkers () {
   let storesList, iconBase, storesListElements;
 
   storesList = Meteor.users.find({ 'profile.role': "member" }, {
-    fields: { 'profile.pharmacyName': 1, 'profile.address': 1 },
+    fields: { 'profile.pharmacyName': 1, 'profile.address': 1, 'profile.tasks': 1 },
     sort: { lat: -1 } }).fetch();
   iconBase = "http://maps.google.com/mapfiles/ms/icons/";
   // DOM elements
@@ -176,40 +176,42 @@ function prepareMarkers () {
   };
 
   for (let i = 0; i < storesList.length; i++) {
-    let marker, infoWindowContent, markerIcon;
-    infoWindowContent = '<p><strong>' + storesList[i].profile.pharmacyName + '</strong><br />';
-    if (storesList[i].profile && storesList[i].profile.address) {
-      infoWindowContent += storesList[i].profile.address.street + '<br />' +
-      storesList[i].profile.address.postalCode + ' ' + storesList[i].profile.address.city;
-      if (storesList[i].profile.address.country) {
-        infoWindowContent += ', ' + storesList[i].profile.address.country;
-      }
-    }
-    infoWindowContent += '<br /></p>';
+    let marker, infoWindowContent, markerIcon, bounce, pharmacyName, address, tasks;
 
-    switch (storesList[i].task && storesList[i].task.status) {
-      case "PENDING":
-        markerIcon = iconBase + 'orange-dot.png';
-        infoWindowContent += '<p class="text-warning">' +
-          '<strong>Task</strong><br />' +
-          storesList[i].task.title +
-          '</p>';
-        break;
-      case "OVERDUE":
-        markerIcon = iconBase + 'red-dot.png';
-        infoWindowContent += '<p class="text-danger">' +
-          '<strong>Task</strong><br />' +
-          storesList[i].task.title +
-          '</p>';
-        break;
-      default:
-        markerIcon = iconBase + 'green-dot.png';
-        infoWindowContent += '<p class="text-success">' +
-          '<strong>Task</strong><br />' +
-          'No pending task' +
-          '</p>';
-        break;
+    pharmacyName = storesList[i].profile && storesList[i].profile.pharmacyName;
+    address = (storesList[i].profile && storesList[i].profile.address) || {};
+    tasks = (storesList[i].profile && storesList[i].profile.tasks) || [];
+
+    infoWindowContent = `<h5 class="bold">${pharmacyName}</h5>`;
+    infoWindowContent += `<p>${address.street}<br />${address.postalCode} ${address.city}${address.country ? `, ${address.country}` : ``}<br /></p>`;
+    infoWindowContent += '<table class="m-b-10"><tr><th class="p-b-10">Tasks</th><th></th></tr>';
+    console.log(storesList[i]);
+    if (Array.isArray(tasks) && tasks.length > 0) {
+      // marker icon should be orange if there is at least one pending task
+      markerIcon = iconBase + 'orange-dot.png';
+
+      tasks.forEach(function (task) {
+        let status = (function () {
+          let startDate = task.publishDate.getTime();
+          let endDate = task.expiryDate.getTime();
+          let currentDate = new Date().getTime();
+
+          console.log( (currentDate - startDate) / (endDate - startDate) );
+          return ( (currentDate - startDate) / (endDate - startDate) >= 0.3 ) ? "danger" : "warning";
+        }());
+
+        // marker icon should be red if there is at least one urgent task
+        if (status === "danger") {
+          markerIcon = iconBase + 'red-dot.png';
+          bounce = true;
+        }
+        infoWindowContent += `<tr class="text-${status}"><td><strong>${task.title}</strong></td><td class="p-l-5 semi-bold"> - &nbsp;${task.text}</td></tr>`;
+      });
+    } else {
+      markerIcon = iconBase + 'green-dot.png';
+      infoWindowContent += '<tr class="text-success bold"><td colspan=2>No pending task</td></tr>';
     }
+    infoWindowContent += '</table>';
 
     infoWindowContent += '<div class="btn-group pull-right">' +
         '<button type="button" class="btn btn-default chat-btn" title="Chat"><i class="fa fa-comment"></i></button>' +
@@ -218,10 +220,9 @@ function prepareMarkers () {
       '</div>';
 
     marker = new google.maps.Marker({
-      position: new google.maps.LatLng(storesList[i].profile && storesList[i].profile.address && storesList[i].profile.address.lat,
-        storesList[i].profile && storesList[i].profile.address && storesList[i].profile.address.lng),
-      title: storesList[i].profile && storesList[i].profile.pharmacyName,
-      animation: (storesList[i].task && storesList[i].task.status === "OVERDUE") ? google.maps.Animation.BOUNCE : null,
+      position: new google.maps.LatLng(address.lat, address.lng),
+      title: pharmacyName,
+      animation: (bounce) ? google.maps.Animation.BOUNCE : null,
       icon: markerIcon,
       infoWindowContent: infoWindowContent
     });
@@ -229,7 +230,7 @@ function prepareMarkers () {
     marker.addListener('click', _.bind(infoWindowOpener, null, marker));
 
     for (let j = 0; j < storesListElements.length; j++) {
-      if ($(storesListElements[j]).find("strong").html() === storesList[i].profile.pharmacyName) {
+      if ($(storesListElements[j]).find("strong").html() === pharmacyName) {
         storesListElements[j].addEventListener('click', _.bind(infoWindowToggler, null, marker));
       }
     }
@@ -237,6 +238,7 @@ function prepareMarkers () {
     markersListGlobal.push(marker);
   }
 
+  // close info window when user clicks on any non-info window map area
   map.addListener('click', _.bind(infoWindowCloser, null));
 }
 
