@@ -5,7 +5,7 @@ Meteor.methods({
     let surveys = Surveys.find({ publishDate: { $gte: startDate, $lte: endDate } }).fetch();
 
     console.log("___________________________________________________");
-    console.log(`${surveys.length} surveys with publish date ${startDate.toLocaleDateString()}`);
+    console.log(`${surveys.length} surveys with publish date ${startDate.toLocaleString()}`);
     surveys.forEach(function (survey) {
       console.log(`${survey.title}: ${survey.published}`);
       if (! survey.published) {
@@ -25,7 +25,21 @@ Meteor.methods({
           createdAt: new Date()
         };
         Meteor.call("pushNotifications", notification);
+
+        // push survey as a task to all members
+        let task = {
+          _id: Random.id(),
+          type: "survey",
+          title: survey.title,
+          text: "Please complete this survey",
+          surveyId: survey._id,
+          publishDate: survey.publishDate,
+          expiryDate: survey.expiryDate,
+          createdAt: new Date()
+        };
+        Meteor.call("pushTasks", task);
       }
     });
+    console.log("___________________________________________________");
   }
 });
