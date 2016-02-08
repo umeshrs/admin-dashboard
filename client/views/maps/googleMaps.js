@@ -185,7 +185,7 @@ function prepareMarkers () {
     infoWindowContent = `<h5 class="bold">${pharmacyName}</h5>`;
     infoWindowContent += `<p>${address.street}<br />${address.postalCode} ${address.city}${address.country ? `, ${address.country}` : ``}<br /></p>`;
     infoWindowContent += '<table class="m-b-10"><tr><th class="p-b-10">Tasks</th><th></th></tr>';
-    console.log(storesList[i]);
+
     if (Array.isArray(tasks) && tasks.length > 0) {
       // marker icon should be orange if there is at least one pending task
       markerIcon = iconBase + 'orange-dot.png';
@@ -197,7 +197,7 @@ function prepareMarkers () {
           let currentDate = new Date().getTime();
 
           console.log( (currentDate - startDate) / (endDate - startDate) );
-          return ( (currentDate - startDate) / (endDate - startDate) >= 0.3 ) ? "danger" : "warning";
+          return ( (currentDate - startDate) / (endDate - startDate) >= 0.7 ) ? "danger" : "warning";
         }());
 
         // marker icon should be red if there is at least one urgent task
@@ -205,7 +205,15 @@ function prepareMarkers () {
           markerIcon = iconBase + 'red-dot.png';
           bounce = true;
         }
-        infoWindowContent += `<tr class="text-${status}"><td><strong>${task.title}</strong></td><td class="p-l-5 semi-bold"> - &nbsp;${task.text}</td></tr>`;
+
+        let daysDiff = function (task) {
+          return Math.floor((task.expiryDate - new Date()) / (1000 * 60 * 60 * 24));
+        }
+
+        infoWindowContent += `<tr class="text-${status}">` +
+          `<td><strong>${task.title}</strong></td>` +
+          `<td class="p-l-5 semi-bold"> - &nbsp;${task.text} (${daysDiff(task)} day(s) left)</td>` +
+        `</tr>`;
       });
     } else {
       markerIcon = iconBase + 'green-dot.png';
