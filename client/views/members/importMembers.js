@@ -163,7 +163,7 @@ Template.importMembers.events({
 
         for (let i = 0; i < results.data.length; i++) {
           let memberDetails = results.data[i];
-          Meteor.setTimeout(function () { addMember(memberDetails) }, i * 150);
+          Meteor.setTimeout(function () { addMember(memberDetails) }, i * 200);
         }
 
       }
