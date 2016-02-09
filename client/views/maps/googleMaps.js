@@ -184,7 +184,7 @@ function prepareMarkers () {
 
     infoWindowContent = `<h5 class="bold">${pharmacyName}</h5>`;
     infoWindowContent += `<p>${address.street}<br />${address.postalCode} ${address.city}${address.country ? `, ${address.country}` : ``}<br /></p>`;
-    infoWindowContent += '<table class="m-b-10"><tr><th class="p-b-10">Tasks</th><th></th></tr>';
+    infoWindowContent += '<table class="m-b-20"><tr><th class="p-b-10">Tasks</th><th></th></tr>';
 
     if (Array.isArray(tasks) && tasks.length > 0) {
       // marker icon should be orange if there is at least one pending task
@@ -221,11 +221,13 @@ function prepareMarkers () {
     }
     infoWindowContent += '</table>';
 
-    infoWindowContent += '<div class="btn-group pull-right">' +
-        '<button type="button" class="btn btn-default chat-btn" title="Chat"><i class="fa fa-comment"></i></button>' +
-        '<button type="button" class="btn btn-default project-btn" title="Project"><i class="fa fa-trello"></i></button>' +
-        '<button type="button" class="btn btn-default info-btn" title="Info"><i class="fa fa-info"></i></button>'
+    infoWindowContent += '<div class="clearfix m-b-10">' +
+      '<div class="btn-group pull-right">' +
+        '<button type="button" class="btn btn-warning chat-btn" title="Chat"><i class="fa fa-comment"></i></button>' +
+        '<button type="button" class="btn btn-danger project-btn" title="Project"><i class="fa fa-trello"></i></button>' +
+        '<button type="button" class="btn btn-complete info-btn" title="Info"><i class="fa fa-info"></i></button>'
       '</div>';
+    '</div>';
 
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(address.lat, address.lng),
