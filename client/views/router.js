@@ -318,7 +318,7 @@ Router.route('/surveys/preview-survey/:_id', {
   },
   data: function () {
     let data = Surveys.findOne(this.params._id);
-    if (data) {
+    if (data && data.questions) {
       data.questions = data.questions.map(function (question, index) {
         question.index = index;
         question.options = question.options.map(function (option, index) {
