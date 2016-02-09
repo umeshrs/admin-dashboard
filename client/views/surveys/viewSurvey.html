@@ -1,48 +1,61 @@
 <template name="viewSurvey">
   {{> breadcrumbs}}
   <div class="survey-wrapper">
-    <div class="form-header">
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-          <h1>{{title}}</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-          <p>{{description}}</p>
-        </div>
-      </div>
-    </div>
-    <div class="questions-wrapper">
-      {{#each questions}}
-        <div class="question-wrapper">
-          <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
-              <div class="question">{{text}}</div>
-            </div>
+    {{#if _id}}
+      <div class="form-header">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <h1>{{title}}</h1>
           </div>
-          <div class="options-wrapper">
-            {{#each options}}
-              <div class="row">
-                <div class="col-sm-8 col-sm-offset-2">
-                  <div class="radio radio-warning">
-                      <input type="radio" value="{{text}}" name="question{{../index}}" class="option" id="q{{../index}}o{{index}}">
-                      <label for="q{{../index}}o{{index}}"><span>{{text}}</span></label>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <p>{{description}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="questions-wrapper">
+        {{#each questions}}
+          <div class="question-wrapper">
+            <div class="row">
+              <div class="col-sm-8 col-sm-offset-2">
+                <div class="question">{{text}}</div>
+              </div>
+            </div>
+            <div class="options-wrapper">
+              {{#each options}}
+                <div class="row">
+                  <div class="col-sm-8 col-sm-offset-2">
+                    <div class="radio radio-warning">
+                        <input type="radio" value="{{text}}" name="question{{../index}}" class="option" id="q{{../index}}o{{index}}">
+                        <label for="q{{../index}}o{{index}}"><span>{{text}}</span></label>
+                    </div>
                   </div>
                 </div>
-              </div>
-            {{/each}}
+              {{/each}}
+            </div>
           </div>
-        </div>
-      {{/each}}
-    </div>
-    <div class="btns-wrapper clearfix">
-      <button type="button" class="btn btn-success btn-animated from-left fa fa-check pull-right" id="submit-response-btn">
-        <span class="bold">Submit</span>
-      </button>
-      <button type="button" class="btn btn-danger btn-animated from-left fa fa-remove pull-right m-r-20" id="cancel-btn">
-        <span class="bold">Cancel</span>
-      </button>
-    </div>
+        {{/each}}
+      </div>
+      <div class="btns-wrapper clearfix">
+        <button type="button" class="btn btn-success btn-animated from-left fa fa-check pull-right" id="submit-response-btn">
+          <span class="bold">Submit</span>
+        </button>
+        <button type="button" class="btn btn-danger btn-animated from-left fa fa-remove pull-right m-r-20" id="cancel-btn">
+          <span class="bold">Cancel</span>
+        </button>
+      </div>
+    {{else}}
+      <div class="form-header">
+        <p class="fs-14 text-center no-margin">
+          This survey has either <span class="bold">expired</span> or has been <span class="bold">deleted</span> by the admin. Please see the list of available <a href="{{pathFor route='surveys'}}">surveys</a>.
+        </p>
+      </div>
+      <div class="btns-wrapper clearfix">
+        <button type="button" class="btn btn-danger btn-animated from-left fa fa-remove pull-right" id="back-btn">
+          <span class="bold">{{_ "Back"}}</span>
+        </button>
+      </div>
+    {{/if}}
   </div>
 </template>

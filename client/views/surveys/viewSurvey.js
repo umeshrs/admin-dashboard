@@ -1,5 +1,5 @@
 Template.viewSurvey.events({
-  'click #cancel-btn': function () {
+  'click #cancel-btn, click #back-btn': function () {
     Router.go('/surveys');
   },
   'click #submit-response-btn': function (event, template) {
