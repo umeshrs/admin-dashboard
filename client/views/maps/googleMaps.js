@@ -212,7 +212,7 @@ function prepareMarkers () {
 
         infoWindowContent += `<tr class="text-${status}">` +
           `<td><strong>${task.title}</strong></td>` +
-          `<td class="p-l-5 semi-bold"> - &nbsp;${task.text} (${daysDiff(task)} day(s) left)</td>` +
+          `<td class="p-l-5 semi-bold"> - &nbsp;${task.text} (${daysDiff(task)} day${daysDiff(task) !== 1 ? `s` : ``} left)</td>` +
         `</tr>`;
       });
     } else {
