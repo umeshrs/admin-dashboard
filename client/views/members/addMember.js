@@ -18,7 +18,9 @@ Template.addMember.onRendered(function () {
 });
 
 Template.addMember.events({
-  'click #add-member-save-btn': function (event , template) {
+  'submit #add-member-form': function (event, template) {
+    event.preventDefault();
+
     if (! isValidInput()) {
       return;
     }
