@@ -1,4 +1,8 @@
 Meteor.startup(function () {
+  // remove expired tasks on server startup
+  console.log(`Removing tasks with expiry date before ${new Date(new Date().setHours(0, 0, 0, 0)).toLocaleString()}...`);
+  Meteor.call("removeExpiredTasks");
+
   SyncedCron.add({
     name: 'Publish surveys',
     schedule: function (parser) {
