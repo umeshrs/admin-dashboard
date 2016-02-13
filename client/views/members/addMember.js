@@ -110,6 +110,40 @@ Template.addMember.events({
     if (event.which !== 9 && event.which !== 16) {
       validatePostalCode();
     }
+  },
+  'focusout #street, focusout #city': function (event, template) {
+    let query = `address=${template.$("#street").val().trim().toLowerCase()}, ${template.$("#city").val().trim().toLowerCase()}`;
+
+    HTTP.call("GET", "https://maps.googleapis.com/maps/api/geocode/json", { query: query }, function (error, result) {
+      let address = {};
+      if (error) {
+        console.log(`Could not get result from geocoding API. Error: ${error.message}`);
+      } else {
+        console.log("Result from geocoding API:", result.data);
+        if (result.data.status === "OK") {
+          address.lat = result.data.results[0].geometry.location.lat;
+          address.lng = result.data.results[0].geometry.location.lng;
+          result.data.results[0].address_components.forEach(function (element) {
+            switch (element.types[0]) {
+              case "street_number":
+                address.street = element.long_name;
+                break;
+              case "route":
+                address.street = (address.street) ? address.street + " " + element.long_name : element.long_name;
+                break;
+              case "locality":
+                address.city = element.long_name;
+                break;
+              case "postal_code":
+                address.postalCode = element.long_name;
+            }
+          });
+          template.$("#postal-code").val(address.postalCode);
+          template.$("#latitude").val(address.lat);
+          template.$("#longitude").val(address.lng);
+        }
+      }
+    });
   }
 });
 
