@@ -37,7 +37,9 @@ Template.addMember.events({
         address: {
           street: template.$('#street').val(),
           city: template.$('#city').val(),
-          postalCode: template.$('#postal-code').val()
+          postalCode: template.$('#postal-code').val(),
+          lat: template.$('#latitude').val(),
+          lng: template.$('#longitude').val()
         },
         telephone: template.$('#telephone').val(),
         fax: template.$('#fax').val(),
