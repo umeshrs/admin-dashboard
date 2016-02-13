@@ -73,6 +73,17 @@
               <input type="text" class="form-control" id="postal-code" placeholder="{{_ 'POSTAL_CODE_PLACEHOLDER'}}"
               value="{{address.postalCode}}">
             </div>
+            <div class="clearfix m-b-20"></div>
+            <label for="latitude" class="col-sm-3 control-label">{{_ "LATITUDE"}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="latitude" placeholder="{{_ 'LATITUDE_PLACEHOLDER'}}"
+              value="{{address.lat}}" disabled>
+            </div>
+            <label for="longitude" class="col-sm-3 control-label">{{_ "LONGITUDE"}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" id="longitude" placeholder="{{_ 'LONGITUDE_PLACEHOLDER'}}"
+              value="{{address.lng}}" disabled>
+            </div>
           </div>
           <div class="form-group">
             <label for="telephone" class="col-sm-3 control-label">{{_ "TELEPHONE"}}</label>
