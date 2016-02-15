@@ -36,5 +36,8 @@ Template.pagination.events({
     template.$('[data-toggle="tooltip"]').tooltip('hide');
     let nextPage = Session.get("pageNumber") + 1;
     Session.set("pageNumber", nextPage > Session.get("numberOfPages") ? Session.get("numberOfPages") : nextPage);
+  },
+  'click .page-number': function (event, template) {
+    Session.set("pageNumber", template.$(".page-number").index(event.target) + 1);
   }
 });
