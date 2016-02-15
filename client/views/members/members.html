@@ -57,5 +57,23 @@
     </table>
   </div>
 
+  <nav class="text-center">
+    <ul class="pagination">
+      <li>
+        <a href="#" aria-label="Previous" class="previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      {{#each pages}}
+        <li><a href="#" class="page-number">{{this}}</a></li>
+      {{/each}}
+      <li>
+        <a href="#" aria-label="Next" class="next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
   {{> removeMemberModal}}
 </template>
