@@ -3,14 +3,14 @@ Template.pagination.onRendered(function () {
   this.$(".pagination .page-number").closest("li").removeClass("active");
   this.$(this.$(".pagination .page-number")[Session.get("pageNumber") - 1]).closest("li").addClass("active");
 
-  // disable previous page button if current page is first page
+  // remove previous page button if current page is first page
   if ( Session.equals("pageNumber", 1) ) {
-    this.$(".previous").closest('li').addClass('disabled');
+    this.$(".previous").closest('li').remove();
   }
 
-  // disable next page button if current page is last page
+  // remove next page button if current page is last page
   if ( Session.equals("pageNumber", Session.get("numberOfPages")) ) {
-    this.$(".next").closest('li').addClass('disabled');
+    this.$(".next").closest('li').remove();
   }
 });
 
