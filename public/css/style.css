@@ -422,3 +422,15 @@ input[type="file"] {
 .notification-panel .notification-body .notification-item .heading {
   opacity: 0.5;
 }
+
+ /* pagination */
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  background-color: #2B61AD;
+  border-color: #2B61AD;
+}
