@@ -6,11 +6,24 @@ Template.members.onRendered(function () {
       $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
     }
   });
+
+  // set active class to the current page number
+  this.$(".pagination .page-number").closest("li").removeClass("active");
+  this.$(this.$(".pagination .page-number")[Session.get("pageNumber") - 1]).closest("li").addClass("active");
 });
 
 Template.members.helpers({
   members: function () {
     return Meteor.users.find({ 'profile.role': "member" }, { sort: { createdAt: 1 } });
+  },
+  pages: function () {
+    let pageNumbers = [];
+
+    for (let i = 1; i <= Session.get("numberOfPages"); i++) {
+      pageNumbers.push(i);
+    }
+
+    return pageNumbers;
   }
 });
 
