@@ -60,7 +60,8 @@
   <nav class="text-center">
     <ul class="pagination">
       <li>
-        <a href="#" aria-label="Previous" class="previous">
+        <a href="#" aria-label="Previous" class="previous" data-original-title="{{_ 'Previous'}}"
+          data-toggle="tooltip" data-placement="bottom">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
@@ -68,7 +69,8 @@
         <li><a href="#" class="page-number">{{this}}</a></li>
       {{/each}}
       <li>
-        <a href="#" aria-label="Next" class="next">
+        <a href="#" aria-label="Next" class="next" data-original-title="{{_ 'Next'}}"
+          data-toggle="tooltip" data-placement="bottom">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>
