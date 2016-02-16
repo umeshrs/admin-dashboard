@@ -385,26 +385,6 @@ Router.route('/rewards', {
   name: "rewards",
   label: "Rewards",
   parent: "home",
-  waitOn: function () {
-    Session.setDefault("pageNumber", 1);
-    Session.setDefault("recordsPerPage", 3);
-
-    Meteor.call("getRewardCount", function (error, result) {
-      if (error) {
-        console.log(`Error invoking method 'getRewardCount'. Error: ${error.message}`);
-      } else {
-        Session.set("numberOfPages", Math.ceil(result / Session.get("recordsPerPage")));
-      }
-    });
-
-    let skip = (Session.get("pageNumber") - 1) * Session.get("recordsPerPage");
-    if (skip < 0) {
-      skip = 0;
-      Session.set("pageNumber", 1);
-    }
-    let limit = Session.get("recordsPerPage");
-    return Meteor.subscribe("rewards", skip, limit);
-  },
   action: function () {
     let currentUser = Meteor.user();
     if (currentUser) {
