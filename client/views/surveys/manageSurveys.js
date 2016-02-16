@@ -1,7 +1,27 @@
 Template.manageSurveys.onCreated(function () {
   let self = this;
 
-  self.subscribe("surveys");
+  Session.setDefault("pageNumber", 1);
+  Session.setDefault("recordsPerPage", 10);
+
+  self.autorun(function () {
+    Meteor.call("getSurveyCount", function (error, result) {
+      if (error) {
+        console.log(`Error invoking method 'getSurveyCount'. Error: ${error.message}`);
+      } else {
+        Session.set("numberOfPages", Math.ceil(result / Session.get("recordsPerPage")));
+      }
+    });
+
+    let skip = (Session.get("pageNumber") - 1) * Session.get("recordsPerPage");
+    if (skip < 0) {
+      skip = 0;
+      Session.set("pageNumber", 1);
+    }
+    let limit = Session.get("recordsPerPage");
+
+    self.subscribe("surveys", skip, limit);
+  });
 });
 
 Template.manageSurveys.onRendered(function () {
@@ -11,6 +31,13 @@ Template.manageSurveys.onRendered(function () {
       $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
     }
   });
+});
+
+Template.manageSurveys.onDestroyed(function () {
+  // clear pagination related Session values
+  Session.delete("pageNumber");
+  Session.delete("recordsPerPage");
+  Session.delete("numberOfPages");
 });
 
 Template.manageSurveys.helpers({
