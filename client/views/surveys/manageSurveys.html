@@ -19,40 +19,50 @@
         </tr>
       </thead>
       <tbody>
-        {{#each surveys}}
-          <tr>
-            <td class="bold">{{title}}</td>
-            <td>{{dateToLocaleString createdAt}}</td>
-            <td>{{dateToLocaleDateString publishDate}}</td>
-            <td>{{dateToLocaleDateString expiryDate}}</td>
-            <td>{{responses}}</td>
-            <td>
-              <div class="btn-group">
-                <button type="button" class="btn btn-warning edit-survey-btn" data-original-title="{{_ 'Edit survey'}}"
-                  data-toggle="tooltip" data-placement="bottom">
-                  <i class="fa fa-pencil"></i>
-                </button>
-                <button type="button" class="btn btn-complete preview-survey-btn"
-                  data-original-title="{{_ 'Preview survey'}}" data-toggle="tooltip" data-placement="bottom">
-                  <i class="fa fa-eye"></i>
-                </button>
-                <button type="button" class="btn btn-primary view-responses-btn"
-                  data-original-title="{{_ 'View responses'}}" data-toggle="tooltip" data-placement="bottom">
-                  <i class="fa fa-pie-chart"></i>
-                </button>
-                <button type="button" class="btn btn-danger remove-survey-btn" data-original-title="{{_ 'Remove survey'}}"
-                  data-toggle="modal" data-target="#remove-survey-modal"
-                  data-tooltip-toggle="tooltip" data-placement="bottom">
-                  <i class="fa fa-trash"></i>
-                </button>
-              </div>
-            </td>
-          </tr>
-        {{/each}}
+        {{#if Template.subscriptionsReady}}
+          {{#each surveys}}
+            <tr>
+              <td class="bold">{{title}}</td>
+              <td>{{dateToLocaleString createdAt}}</td>
+              <td>{{dateToLocaleDateString publishDate}}</td>
+              <td>{{dateToLocaleDateString expiryDate}}</td>
+              <td>{{responses}}</td>
+              <td>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-warning edit-survey-btn" data-original-title="{{_ 'Edit survey'}}"
+                    data-toggle="tooltip" data-placement="bottom">
+                    <i class="fa fa-pencil"></i>
+                  </button>
+                  <button type="button" class="btn btn-complete preview-survey-btn"
+                    data-original-title="{{_ 'Preview survey'}}" data-toggle="tooltip" data-placement="bottom">
+                    <i class="fa fa-eye"></i>
+                  </button>
+                  <button type="button" class="btn btn-primary view-responses-btn"
+                    data-original-title="{{_ 'View responses'}}" data-toggle="tooltip" data-placement="bottom">
+                    <i class="fa fa-pie-chart"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger remove-survey-btn" data-original-title="{{_ 'Remove survey'}}"
+                    data-toggle="modal" data-target="#remove-survey-modal"
+                    data-tooltip-toggle="tooltip" data-placement="bottom">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          {{else}}
+            <tr>
+              <td colspan="6">{{_ "There are no surveys to display."}}</td>
+            </tr>
+          {{/each}}
+        {{else}}
+          {{> loading}}
+        {{/if}}
       </tbody>
     </table>
 
-    {{> pagination}}
+    {{#if Template.subscriptionsReady}}
+      {{> pagination}}
+    {{/if}}
     {{> removeSurveyModal}}
   </div>
 </template>

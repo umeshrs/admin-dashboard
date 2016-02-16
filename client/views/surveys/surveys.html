@@ -11,28 +11,34 @@
         </tr>
       </thead>
       <tbody>
-        {{#each surveys}}
-          <tr>
-            <td class="bold">{{title}}</td>
-            <td>{{dateToLocaleDateString publishDate}}</td>
-            <td>{{dateToLocaleDateString expiryDate}}</td>
-            <td>
-              <div class="btn-group">
-                <button type="button" class="btn btn-complete view-survey-btn" data-original-title="View survey"
-                  data-toggle="tooltip" data-placement="bottom">
-                  <i class="fa fa-eye"></i>
-                </button>
-              </div>
-            </td>
-          </tr>
+        {{#if Template.subscriptionsReady}}
+          {{#each surveys}}
+            <tr>
+              <td class="bold">{{title}}</td>
+              <td>{{dateToLocaleDateString publishDate}}</td>
+              <td>{{dateToLocaleDateString expiryDate}}</td>
+              <td>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-complete view-survey-btn" data-original-title="View survey"
+                    data-toggle="tooltip" data-placement="bottom">
+                    <i class="fa fa-eye"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          {{else}}
+            <tr>
+              <td colspan="4">There are no published surveys.</td>
+            </tr>
+          {{/each}}
         {{else}}
-          <tr>
-            <td colspan="4">There are no published surveys.</td>
-          </tr>
-        {{/each}}
+          {{> loading}}
+        {{/if}}
       </tbody>
     </table>
   </div>
 
-  {{> pagination}}
+  {{#if Template.subscriptionsReady}}
+    {{> pagination}}
+  {{/if}}
 </template>
