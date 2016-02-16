@@ -18,31 +18,41 @@
       </tr>
     </thead>
     <tbody>
-      {{#each rewards}}
-        <tr>
-          <td>{{title}}&nbsp;&nbsp;&nbsp;<b class="fs-12">(x {{availableCount}})</b></td>
-          <td>{{dateToLocaleString createdAt}}</td>
-          <td>{{dateToLocaleString validTill}}</td>
-          <td>{{claimCount}}</td>
-          <td>{{> switchery checked=published rewardId=_id}}</td>
-          <td>
-            <div class="btn-group">
-              <button type="button" class="btn btn-warning edit-reward-btn" data-original-title="{{_ 'Edit reward'}}"
-                data-toggle="tooltip" data-placement="bottom">
-                <i class="fa fa-pencil"></i>
-              </button>
-              <button type="button" class="btn btn-danger remove-reward-btn" data-original-title="{{_ 'Remove reward'}}"
-                data-toggle="modal" data-target="#remove-reward-modal"
-                data-tooltip-toggle="tooltip" data-placement="bottom">
-                <i class="fa fa-trash"></i>
-              </button>
-            </div>
-          </td>
-        </tr>
-      {{/each}}
+      {{#if Template.subscriptionsReady}}
+        {{#each rewards}}
+          <tr>
+            <td>{{title}}&nbsp;&nbsp;&nbsp;<b class="fs-12">(x {{availableCount}})</b></td>
+            <td>{{dateToLocaleString createdAt}}</td>
+            <td>{{dateToLocaleString validTill}}</td>
+            <td>{{claimCount}}</td>
+            <td>{{> switchery checked=published rewardId=_id}}</td>
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-warning edit-reward-btn" data-original-title="{{_ 'Edit reward'}}"
+                  data-toggle="tooltip" data-placement="bottom">
+                  <i class="fa fa-pencil"></i>
+                </button>
+                <button type="button" class="btn btn-danger remove-reward-btn" data-original-title="{{_ 'Remove reward'}}"
+                  data-toggle="modal" data-target="#remove-reward-modal"
+                  data-tooltip-toggle="tooltip" data-placement="bottom">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        {{else}}
+          <tr>
+            <td colspan="6">{{_ "There are no rewards to display."}}</td>
+          </tr>
+        {{/each}}
+      {{else}}
+        {{> loading}}
+      {{/if}}
     </tbody>
   </table>
 
-  {{> pagination}}
+  {{#if Template.subscriptionsReady}}
+    {{> pagination}}
+  {{/if}}
   {{> removeRewardModal}}
 </template>

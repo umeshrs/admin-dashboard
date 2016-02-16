@@ -19,25 +19,35 @@
         </tr>
       </thead>
       <tbody>
-        {{#each rewards}}
-          <tr>
-            <td>{{title}}</td>
-            <td>{{dateToLocaleString validTill}}</td>
-            <td>{{points}}</td>
-            <td>
-              <div class="btn-group">
-                <button type="button" class="btn btn-complete claim-reward-btn" data-original-title="{{_ 'Claim reward'}}"
-                  data-toggle="modal" data-target="#claim-reward-modal"
-                  data-tooltip-toggle="tooltip" data-placement="bottom">
-                  <i class="fa fa-plus-square-o fa-lg"></i>
-                </button>
-              </div>
-            </td>
-          </tr>
-        {{/each}}
+        {{#if Template.subscriptionsReady}}
+          {{#each rewards}}
+            <tr>
+              <td>{{title}}</td>
+              <td>{{dateToLocaleString validTill}}</td>
+              <td>{{points}}</td>
+              <td>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-complete claim-reward-btn" data-original-title="{{_ 'Claim reward'}}"
+                    data-toggle="modal" data-target="#claim-reward-modal"
+                    data-tooltip-toggle="tooltip" data-placement="bottom">
+                    <i class="fa fa-plus-square-o fa-lg"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          {{else}}
+            <tr>
+              <td colspan="4">{{_ "There are no published rewards at the moment."}}</td>
+            </tr>
+          {{/each}}
+        {{else}}
+          {{> loading}}
+        {{/if}}
       </tbody>
     </table>
   </div>
-  {{> pagination}}
+  {{#if Template.subscriptionsReady}}
+    {{> pagination}}
+  {{/if}}
   {{> claimRewardModal}}
 </template>
