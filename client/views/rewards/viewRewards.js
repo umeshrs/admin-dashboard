@@ -1,15 +1,10 @@
-Template.viewRewards.onRendered(function () {
-  Tracker.autorun(function () {
-    if (Rewards.find().count() > 0) {
-      $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
-    }
-  });
+Template.viewRewards.onCreated(function () {
+  let self = this;
 
   Session.setDefault("pageNumber", 1);
   Session.setDefault("recordsPerPage", 3);
 
-  Tracker.autorun(function () {
-    Session.set("subscriptionReady", false);
+  self.autorun(function () {
     Meteor.call("getRewardCount", function (error, result) {
       if (error) {
         console.log(`Error invoking method 'getRewardCount'. Error: ${error.message}`);
@@ -24,9 +19,15 @@ Template.viewRewards.onRendered(function () {
       Session.set("pageNumber", 1);
     }
     let limit = Session.get("recordsPerPage");
-    Meteor.subscribe("rewards", skip, limit, function () {
-      Session.set("subscriptionReady", true);
-    });
+    self.subscribe("rewards", skip, limit);
+  });
+});
+
+Template.viewRewards.onRendered(function () {
+  Tracker.autorun(function () {
+    if (Rewards.find().count() > 0) {
+      $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
+    }
   });
 });
 
