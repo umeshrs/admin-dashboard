@@ -1,3 +1,13 @@
+Template.removeMemberModal.onRendered(function () {
+  let template = this;
+  template.$('#remove-member-modal').on('show.bs.modal', function (e) {
+    $("body").css("margin-right", "-15px");
+  });
+  template.$('#remove-member-modal').on('hidden.bs.modal', function (e) {
+    $("body").css("margin-right", "0px");
+  });
+});
+
 Template.removeMemberModal.events({
   'click #remove-member-modal-btn': function () {
     let user = Session.get("currentUser");
