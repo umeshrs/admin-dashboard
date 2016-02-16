@@ -1,17 +1,21 @@
 Template.pagination.onRendered(function () {
+  let template = this;
+
   // set active class to the current page number
-  this.$(".pagination .page-number").closest("li").removeClass("active");
-  this.$(this.$(".pagination .page-number")[Session.get("pageNumber") - 1]).closest("li").addClass("active");
+  template.$(".pagination .page-number").closest("li").removeClass("active");
+  template.$(template.$(".pagination .page-number")[Session.get("pageNumber") - 1]).closest("li").addClass("active");
 
   // remove previous page button if current page is first page
   if ( Session.equals("pageNumber", 1) ) {
-    this.$(".previous").closest('li').remove();
+    template.$(".previous").closest('li').remove();
   }
 
   // remove next page button if current page is last page
   if ( Session.equals("pageNumber", Session.get("numberOfPages")) ) {
-    this.$(".next").closest('li').remove();
+    template.$(".next").closest('li').remove();
   }
+
+  template.$('[data-toggle="tooltip"]').tooltip({ container: 'body' });
 });
 
 Template.pagination.helpers({
