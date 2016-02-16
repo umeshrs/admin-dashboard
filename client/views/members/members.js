@@ -8,6 +8,30 @@ Template.members.onRendered(function () {
     }
   });
 
+  Session.setDefault("pageNumber", 1);
+  Session.setDefault("recordsPerPage", 10);
+
+  Tracker.autorun(function () {
+    Session.set("subscriptionReady", false);
+    Meteor.call("getMemberCount", function (error, result) {
+      if (error) {
+        console.log(`Error invoking method 'getMemberCount'. Error: ${error.message}`);
+      } else {
+        Session.set("numberOfPages", Math.ceil(result / Session.get("recordsPerPage")));
+      }
+    });
+
+    let skip = (Session.get("pageNumber") - 1) * Session.get("recordsPerPage");
+    if (skip < 0) {
+      skip = 0;
+      Session.set("pageNumber", 1);
+    }
+    let limit = Session.get("recordsPerPage");
+
+    Meteor.subscribe("members", skip, limit, function () {
+      Session.set("subscriptionReady", true);
+    });
+  });
 });
 
 Template.members.helpers({
