@@ -1,4 +1,7 @@
 Template.members.onRendered(function () {
+  // explicitly add vertical scrollbar to the window
+  $("body").css("overflow-y", "scroll")
+
   Session.setDefault("currentUser", {});
 
   Tracker.autorun(function () {
