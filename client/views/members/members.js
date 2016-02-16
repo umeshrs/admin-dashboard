@@ -37,6 +37,9 @@ Template.members.onRendered(function () {
 Template.members.helpers({
   members: function () {
     return Meteor.users.find({ 'profile.role': "member" }, { sort: { createdAt: 1 } });
+  },
+  subscriptionReady() {
+    return Session.get("subscriptionReady");
   }
 });
 
