@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        {{#if subscriptionReady}}
+        {{#if Template.subscriptionsReady}}
           {{#each members}}
             <tr>
               <td>
@@ -65,7 +65,7 @@
     </table>
   </div>
 
-  {{#if subscriptionReady}}
+  {{#if Template.subscriptionsReady}}
     {{> pagination}}
   {{/if}}
   {{> removeMemberModal}}

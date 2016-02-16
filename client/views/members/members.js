@@ -1,21 +1,10 @@
-Template.members.onRendered(function () {
-  // explicitly add vertical scrollbar to the window
-  $("body").css("overflow-y", "scroll")
-
-  Session.setDefault("currentUser", {});
-
-  Tracker.autorun(function () {
-    if (Meteor.users.find({ 'profile.role': "member" }, { sort: { createdAt: 1} }).count() > 0) {
-      $('[data-toggle="tooltip"]').tooltip({ container: 'body' });
-      $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
-    }
-  });
+Template.members.onCreated(function () {
+  let self = this;
 
   Session.setDefault("pageNumber", 1);
   Session.setDefault("recordsPerPage", 10);
 
-  Tracker.autorun(function () {
-    Session.set("subscriptionReady", false);
+  self.autorun(function () {
     Meteor.call("getMemberCount", function (error, result) {
       if (error) {
         console.log(`Error invoking method 'getMemberCount'. Error: ${error.message}`);
@@ -31,18 +20,27 @@ Template.members.onRendered(function () {
     }
     let limit = Session.get("recordsPerPage");
 
-    Meteor.subscribe("members", skip, limit, function () {
-      Session.set("subscriptionReady", true);
-    });
+    self.subscribe("members", skip, limit);
+  });
+});
+
+Template.members.onRendered(function () {
+  // explicitly add vertical scrollbar to the window
+  $("body").css("overflow-y", "scroll")
+
+  Session.setDefault("currentUser", {});
+
+  Tracker.autorun(function () {
+    if (Meteor.users.find({ 'profile.role': "member" }, { sort: { createdAt: 1} }).count() > 0) {
+      $('[data-toggle="tooltip"]').tooltip({ container: 'body' });
+      $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
+    }
   });
 });
 
 Template.members.helpers({
   members: function () {
     return Meteor.users.find({ 'profile.role': "member" }, { sort: { createdAt: 1 } });
-  },
-  subscriptionReady() {
-    return Session.get("subscriptionReady");
   }
 });
 
