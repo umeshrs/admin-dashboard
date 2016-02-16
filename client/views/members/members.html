@@ -23,35 +23,7 @@
       <tbody>
         {{#if Template.subscriptionsReady}}
           {{#each members}}
-            <tr>
-              <td>
-                <span class="bold">{{profile.name}}</span><br>
-                {{#each emails}}
-                  <em>{{address}}</em><br>
-                {{/each}}
-              </td>
-              <td>{{username}}</td>
-              <td>
-                {{#with profile.address}}
-                  {{street}}<br>
-                  {{postalCode}} <span class="text-uppercase">{{city}}</span>
-                {{/with}}
-              </td>
-              <td>{{profile.pharmacyName}}<br><span class="hint-text"><em>CIP</em>: {{profile.CIP}}</span></td>
-              <td>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-warning edit-member-btn" data-original-title="{{_ 'Edit member'}}"
-                    data-toggle="tooltip" data-placement="bottom">
-                    <i class="fa fa-pencil"></i>
-                  </button>
-                  <button type="button" class="btn btn-danger remove-member-btn" data-original-title="{{_ 'Remove member'}}"
-                    data-tooltip-toggle="tooltip" data-placement="bottom"
-                    data-toggle="modal" data-target="#remove-member-modal">
-                    <i class="fa fa-trash"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
+            {{> member}}
           {{else}}
             <tr>
               <td colspan="5">There are no members to display.</td>
@@ -68,4 +40,36 @@
     {{> pagination}}
   {{/if}}
   {{> removeMemberModal}}
+</template>
+
+<template name="member">
+  <tr>
+    <td>
+      <span class="bold">{{profile.name}}</span><br>
+      {{#each emails}}
+        <em>{{address}}</em><br>
+      {{/each}}
+    </td>
+    <td>{{username}}</td>
+    <td>
+      {{#with profile.address}}
+        {{street}}<br>
+        {{postalCode}} <span class="text-uppercase">{{city}}</span>
+      {{/with}}
+    </td>
+    <td>{{profile.pharmacyName}}<br><span class="hint-text"><em>CIP</em>: {{profile.CIP}}</span></td>
+    <td>
+      <div class="btn-group">
+        <button type="button" class="btn btn-warning edit-member-btn" data-original-title="{{_ 'Edit member'}}"
+          data-toggle="tooltip" data-placement="bottom">
+          <i class="fa fa-pencil"></i>
+        </button>
+        <button type="button" class="btn btn-danger remove-member-btn" data-original-title="{{_ 'Remove member'}}"
+          data-tooltip-toggle="tooltip" data-placement="bottom"
+          data-toggle="modal" data-target="#remove-member-modal">
+          <i class="fa fa-trash"></i>
+        </button>
+      </div>
+    </td>
+  </tr>
 </template>

@@ -29,13 +29,6 @@ Template.members.onRendered(function () {
   $("body").css("overflow-y", "scroll")
 
   Session.setDefault("currentUser", {});
-
-  Tracker.autorun(function () {
-    if (Meteor.users.find({ 'profile.role': "member" }, { sort: { createdAt: 1} }).count() > 0) {
-      $('[data-toggle="tooltip"]').tooltip({ container: 'body' });
-      $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
-    }
-  });
 });
 
 Template.members.onDestroyed(function () {
@@ -60,10 +53,18 @@ Template.members.events({
   },
   'click #import-members-btn': function () {
     Router.go('/members/import-members');
-  },
-  'click .edit-member-btn': function () {
-    $('[data-toggle="tooltip"]').tooltip('hide');
-    $('[data-tooltip-toggle="tooltip"]').tooltip('hide');
+  }
+});
+
+Template.member.onRendered(function () {
+  $('[data-toggle="tooltip"]').tooltip({ container: 'body' });
+  $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
+});
+
+Template.member.events({
+  'click .edit-member-btn': function (event, template) {
+    template.$('[data-toggle="tooltip"]').tooltip('hide');
+    template.$('[data-tooltip-toggle="tooltip"]').tooltip('hide');
     Router.go(`/members/edit-member/${this._id}`);
   },
   'click .remove-member-btn': function () {
