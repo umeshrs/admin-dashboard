@@ -24,6 +24,9 @@ Template.viewRewards.onCreated(function () {
 });
 
 Template.viewRewards.onRendered(function () {
+  // explicitly add vertical scrollbar to the window
+  $('body').css("overflow-y", "scroll");
+
   Tracker.autorun(function () {
     if (Rewards.find().count() > 0) {
       $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
@@ -36,6 +39,9 @@ Template.rewards.onDestroyed(function () {
   Session.delete("pageNumber");
   Session.delete("recordsPerPage");
   Session.delete("numberOfPages");
+
+  // restore window scrollbar to its initial state
+  $('body').css("overflow-y", "visible");
 });
 
 Template.viewRewards.helpers({

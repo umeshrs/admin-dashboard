@@ -25,6 +25,9 @@ Template.manageSurveys.onCreated(function () {
 });
 
 Template.manageSurveys.onRendered(function () {
+  // explicitly add vertical scrollbar to the window
+  $('body').css("overflow-y", "scroll");
+
   Tracker.autorun(function () {
     if (Surveys.find({}, { sort: { createdAt: 1} }).count() > 0) {
       $('[data-toggle="tooltip"]').tooltip({ container: 'body' });
@@ -38,6 +41,9 @@ Template.manageSurveys.onDestroyed(function () {
   Session.delete("pageNumber");
   Session.delete("recordsPerPage");
   Session.delete("numberOfPages");
+
+  // restore window scrollbar to its initial state
+  $('body').css("overflow-y", "visible");
 });
 
 Template.manageSurveys.helpers({

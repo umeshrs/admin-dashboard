@@ -43,6 +43,9 @@ Template.members.onDestroyed(function () {
   Session.delete("pageNumber");
   Session.delete("recordsPerPage");
   Session.delete("numberOfPages");
+
+  // restore window scrollbar to its initial state
+  $('body').css("overflow-y", "visible");
 });
 
 Template.members.helpers({
