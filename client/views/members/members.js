@@ -38,6 +38,13 @@ Template.members.onRendered(function () {
   });
 });
 
+Template.members.onDestroyed(function () {
+  // clear pagination related Session values
+  Session.delete("pageNumber");
+  Session.delete("recordsPerPage");
+  Session.delete("numberOfPages");
+});
+
 Template.members.helpers({
   members: function () {
     return Meteor.users.find({ 'profile.role': "member" }, { sort: { createdAt: 1 } });

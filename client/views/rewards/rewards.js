@@ -2,7 +2,7 @@ Template.rewards.onCreated(function () {
   let self = this;
 
   Session.setDefault("pageNumber", 1);
-  Session.setDefault("recordsPerPage", 3);
+  Session.setDefault("recordsPerPage", 10);
 
   self.autorun(function () {
     Meteor.call("getRewardCount", function (error, result) {
@@ -30,6 +30,13 @@ Template.rewards.onRendered(function () {
       $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
     }
   });
+});
+
+Template.rewards.onDestroyed(function () {
+  // clear pagination related Session values
+  Session.delete("pageNumber");
+  Session.delete("recordsPerPage");
+  Session.delete("numberOfPages");
 });
 
 Template.rewards.helpers({
