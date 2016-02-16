@@ -1,3 +1,9 @@
+Template.manageSurveys.onCreated(function () {
+  let self = this;
+
+  self.subscribe("surveys");
+});
+
 Template.manageSurveys.onRendered(function () {
   Tracker.autorun(function () {
     if (Surveys.find({}, { sort: { createdAt: 1} }).count() > 0) {
