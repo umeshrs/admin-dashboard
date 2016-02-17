@@ -26,14 +26,8 @@ Template.rewards.onCreated(function () {
 Template.rewards.onRendered(function () {
   // explicitly add vertical scrollbar to the window
   $('body').css("overflow-y", "scroll");
-
-  Tracker.autorun(function () {
-    if (Rewards.find({}, { sort: { createdAt: 1} }).count() > 0) {
-      $('[data-toggle="tooltip"]').tooltip({ container: 'body' });
-      $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
-    }
-  });
 });
+
 
 Template.rewards.onDestroyed(function () {
   // clear pagination related Session values
@@ -54,15 +48,22 @@ Template.rewards.helpers({
 Template.rewards.events({
   'click #add-reward-btn': function () {
     Router.go('/rewards/add-reward');
-  },
-  'click .edit-reward-btn': function () {
-    $('[data-toggle="tooltip"]').tooltip('hide');
-    $('[data-tooltip-toggle="tooltip"]').tooltip('hide');
+  }
+});
+
+Template.reward.onRendered(function () {
+  let template = this;
+  template.$('[data-toggle="tooltip"]').tooltip({ container: 'body' });
+  template.$('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
+});
+
+Template.reward.events({
+  'click .edit-reward-btn': function (event, template) {
+    template.$('[data-toggle="tooltip"]').tooltip('hide');
     Router.go(`/rewards/edit-reward/${this._id}`);
   },
-  'click .remove-reward-btn': function () {
-    $('[data-toggle="tooltip"]').tooltip('hide');
-    $('[data-tooltip-toggle="tooltip"]').tooltip('hide');
+  'click .remove-reward-btn': function (event, template) {
+    template.$('[data-tooltip-toggle="tooltip"]').tooltip('hide');
     Session.set("currentReward", this);
   },
   'change .switchery': function () {
