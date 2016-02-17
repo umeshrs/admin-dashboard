@@ -1,9 +1,13 @@
 Template.removeMemberModal.onRendered(function () {
   let template = this;
-  template.$('#remove-member-modal').on('show.bs.modal', function (e) {
+
+  template.$('#remove-member-modal').on('show.bs.modal', function (event) {
+    // add negative margin-right to body to compensate for the padding-right added by bootstrap modal
     $("body").css("margin-right", "-15px");
   });
-  template.$('#remove-member-modal').on('hidden.bs.modal', function (e) {
+
+  template.$('#remove-member-modal').on('hidden.bs.modal', function (event) {
+    // remove negative margin-right from body to compensate for the padding-right removed by bootstrap modal
     $("body").css("margin-right", "0px");
   });
 });

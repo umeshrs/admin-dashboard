@@ -1,14 +1,32 @@
 Template.claimRewardModal.onRendered(function () {
-  // remove class 'disable-scroll' from modal if its content height is greater than the window height
-  $("#claim-reward-modal").on('shown.bs.modal', function (event) {
+  let template = this;
+  template.$('#claim-reward-modal').on('show.bs.modal', function (event) {
+    // add negative margin-right to body to compensate for the padding-right added by bootstrap modal
+    $("body").css("margin-right", "-15px");
+  });
+
+  template.$("#claim-reward-modal").on('shown.bs.modal', function (event) {
     if ($(event.target).find(".modal-content").innerHeight() > $(window).innerHeight()) {
+      // enable modal scrollbar if its content height is greater than the window height
       $(event.target).removeClass('disable-scroll');
+
+      // disable window vertical scrollbar if modal scrollbar is visible
+      $("body").css("overflow-y", "hidden");
+
+      // remove margin-right if modal scrollbar is enabled
+      $("body").css("margin-right", "0px");
     }
   });
 
-  // add class 'disable-scroll' (default) to modal when a modal is closed
-  $("#claim-reward-modal").on('hidden.bs.modal', function (event) {
+  template.$("#claim-reward-modal").on('hidden.bs.modal', function (event) {
+    // add class 'disable-scroll' (default) to modal when a modal is closed
     $(event.target).addClass('disable-scroll');
+
+    // enable window scroll bar in case it was disabled during shown.bs.modal
+    $("body").css("overflow-y", "visible");
+
+    // remove negative margin-right from body to compensate for the padding-right removed by bootstrap modal
+    $("body").css("margin-right", "0px");
   });
 });
 

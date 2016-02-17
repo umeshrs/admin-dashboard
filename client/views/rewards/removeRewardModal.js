@@ -1,6 +1,21 @@
+Template.removeRewardModal.onRendered(function () {
+  let template = this;
+
+  template.$('#remove-reward-modal').on('show.bs.modal', function (event) {
+    // add negative margin-right to body to compensate for the padding-right added by bootstrap modal
+    $("body").css("margin-right", "-15px");
+  });
+
+  template.$('#remove-reward-modal').on('hidden.bs.modal', function (event) {
+    // remove negative margin-right from body to compensate for the padding-right removed by bootstrap modal
+    $("body").css("margin-right", "0px");
+  });
+});
+
 Template.removeRewardModal.events({
   'click #remove-reward-modal-btn': function () {
     let rewardId = Session.get("currentReward") && Session.get("currentReward")._id;
+
     Meteor.call("removeReward", rewardId, function (error, result) {
       let notificationOptions = {
         style: "bar",
