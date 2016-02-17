@@ -285,6 +285,13 @@ textarea#reward-description {
   color: #dbdbdb !important;
 }
 
+
+/* modal */
+
+.modal-backdrop.in {
+  opacity: 0.5;
+}
+
 .modal .modal-header {
   margin: -1px -1px 0px -1px;
   border-top-left-radius: 3px;
