@@ -8,7 +8,8 @@ Template.addReward.onRendered(function () {
 });
 
 Template.addReward.events({
-  'click #add-reward-save-btn': function (event, template) {
+  'submit #add-reward-form': function (event, template) {
+    event.preventDefault();
     let reward = {
       title: template.$("#reward-title").val(),
       description: template.$("#reward-description").val(),

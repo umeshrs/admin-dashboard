@@ -7,7 +7,7 @@
             <label for="reward-title" class="col-sm-3 control-label">{{_ "Title"}}</label>
             <div class="col-sm-9">
               <input type="text" class="form-control" id="reward-title" placeholder="{{_ 'Reward title...'}}"
-              value="{{title}}" required>
+              value="{{title}}">
             </div>
           </div>
           <div class="form-group">
@@ -17,24 +17,22 @@
               value="{{description}}"></textarea>
             </div>
           </div>
-          <div class="form-group required">
+          <div class="form-group">
             <label for="reward-points" class="col-sm-3 control-label">{{_ "Points needed"}}</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="reward-points" placeholder="100"
-              value="{{points}}" required>
+              <input type="text" class="form-control" id="reward-points" placeholder="100" value="{{points}}">
             </div>
             <label for="available-count" class="col-sm-3 control-label text-right sm-m-t-15">{{_ "Rewards available"}}</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="available-count" placeholder="20"
-              value="{{availableCount}}" required>
+              <input type="text" class="form-control" id="available-count" placeholder="20" value="{{availableCount}}">
             </div>
           </div>
-          <div class="form-group" aria-required="true">
+          <div class="form-group">
             <label for="valid-till" class="col-sm-3 control-label">{{_ "Valid till"}}</label>
             <div class="col-sm-4">
               <div class="input-group date">
                 <input type="text" class="form-control" id="valid-till" placeholder="dd/mm/yyyy"
-                value="{{dateToLocaleDateString validTill}}" required>
+                value="{{dateToLocaleDateString validTill}}">
                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
               </div>
             </div>
@@ -45,7 +43,7 @@
           </div>
           <div class="row m-t-20 m-b-20">
             <div class="col-sm-9 col-sm-offset-3">
-              <button type="button" class="btn btn-success btn-animated from-left fa fa-save pull-right"
+              <button type="submit" class="btn btn-success btn-animated from-left fa fa-save pull-right"
                id="{{task}}-save-btn">
                 <span class="bold">{{_ "Save"}}</span>
               </button>
