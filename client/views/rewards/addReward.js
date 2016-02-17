@@ -1,10 +1,18 @@
 Template.addReward.onRendered(function () {
+  Session.set("fieldRequired", false);
+
   this.$('.date').datepicker({
     format: "dd/mm/yyyy",
     startDate: 'today',
     todayBtn: 'linked',
     autoclose: true,
   });
+});
+
+Template.addReward.helpers({
+  fieldRequired() {
+    return Session.get("fieldRequired");
+  }
 });
 
 Template.addReward.events({
@@ -51,5 +59,9 @@ Template.addReward.events({
   },
   'click #cancel-btn': function () {
     Router.go('/rewards');
+  },
+  'change .switchery': function (event) {
+    this.checked = ! this.checked;
+    Session.set("fieldRequired", this.checked);
   }
 });

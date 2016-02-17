@@ -17,7 +17,7 @@
               value="{{description}}"></textarea>
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group {{#if fieldRequired}}required{{/if}}">
             <label for="reward-points" class="col-sm-3 control-label">{{_ "Points needed"}}</label>
             <div class="col-sm-3">
               <input type="text" class="form-control" id="reward-points" placeholder="100" value="{{points}}">
@@ -27,7 +27,7 @@
               <input type="text" class="form-control" id="available-count" placeholder="20" value="{{availableCount}}">
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group  {{#if fieldRequired}}required{{/if}}">
             <label for="valid-till" class="col-sm-3 control-label">{{_ "Valid till"}}</label>
             <div class="col-sm-4">
               <div class="input-group date">
