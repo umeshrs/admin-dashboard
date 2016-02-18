@@ -334,7 +334,21 @@ textarea#reward-description {
 }
 
 .form-horizontal .form-group .form-control {
-  border: 1px solid rgba(0, 0, 0, 0.25);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.form-horizontal .form-group .form-control.error {
+  border: 2px solid #F55753;
+}
+
+#valid-till-error {
+  position: absolute;
+  top: 100%;
+}
+
+.input-group-addon {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  color: rgba(98, 98, 98, 0.8);;
 }
 
 .form-control.has-error  {
