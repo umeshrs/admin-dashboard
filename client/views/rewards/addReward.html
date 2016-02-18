@@ -6,32 +6,32 @@
           <div class="form-group required">
             <label for="reward-title" class="col-sm-3 control-label">{{_ "Title"}}</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="reward-title" placeholder="{{_ 'Reward title...'}}"
+              <input type="text" name="reward-title" class="form-control required" id="reward-title" placeholder="{{_ 'Reward title...'}}"
               value="{{title}}">
             </div>
           </div>
           <div class="form-group">
             <label for="reward-description" class="col-sm-3 control-label">{{_ "Description"}}</label>
             <div class="col-sm-9">
-              <textarea class="form-control" id="reward-description" placeholder="{{_ 'Reward description...'}}"
+              <textarea name="reward-description" class="form-control" id="reward-description" placeholder="{{_ 'Reward description...'}}"
               value="{{description}}"></textarea>
             </div>
           </div>
           <div class="form-group {{#if fieldRequired}}required{{/if}}">
             <label for="reward-points" class="col-sm-3 control-label">{{_ "Points needed"}}</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="reward-points" placeholder="100" value="{{points}}">
+              <input type="text" name="reward-points" class="form-control" id="reward-points" placeholder="100" value="{{points}}">
             </div>
-            <label for="available-count" class="col-sm-3 control-label text-right sm-m-t-15">{{_ "Rewards available"}}</label>
+            <label for="quantity" class="col-sm-3 control-label text-right sm-m-t-15">{{_ "Quantity available"}}</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="available-count" placeholder="20" value="{{availableCount}}">
+              <input type="text" name="quantity" class="form-control" id="quantity" placeholder="20" value="{{availableCount}}">
             </div>
           </div>
           <div class="form-group  {{#if fieldRequired}}required{{/if}}">
             <label for="valid-till" class="col-sm-3 control-label">{{_ "Valid till"}}</label>
             <div class="col-sm-4">
               <div class="input-group date">
-                <input type="text" class="form-control" id="valid-till" placeholder="dd/mm/yyyy"
+                <input type="text" name="valid-till" class="form-control" id="valid-till" placeholder="dd/mm/yyyy"
                 value="{{dateToLocaleDateString validTill}}">
                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
               </div>
