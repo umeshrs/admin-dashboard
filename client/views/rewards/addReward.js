@@ -97,7 +97,7 @@ Template.addReward.events({
       points: +template.$("#reward-points").val(),
       availableCount: +template.$("#quantity").val(),
       claimCount: 0,
-      validTill: template.$(".date").datepicker('getDate'),
+      validTill: new Date( template.$(".date").datepicker('getDate').setHours(23, 59, 59, 999) ),
       published: template.$(".switchery")[0].checked,
       createdAt: new Date()
     };
