@@ -1,0 +1,20 @@
+{
+  // reward title
+  "REWARD_TITLE_EMPTY_ERROR": "S'il vous plaît entrer le titre de récompense.",
+  "REWARD_TITLE_MAX_LENGTH_ERROR": "S'il vous plaît pas entrer plus de 50 caractères.",
+
+  // reward points
+  "REWARD_POINTS_EMPTY_ERROR": "S'il vous plaît entrer des points de fidélité nécessaires.",
+  "REWARD_POINTS_DIGITS_ERROR": "Merci de n'entrer que des chiffres.",
+  "REWARD_POINTS_MIN_ERROR": "S'il vous plaît entrer une valeur supérieure ou égale à 1.",
+  "REWARD_POINTS_MAX_ERROR": "S'il vous plaît entrer une valeur inférieure ou égale à 1.000.000.",
+
+  // reward quantity available
+  "REWARD_QUANTITY_EMPTY_ERROR": "S'il vous plaît entrer les quantités disponibles.",
+  "REWARD_QUANTITY_DIGITS_ERROR": "Merci de n'entrer que des chiffres.",
+  "REWARD_QUANTITY_MIN_ERROR": "S'il vous plaît entrer une valeur supérieure ou égale à 1.",
+  "REWARD_QUANTITY_MAX_ERROR": "S'il vous plaît entrer une valeur inférieure ou égale à 1.000.000.",
+
+  // reward valid till date
+  "REWARD_VALID_TILL_EMPTY_ERROR": "S'il vous plaît entrer valide jusqu'à la date."
+}

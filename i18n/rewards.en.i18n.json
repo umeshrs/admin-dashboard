@@ -1,0 +1,20 @@
+{
+  // reward title
+  "REWARD_TITLE_EMPTY_ERROR": "Please enter reward title.",
+  "REWARD_TITLE_MAX_LENGTH_ERROR": "Please enter no more than 50 characters.",
+
+  // reward points
+  "REWARD_POINTS_EMPTY_ERROR": "Please enter reward points needed.",
+  "REWARD_POINTS_DIGITS_ERROR": "Please enter only digits.",
+  "REWARD_POINTS_MIN_ERROR": "Please enter a value greater than or equal to 1.",
+  "REWARD_POINTS_MAX_ERROR": "Please enter a value less than or equal to 1,000,000.",
+
+  // reward quantity available
+  "REWARD_QUANTITY_EMPTY_ERROR": "Please enter quantity available.",
+  "REWARD_QUANTITY_DIGITS_ERROR": "Please enter only digits.",
+  "REWARD_QUANTITY_MIN_ERROR": "Please enter a value greater than or equal to 1.",
+  "REWARD_QUANTITY_MAX_ERROR": "Please enter a value less than or equal to 1,000,000.",
+
+  // reward valid till date
+  "REWARD_VALID_TILL_EMPTY_ERROR": "Please enter valid till date."
+}
