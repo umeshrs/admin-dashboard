@@ -1,11 +1,84 @@
 Template.addReward.onRendered(function () {
+  let template = this;
+
   Session.set("fieldRequired", false);
 
-  this.$('.date').datepicker({
+  template.$('.date').datepicker({
     format: "dd/mm/yyyy",
     startDate: 'today',
     todayBtn: 'linked',
     autoclose: true,
+  });
+
+  template.$("#add-reward-form").validate({
+    rules: {
+      "reward-title": {
+        required: true,
+        maxlength: 50
+      },
+      "reward-points": {
+        digits: true,
+        min: 1,
+        max: 1000000
+      },
+      "quantity": {
+        digits: true,
+        min: 1,
+        max: 1000000
+      }
+    }
+  });
+
+  template.autorun(function () {
+    template.$("#reward-title").rules("add", {
+      messages: {
+        required: TAPi18n.__("REWARD_TITLE_EMPTY_ERROR"),
+        maxlength: TAPi18n.__("REWARD_TITLE_MAX_LENGTH_ERROR")
+      }
+    });
+
+    template.$("#reward-points").rules("add", {
+      messages: {
+        digits: TAPi18n.__("REWARD_POINTS_DIGITS_ERROR"),
+        min: TAPi18n.__("REWARD_POINTS_MIN_ERROR"),
+        max: TAPi18n.__("REWARD_POINTS_MAX_ERROR")
+      }
+    });
+
+    template.$("#quantity").rules("add", {
+      messages: {
+        digits: TAPi18n.__("REWARD_QUANTITY_DIGITS_ERROR"),
+        min: TAPi18n.__("REWARD_QUANTITY_MIN_ERROR"),
+        max: TAPi18n.__("REWARD_QUANTITY_MAX_ERROR")
+      }
+    });
+
+    if ( Session.get("fieldRequired") ) {
+      template.$("#reward-points").rules("add", {
+        required: true,
+        messages: {
+          required: TAPi18n.__("REWARD_POINTS_EMPTY_ERROR")
+        }
+      });
+
+      template.$("#quantity").rules("add", {
+        required: true,
+        messages: {
+          required: TAPi18n.__("REWARD_QUANTITY_EMPTY_ERROR")
+        }
+      });
+
+      template.$("#valid-till").rules("add", {
+        required: true,
+        messages: {
+          required: TAPi18n.__("REWARD_VALID_TILL_EMPTY_ERROR")
+        }
+      });
+    } else {
+      template.$("#reward-points").rules("remove", "required");
+      template.$("#quantity").rules("remove", "required");
+      template.$("#valid-till").rules("remove", "required");
+    }
   });
 });
 
@@ -22,7 +95,7 @@ Template.addReward.events({
       title: template.$("#reward-title").val(),
       description: template.$("#reward-description").val(),
       points: +template.$("#reward-points").val(),
-      availableCount: +template.$("#available-count").val(),
+      availableCount: +template.$("#quantity").val(),
       claimCount: 0,
       validTill: template.$(".date").datepicker('getDate'),
       published: template.$(".switchery")[0].checked,
