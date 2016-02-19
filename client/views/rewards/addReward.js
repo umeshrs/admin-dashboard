@@ -1,7 +1,7 @@
 Template.addReward.onRendered(function () {
   let template = this;
 
-  Session.set("fieldRequired", false);
+  Session.set("fieldRequired", template.data.published);
 
   template.$('.date').datepicker({
     format: "dd/mm/yyyy",
@@ -10,7 +10,7 @@ Template.addReward.onRendered(function () {
     autoclose: true,
   });
 
-  template.$("#add-reward-form").validate({
+  let validator = template.$("[id$='form']").validate({
     rules: {
       "reward-title": {
         required: true,
@@ -75,9 +75,25 @@ Template.addReward.onRendered(function () {
         }
       });
     } else {
+      // remove required rule for reward points, quantity and valid till if survey is not being published
       template.$("#reward-points").rules("remove", "required");
       template.$("#quantity").rules("remove", "required");
       template.$("#valid-till").rules("remove", "required");
+    }
+
+    // trigger validation in case rules were edited or site language was changed
+    // and validation has been performed on that element at least once
+    if ( template.$("#reward-title-error").length ) {
+      validator.element("#reward-title");
+    }
+    if ( template.$("#reward-points-error").length ) {
+      validator.element("#reward-points");
+    }
+    if ( template.$("#quantity-error").length ) {
+      validator.element("#quantity");
+    }
+    if ( template.$("#valid-till-error").length ) {
+      validator.element("#valid-till");
     }
   });
 });
