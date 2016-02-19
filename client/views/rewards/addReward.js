@@ -14,7 +14,8 @@ Template.addReward.onRendered(function () {
     rules: {
       "reward-title": {
         required: true,
-        maxlength: 50
+        maxlength: 50,
+        rewardUnique: true
       },
       "reward-points": {
         digits: true,
@@ -33,7 +34,8 @@ Template.addReward.onRendered(function () {
     template.$("#reward-title").rules("add", {
       messages: {
         required: TAPi18n.__("REWARD_TITLE_EMPTY_ERROR"),
-        maxlength: TAPi18n.__("REWARD_TITLE_MAX_LENGTH_ERROR")
+        maxlength: TAPi18n.__("REWARD_TITLE_MAX_LENGTH_ERROR"),
+        rewardUnique: TAPi18n.__("REWARD_TITLE_UNIQUE_ERROR")
       }
     });
 
@@ -96,6 +98,9 @@ Template.addReward.onRendered(function () {
       validator.element("#valid-till");
     }
   });
+
+  // Subscribe to rewardTitles publication. Needed for rewardUnique validation rule.
+  template.subscribe("rewardTitles");
 });
 
 Template.addReward.helpers({
