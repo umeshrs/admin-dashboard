@@ -2,6 +2,7 @@
   // reward title
   "REWARD_TITLE_EMPTY_ERROR": "Please enter reward title.",
   "REWARD_TITLE_MAX_LENGTH_ERROR": "Please enter no more than 50 characters.",
+  "REWARD_TITLE_UNIQUE_ERROR": "Reward with this title already exists. Please enter a different title.",
 
   // reward points
   "REWARD_POINTS_EMPTY_ERROR": "Please enter reward points needed.",

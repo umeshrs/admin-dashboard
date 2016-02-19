@@ -2,6 +2,7 @@
   // reward title
   "REWARD_TITLE_EMPTY_ERROR": "S'il vous plaît entrer le titre de récompense.",
   "REWARD_TITLE_MAX_LENGTH_ERROR": "S'il vous plaît pas entrer plus de 50 caractères.",
+  "REWARD_TITLE_UNIQUE_ERROR": "Récompenser avec ce titre existe déjà. S'il vous plaît entrer un titre différent.",
 
   // reward points
   "REWARD_POINTS_EMPTY_ERROR": "S'il vous plaît entrer des points de fidélité nécessaires.",
