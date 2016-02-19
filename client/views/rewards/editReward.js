@@ -1,11 +1,15 @@
 Template.editReward.events({
-  'click #edit-reward-save-btn': function (event, template) {
+  'submit #edit-reward-form': function (event, template) {
+    event.preventDefault();
+
+    let validTill = template.$(".date").datepicker('getDate');
+    validTill = validTill && new Date( validTill.setHours(23, 59, 59, 999) );
     let reward = {
       title: template.$("#reward-title").val(),
-      description: template.$("#reward-description").val(),
-      points: +template.$("#reward-points").val(),
-      availableCount: +template.$("#available-count").val(),
-      validTill: template.$(".date").datepicker('getDate'),
+      description: template.$("#reward-description").val().trim(),
+      points: template.$("#reward-points").val() && +template.$("#reward-points").val(),
+      availableCount: template.$("#quantity").val() && +template.$("#quantity").val(),
+      validTill: validTill,
       published: template.$(".switchery")[0].checked
     };
 
