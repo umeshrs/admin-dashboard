@@ -91,13 +91,15 @@ Template.addReward.helpers({
 Template.addReward.events({
   'submit #add-reward-form': function (event, template) {
     event.preventDefault();
+    let validTill = template.$(".date").datepicker('getDate');
+    validTill = validTill && new Date( validTill.setHours(23, 59, 59, 999) );
     let reward = {
       title: template.$("#reward-title").val(),
-      description: template.$("#reward-description").val(),
-      points: +template.$("#reward-points").val(),
-      availableCount: +template.$("#quantity").val(),
+      description: template.$("#reward-description").val().trim(),
+      points: template.$("#reward-points").val() && +template.$("#reward-points").val(),
+      availableCount: template.$("#quantity").val() && +template.$("#quantity").val(),
       claimCount: 0,
-      validTill: new Date( template.$(".date").datepicker('getDate').setHours(23, 59, 59, 999) ),
+      validTill: validTill,
       published: template.$(".switchery")[0].checked,
       createdAt: new Date()
     };
