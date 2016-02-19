@@ -2,7 +2,7 @@
   <div class="container-fluid reward-wrapper">
     <div class="row">
       <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
-        <form id="add-reward-form" class="form-horizontal" role="form" autocomplete="off">
+        <form id="{{task}}-form" class="form-horizontal" role="form" autocomplete="off">
           <div class="form-group required">
             <label for="reward-title" class="col-sm-3 control-label">{{_ "Title"}}</label>
             <div class="col-sm-9">
@@ -44,7 +44,7 @@
           <div class="row m-t-20 m-b-20">
             <div class="col-sm-9 col-sm-offset-3">
               <button type="submit" class="btn btn-success btn-animated from-left fa fa-save pull-right"
-               id="{{task}}-save-btn">
+               id="save-btn">
                 <span class="bold">{{_ "Save"}}</span>
               </button>
               <button type="button" class="btn btn-danger btn-animated from-left fa fa-close pull-right m-r-10" id="cancel-btn">
