@@ -15,7 +15,7 @@ Template.addReward.onRendered(function () {
       "reward-title": {
         required: true,
         maxlength: 50,
-        rewardUnique: true
+        rewardUnique: [true, template.data._id]
       },
       "reward-points": {
         digits: true,
