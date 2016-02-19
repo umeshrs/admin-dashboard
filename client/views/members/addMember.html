@@ -2,7 +2,7 @@
   <div class="container-fluid member-wrapper">
     <div class="row">
       <div class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
-        <form id="add-member-form" class="form-horizontal" role="form" autocomplete="off">
+        <form id="{{task}}-form" class="form-horizontal" role="form" autocomplete="off">
           <div class="form-group required">
             <label for="title" class="col-sm-3 control-label">{{_ "Title"}}</label>
             <div class="col-sm-2">
@@ -15,89 +15,90 @@
             </div>
             <label for="owner-name" class="col-sm-2 col-sm-offset-1 control-label">{{_ "OWNER_NAME"}}</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" id="owner-name" placeholder="{{_ 'OWNER_NAME_PLACEHOLDER'}}"
-              value="{{ownerName}}">
+              <input type="text" name="owner-name" class="form-control" id="owner-name"
+                placeholder="{{_ 'OWNER_NAME_PLACEHOLDER'}}" value="{{ownerName}}">
             </div>
           </div>
           <div class="form-group required">
             <label for="pharmacy-name" class="col-sm-3 control-label">{{_ "PHARMACY_NAME"}}</label>
             <div class="col-sm-5">
-              <input type="text" class="form-control" id="pharmacy-name" placeholder="{{_ 'PHARMACY_NAME_PLACEHOLDER'}}"
-              value="{{pharmacyName}}">
+              <input type="text" name="pharmacy-name" class="form-control" id="pharmacy-name"
+                placeholder="{{_ 'PHARMACY_NAME_PLACEHOLDER'}}" value="{{pharmacyName}}">
             </div>
             <label for="cip" class="col-sm-1 col-md-offset-1 control-label">{{_ "CIP"}}</label>
             <div class="col-sm-3 col-md-2">
-              <input type="text" class="form-control" id="cip" placeholder="{{_ 'CIP_PLACEHOLDER'}}"
-              value="{{CIP}}">
+              <input type="text" name="cip" class="form-control" id="cip"
+                placeholder="{{_ 'CIP_PLACEHOLDER'}}" value="{{CIP}}">
             </div>
           </div>
           <div class="form-group required">
             <label for="username" class="col-sm-3 control-label">{{_ "USERNAME"}}</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="username" placeholder="{{_ 'USERNAME_PLACEHOLDER'}}"
-              value="{{username}}">
+              <input type="text" name="username" class="form-control" id="username"
+                placeholder="{{_ 'USERNAME_PLACEHOLDER'}}" value="{{username}}">
             </div>
             <label for="email" class="col-sm-2 control-label">{{_ "EMAIL"}}</label>
             <div class="col-sm-4">
-              <input type="email" class="form-control" id="email" placeholder="{{_ 'EMAIL_PLACEHOLDER'}}"
-              value="{{email}}">
+              <input type="email" name="email" class="form-control" id="email"
+                placeholder="{{_ 'EMAIL_PLACEHOLDER'}}" value="{{email}}">
             </div>
           </div>
           <div class="form-group required">
             <label for="password" class="col-sm-3 control-label">{{_ "PASSWORD"}}</label>
             <div class="col-sm-3">
-              <input type="password" class="form-control" id="password" placeholder="{{_ 'PASSWORD_PLACEHOLDER'}}"
-             >
+              <input type="password" name="password" class="form-control" id="password"
+                placeholder="{{_ 'PASSWORD_PLACEHOLDER'}}">
             </div>
             <label for="confirm-password" class="col-sm-3 control-label">{{_ "CONFIRM_PASSWORD"}}</label>
             <div class="col-sm-3">
-              <input type="password" class="form-control" id="confirm-password" placeholder="{{_ 'CONFIRM_PASSWORD_PLACEHOLDER'}}"
-             >
+              <input type="password" name="confirm-password" class="form-control" id="confirm-password"
+                placeholder="{{_ 'CONFIRM_PASSWORD_PLACEHOLDER'}}">
             </div>
           </div>
           <div class="form-group required">
             <label for="street" class="col-sm-3 control-label">{{_ "STREET"}}</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="street" placeholder="{{_ 'STREET_PLACEHOLDER'}}"
-              value="{{address.street}}">
+              <input type="text" name="street" class="form-control" id="street"
+                placeholder="{{_ 'STREET_PLACEHOLDER'}}" value="{{address.street}}">
             </div>
             <div class="clearfix m-b-20"></div>
             <label for="city" class="col-sm-3 control-label">{{_ "CITY"}}</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="city" placeholder="{{_ 'CITY_PLACEHOLDER'}}"
-              value="{{address.city}}">
+              <input type="text" name="city" class="form-control" id="city"
+                placeholder="{{_ 'CITY_PLACEHOLDER'}}" value="{{address.city}}">
             </div>
             <label for="postal-code" class="col-sm-3 control-label">{{_ "POSTAL_CODE"}}</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="postal-code" placeholder="{{_ 'POSTAL_CODE_PLACEHOLDER'}}"
-              value="{{address.postalCode}}">
+              <input type="text" name="postal-code" class="form-control" id="postal-code"
+                placeholder="{{_ 'POSTAL_CODE_PLACEHOLDER'}}" value="{{address.postalCode}}">
             </div>
             <div class="clearfix m-b-20"></div>
             <label for="latitude" class="col-sm-3 control-label">{{_ "LATITUDE"}}</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="latitude" placeholder="{{_ 'LATITUDE_PLACEHOLDER'}}"
-              value="{{address.lat}}" disabled>
+              <input type="text" name="latitude" class="form-control" id="latitude"
+                placeholder="{{_ 'LATITUDE_PLACEHOLDER'}}" value="{{address.lat}}" disabled>
             </div>
             <label for="longitude" class="col-sm-3 control-label">{{_ "LONGITUDE"}}</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="longitude" placeholder="{{_ 'LONGITUDE_PLACEHOLDER'}}"
-              value="{{address.lng}}" disabled>
+              <input type="text" name="longitude" class="form-control" id="longitude"
+                placeholder="{{_ 'LONGITUDE_PLACEHOLDER'}}" value="{{address.lng}}" disabled>
             </div>
           </div>
           <div class="form-group">
             <label for="telephone" class="col-sm-3 control-label">{{_ "TELEPHONE"}}</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="telephone" placeholder="{{_ 'TELEPHONE_PLACEHOLDER'}}" value="{{telephone}}">
+              <input type="text" name="telephone" class="form-control" id="telephone"
+                placeholder="{{_ 'TELEPHONE_PLACEHOLDER'}}" value="{{telephone}}">
             </div>
             <label for="fax" class="col-sm-3 control-label">{{_ "FAX"}}</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="fax" placeholder="{{_ 'FAX_PLACEHOLDER'}}" value="{{fax}}">
+              <input type="text" name="fax" class="form-control" id="fax"
+                placeholder="{{_ 'FAX_PLACEHOLDER'}}" value="{{fax}}">
             </div>
           </div>
           <div class="row m-t-20 m-b-20">
             <div class="col-sm-9 col-sm-offset-3">
-              <button type="submit" class="btn btn-success btn-animated from-left fa fa-save pull-right"
-               id="{{task}}-save-btn">
+              <button type="submit" class="btn btn-success btn-animated from-left fa fa-save pull-right" id="save-btn">
                 <span class="bold">{{_ "SAVE"}}</span>
               </button>
               <button type="button" class="btn btn-danger btn-animated from-left fa fa-close pull-right m-r-10" id="cancel-btn">
