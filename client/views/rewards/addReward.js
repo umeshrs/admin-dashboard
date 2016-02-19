@@ -101,6 +101,9 @@ Template.addReward.onRendered(function () {
 
   // Subscribe to rewardTitles publication. Needed for rewardUnique validation rule.
   template.subscribe("rewardTitles");
+
+  // bring focus to title input when template is rendered
+  template.$("#reward-title").focus();
 });
 
 Template.addReward.helpers({
