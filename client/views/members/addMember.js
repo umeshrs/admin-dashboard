@@ -69,6 +69,9 @@ Template.addMember.onRendered(function () {
       }
     }
   });
+
+  // Bring focus to owner name field when template is rendered
+  template.$("#owner-name").focus();
 });
 
 Template.addMember.helpers({
