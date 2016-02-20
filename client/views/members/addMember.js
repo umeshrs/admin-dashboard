@@ -33,12 +33,14 @@ Template.addMember.onRendered(function () {
         digits: true,
         minlength: 7,
         maxlength: 7,
+        cipUnique: [true, template.data._id]
       },
       "username": {
         required: true,
         maxlength: 20,
         nowhitespace: true,
-        alphanumeric: true
+        alphanumeric: true,
+        usernameUnique: [true, template.data._id]
       },
       "email": {
         required: true,
@@ -72,6 +74,11 @@ Template.addMember.onRendered(function () {
 
   // Bring focus to owner name field when template is rendered
   template.$("#owner-name").focus();
+
+  // Subscribe to usernames publication. Needed for usernameUnique validation rule.
+  template.subscribe("usernames");
+  // Subscribe to cipValues publication. Needed for cipUnique validation rule.
+  template.subscribe("cipValues");
 });
 
 Template.addMember.helpers({
