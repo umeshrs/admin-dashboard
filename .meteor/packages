@@ -37,3 +37,4 @@ ecmascript
 sacha:spin
 percolate:synced-cron
 themeteorchef:jquery-validation
+reactive-var
