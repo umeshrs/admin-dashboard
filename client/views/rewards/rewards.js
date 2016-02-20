@@ -66,13 +66,40 @@ Template.reward.events({
     template.$('[data-tooltip-toggle="tooltip"]').tooltip('hide');
     Session.set("currentReward", this);
   },
-  'change .switchery': function () {
-    Meteor.call("toggleRewardPublishedStatus", this.rewardId, ! this.checked, function (error, result) {
+  'change .switchery': function (event, template) {
+    let self = this, reward = Template.currentData();
+    Meteor.call("toggleRewardPublishedStatus", self.rewardId, self.checked, function (error, result) {
+      let notificationOptions = {
+        style: "bar",
+        position: "top",
+        type: "error"
+      };
       if (error) {
         console.log(`Error invoking method 'toggleRewardPublishedStatus'. Error: ${error.message}.`);
+        switch (error.error) {
+          case "not-logged-in":
+            notificationOptions.message = "<b>Oops!</b> You must be logged in to toggle reward publish status.";
+            break;
+          case "not-authorized":
+            notificationOptions.message = "<b>Oops!</b> You are not authorized to toggle reward publish status.";
+            break;
+          case "required-values-missing":
+            notificationOptions.message = "<b>Oops!</b> Some required values are missing to publish this reward. " +
+              "Please enter the missing details and try again.";
+            reward.switchery.setPosition(true);
+            self.checked = reward.switchery.isChecked();
+            break;
+          default:
+            notificationOptions.message = "<b>Oops!</b> Something went wrong while toggling this reward's publish " +
+              "status. Please try again.";
+            break;
+        }
       } else {
         console.log(`Updated publish status of ${result} reward(s).`);
+        notificationOptions.message = `<b>Success!</b> Reward '${reward.title}' has been ${reward.published ? 'unpublished' : 'published'}.`;
+        notificationOptions.type = "success";
       }
+      $('body').pgNotification(notificationOptions).show();
     });
   }
 });
