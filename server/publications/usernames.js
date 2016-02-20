@@ -1,0 +1,12 @@
+Meteor.publish("usernames", function () {
+  if (this.userId) {
+    let currentUser = Meteor.users.findOne(this.userId);
+    if (currentUser.profile && currentUser.profile.role === "administrator") {
+      return Meteor.users.find({}, { fields: { username: 1 } });
+    } else {
+      return [];
+    }
+  } else {
+    return [];
+  }
+});
