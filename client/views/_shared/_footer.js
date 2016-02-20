@@ -1,4 +1,6 @@
 Template.footer.onRendered(function () {
+  let template = this;
+
   // set default language of site based on the selected attribute of select#language element
   if (! localStorage.getItem("language")) {
     TAPi18n.setLanguage(this.$("#language").val());
@@ -8,8 +10,8 @@ Template.footer.onRendered(function () {
     this.$("#language").val(localStorage.getItem("language"));
   }
 
-  $('[data-init-plugin="select2"]').select2({
-      minimumResultsForSearch: ($(this).attr('data-disable-search') == 'true' ? -1 : 1)
+  template.$('[data-init-plugin="select2"]').select2({
+      minimumResultsForSearch: (template.$('[data-init-plugin="select2"]').attr('data-disable-search') == 'true' ? -1 : 1)
   }).on('select2-opening', function() {
       $.fn.scrollbar && $('.select2-results').scrollbar({
           ignoreMobile: false
