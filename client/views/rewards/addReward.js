@@ -160,7 +160,6 @@ Template.addReward.events({
     Router.go('/rewards');
   },
   'change .switchery': function (event) {
-    this.checked = ! this.checked;
     Session.set("fieldRequired", this.checked);
   }
 });
