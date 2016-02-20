@@ -42,7 +42,7 @@ Template.addMember.onRendered(function () {
       },
       "email": {
         required: true,
-        email: true,
+        email: true
       },
       "password": {
         required: Session.equals("fieldRequired", true) ? true : false,
@@ -84,7 +84,7 @@ Template.addMember.events({
     let options = {
       username: template.$('#username').val(),
       password: Accounts._hashPassword(template.$("#password").val()),
-      email: template.$('#email').val(),
+      email: template.$('#email').val().trim(),
       profile: {
         CIP: template.$('#cip').val(),
         title: template.$('#title').val(),

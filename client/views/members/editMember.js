@@ -1,18 +1,20 @@
 Template.editMember.events({
-  'click #edit-member-save-btn': function (event, template) {
+  'submit #edit-member-form': function (event, template) {
+    event.preventDefault();
+
     let options = {
       username: template.$('#username').val(),
       password: template.$("#password").val() && Accounts._hashPassword(template.$("#password").val()),
-      email: template.$('#email').val(),
+      email: template.$('#email').val().trim(),
       profile: {
         CIP: template.$('#cip').val(),
         title: template.$('#title').val(),
-        name: template.$('#owner-name').val(),
-        pharmacyName: template.$('#pharmacy-name').val(),
+        name: template.$('#owner-name').val().trim(),
+        pharmacyName: template.$('#pharmacy-name').val().trim(),
         address: {
-          street: template.$('#street').val(),
-          city: template.$('#city').val(),
-          postalCode: template.$('#postal-code').val(),
+          street: template.$('#street').val().trim(),
+          city: template.$('#city').val().trim(),
+          postalCode: template.$('#postal-code').val() && +template.$('#postal-code').val(),
           lat: template.$('#latitude').val(),
           lng: template.$('#longitude').val()
         },
