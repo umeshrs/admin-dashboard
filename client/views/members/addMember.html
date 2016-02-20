@@ -43,7 +43,7 @@
                 placeholder="{{_ 'EMAIL_PLACEHOLDER'}}" value="{{email}}">
             </div>
           </div>
-          <div class="form-group required">
+          <div class="form-group {{#if fieldRequired}}required{{/if}}">
             <label for="password" class="col-sm-3 control-label">{{_ "PASSWORD"}}</label>
             <div class="col-sm-3">
               <input type="password" name="password" class="form-control" id="password"
