@@ -118,7 +118,7 @@ Template.importMembers.events({
                 password: Accounts._hashPassword(memberDetails['CIP'].toString()),
                 email: (memberDetails['EMAIL'] && memberDetails['EMAIL'].trim()) || "",
                 profile: {
-                  CIP: memberDetails['CIP'],
+                  CIP: memberDetails['CIP'].toString(),
                   title: title,
                   name: memberDetails['TITULAIRE'] && memberDetails['TITULAIRE'].trim(),
                   pharmacyName: memberDetails['NOM OFFICINE'] && memberDetails['NOM OFFICINE'].trim(),
