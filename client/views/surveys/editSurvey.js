@@ -44,9 +44,7 @@ Template.editSurvey.events({
 
     survey.publishDate = template.$("#publish-date").closest(".date").datepicker('getDate');
     survey.expiryDate = template.$("#expiry-date").closest(".date").datepicker('getDate');
-    survey.expiryDate.setHours(23);
-    survey.expiryDate.setMinutes(59);
-    survey.expiryDate.setSeconds(59);
+    survey.expiryDate.setHours(23, 59, 59, 999);
 
     Meteor.call("updateSurvey", this._id, survey, function (error, result) {
       let notificationOptions = {
@@ -72,6 +70,11 @@ Template.editSurvey.events({
         console.log(`${result} document(s) updated in surveys collection.`);
         notificationOptions.message = "<b>Success!</b> Changes made to the survey have been saved.";
         notificationOptions.type = "success";
+
+        // publish survey if survey's publish date is today
+        if (survey.publishDate.getTime() === new Date().setHours(0, 0, 0, 0)) {
+          Meteor.call("publishSurveys");
+        }
       }
       $('body').pgNotification(notificationOptions).show();
     });
