@@ -4,6 +4,12 @@ Template.importMembers.onRendered(function () {
   Session.set("membersCount", 0);
 });
 
+Template.importMembers.onDestroyed(function () {
+  Session.delete("progressPercent");
+  Session.delete("membersImported");
+  Session.delete("membersCount");
+});
+
 Template.importMembers.helpers({
   percent() {
     return Session.get("progressPercent");
