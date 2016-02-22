@@ -45,6 +45,13 @@ Template.header.events({
   }
 });
 
+Template.notificationDropdown.onRendered(function () {
+  let template = this;
+
+  // initialise notification dropdown scrollbar
+  template.$("[class*=scrollbar]").scrollbar();
+});
+
 Template.notificationDropdown.helpers({
   notifications: function () {
     return Meteor.user() ? ( Array.isArray(Meteor.user().profile.notifications) ? Meteor.user().profile.notifications.reverse() : [] ) : [];
