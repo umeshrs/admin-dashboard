@@ -23,7 +23,9 @@ Template.importMembers.helpers({
 });
 
 Template.importMembers.events({
-  'click #import-members-btn': function () {
+  'submit #import-members-form': function () {
+    event.preventDefault();
+
     // delay import if import button is clicked the second time onwards
     // used to wait till progress bar reset transition is complete
     let delay = Session.get("progressPercent") ? 1000 : 0;
