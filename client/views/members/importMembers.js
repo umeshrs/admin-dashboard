@@ -17,6 +17,21 @@ Template.importMembers.onRendered(function () {
   template.$("#file").on('change', function(event) {
     validator.element("#file");
   });
+
+  template.autorun(function () {
+    template.$("#file").rules("add", {
+      messages: {
+        required: TAPi18n.__("NO_FILE_ERROR"),
+        fileValid: TAPi18n.__("INVALID_FILE_TYPE_ERROR"),
+      }
+    });
+
+    // trigger validation to display updated error message if site language is changed
+    // and validation has been performed on that element at least once
+    if ( template.$("#file-error").length ) {
+      validator.element("#file");
+    }
+  });
 });
 
 Template.importMembers.onDestroyed(function () {
