@@ -1,6 +1,11 @@
 <template name="viewSurvey">
   <div class="survey-wrapper">
     {{#if _id}}
+      {{#if alreadyResponded}}
+        <div class="alert alert-warning" role="alert">
+          <strong>Note:</strong> You have already responded to this survey on <span class="font-montserrat">{{dateToLocaleString this.responseDate}}</span>. Each member is allowed to submit only one response per survey.
+        </div>
+      {{/if}}
       <div class="form-header">
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">

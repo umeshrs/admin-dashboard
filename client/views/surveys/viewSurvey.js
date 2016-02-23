@@ -3,29 +3,47 @@ Template.viewSurvey.events({
     Router.go('/surveys');
   },
   'click #submit-response-btn': function (event, template) {
-    var questions = template.$(".question-wrapper"), i, response = [];
+    let self = this;
+    let questions = template.$(".question-wrapper"), response = [];
 
-    for (i = 0; i < questions.length; i++) {
+    for (let i = 0; i < questions.length; i++) {
       response.push({
         question: this.questions[i].text,
         response: template.$(questions[i]).find("input:radio:checked").val()
       });
     }
 
-    Meteor.call("addResponse", this._id, response, function (error, result) {
-      var notificationOptions = {
+    Meteor.call("addResponse", self._id, response, function (error, result) {
+      let notificationOptions = {
         style: "bar",
         position: "top",
-        type: "success"
+        type: "error"
       };
       if (error) {
-        console.log("Error submitting survey. Error: ", error.message);
-        notificationOptions.message = "<b>Error!</b> Could not submit your response. Please try again.";
-        notificationOptions.type = "error";
+        console.log(`Error invoking method 'addResponse'. Error: ${error.message}.`);
+        switch (error.error) {
+          case "not-logged-in":
+            notificationOptions.message = "<b>Oops!</b> You must be logged in to respond to this survey.";
+            break;
+          case "admin-not-allowed":
+            notificationOptions.message = "<b>Oops!</b> Admin is not allowed to respond to surveys.";
+            break;
+          case "duplicate-response":
+            notificationOptions.message = "<b>Oops!</b> Looks like you have already responded to this survey. " +
+              "Each member can submit only one response per survey.";
+            break;
+          default:
+            notificationOptions.message = "<b>Oops!</b> Something went wrong while submitting your response to this " +
+              "survey. Please try again.";
+            break;
+        }
       } else {
         Router.go('/surveys');
-        notificationOptions.message = "<b>Success!</b> Your response has been submitted.";
+        console.log(`${result} document(s) updated in surveys collection.`);
+        notificationOptions.message = `<b>Success!</b> Your response to the survey '${self.title}' has been submitted.`;
+        notificationOptions.type = "success";
       }
+
       $('body').pgNotification(notificationOptions).show();
     });
   }
