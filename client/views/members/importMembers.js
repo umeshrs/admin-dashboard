@@ -82,7 +82,7 @@ Template.importMembers.events({
       skipEmptyLines: true,
       complete: function (results) {
         Session.set("membersCount", results.data.length);
-        let httpRequestCount = 0;
+        let httpRequestCount = 0, importRequestCount = 0;
         console.log(results);
 
         function addMember(memberDetails) {
@@ -172,7 +172,8 @@ Template.importMembers.events({
               console.log("username: ", member.username);
               console.log("Member: ", member);
               Meteor.call("updateUser", memberExists._id, member.username, member, function (error, result) {
-                console.log(`count: ${httpRequestCount}`);
+                importRequestCount++;
+                console.log(`count: ${importRequestCount}`);
                 console.log(`membersCount: ${Session.get("membersCount")}`);
                 if (error) {
                   console.log(`Error invoking method 'updateUser'. Error: ${error.message}.`);
@@ -193,7 +194,7 @@ Template.importMembers.events({
                   Meteor.setTimeout(function () {
                     $('body').pgNotification(notificationOptions).show();
                   }, 1000);
-                } else if ( Session.equals("membersCount", httpRequestCount) ) {
+                } else if ( Session.equals("membersCount", importRequestCount) ) {
                   // completed import process but not all members were imported
                   notificationOptions.type = "info";
                   notificationOptions.message = TAPi18n.__( "IMPORT_COMPLETE_NOTIFICATION_MESSAGE", Session.get("membersImported") );
@@ -212,7 +213,8 @@ Template.importMembers.events({
               console.log("Member: ", member);
 
               Meteor.call("insertUser", member, function (error, result) {
-                console.log(`count: ${httpRequestCount}`);
+                importRequestCount++;
+                console.log(`count: ${importRequestCount}`);
                 console.log(`membersCount: ${Session.get("membersCount")}`);
                 if (error) {
                   console.log(`Error invoking method 'insertUser'. Error: ${error.message}.`);
@@ -233,7 +235,7 @@ Template.importMembers.events({
                   Meteor.setTimeout(function () {
                     $('body').pgNotification(notificationOptions).show();
                   }, 1000);
-                } else if ( Session.equals("membersCount", httpRequestCount) ) {
+                } else if ( Session.equals("membersCount", importRequestCount) ) {
                   // completed import process but not all members were imported
                   notificationOptions.type = "info";
                   notificationOptions.message = TAPi18n.__( "IMPORT_COMPLETE_NOTIFICATION_MESSAGE", Session.get("membersImported") );
