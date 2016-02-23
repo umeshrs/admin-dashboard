@@ -61,6 +61,13 @@ Template.member.onRendered(function () {
   $('[data-tooltip-toggle="tooltip"]').tooltip({ container: 'body', trigger: 'hover' });
 });
 
+Template.member.helpers({
+  validAddress() {
+    let address = Template.currentData() && Template.currentData().profile && Template.currentData().profile.address;
+    return (address.lat && address.lng) ? true : false;
+  }
+});
+
 Template.member.events({
   'click .edit-member-btn': function (event, template) {
     template.$('[data-toggle="tooltip"]').tooltip('hide');

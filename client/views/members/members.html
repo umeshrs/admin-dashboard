@@ -51,7 +51,7 @@
       {{/each}}
     </td>
     <td>{{username}}</td>
-    <td>
+    <td class="{{#unless validAddress}}invalid{{/unless}}">
       {{#with profile.address}}
         {{street}}<br>
         {{postalCode}} <span class="text-uppercase">{{city}}</span>
