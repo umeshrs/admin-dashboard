@@ -1,17 +1,19 @@
 <template name="footer">
   <!-- START FOOTER -->
   <div class="container-fluid container-fixed-lg footer full-width">
-    <div class="copyright sm-text-center">
+    <div class="copyright sm-text-center clearfix">
       <p class="small no-margin pull-left sm-pull-reset">
         <span class="hint-text">Copyright © 2016</span>
         <span class="font-montserrat">AEPK</span>.
         <span class="hint-text">{{_ "All rights reserved"}}.</span>
       </p>
-      <select class="pull-right" id="language" data-init-plugin="select2" data-disable-search="true">
-        <option value="fr" selected>Français</option>
-        <option value="en">English</option>
-      </select>
-      <div class="clearfix"></div>
+      <div class="select-wrapper">
+        <select class="pull-right" id="language" data-init-plugin="select2" data-disable-search="true">
+          <option value="fr" selected>Français</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+      <!-- <div class="clearfix"></div> -->
     </div>
   </div>
   <!-- END FOOTER -->
