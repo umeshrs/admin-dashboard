@@ -41,7 +41,7 @@ Template.surveys.onDestroyed(function () {
 
 Template.surveys.helpers({
   surveys: function () {
-    return Surveys.find({}, { sort: { publishDate: 1 } });
+    return Surveys.find({}, { sort: { publishDate: 1, title: 1 } });
   },
 });
 
