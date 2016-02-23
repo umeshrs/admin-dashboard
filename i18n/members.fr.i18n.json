@@ -60,5 +60,7 @@
   "NO_FILE_ERROR": "S'il vous plaît choisir un fichier.",
   "INVALID_FILE_TYPE_ERROR": "Type de fichier invalide. S'il vous plaît choisir un fichier CSV.",
   "Members imported": "Membres importés",
-  "IMPORT_SUCCESS_NOTIFICATION_MESSAGE": "<b>Succès!</b> %s membre(s) ont été importés."
+  "Members with invalid address": "Membres avec adresse non valide",
+  "IMPORT_SUCCESS_NOTIFICATION_MESSAGE": "<b>Succès!</b> %s membre(s) ont été importés.",
+  "IMPORT_COMPLETE_NOTIFICATION_MESSAGE": "%s membre(s) ont été importés."
 }

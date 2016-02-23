@@ -55,5 +55,6 @@
   "IMPORT": "Import",
   "NO_FILE_ERROR": "Please choose a file.",
   "INVALID_FILE_TYPE_ERROR": "Invalid file type. Please choose a CSV file.",
-  "IMPORT_SUCCESS_NOTIFICATION_MESSAGE": "<b>Success!</b> %s member(s) have been imported."
+  "IMPORT_SUCCESS_NOTIFICATION_MESSAGE": "<b>Success!</b> %s member(s) have been imported.",
+  "IMPORT_COMPLETE_NOTIFICATION_MESSAGE": "%s member(s) have been imported."
 }
