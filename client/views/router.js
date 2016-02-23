@@ -331,7 +331,10 @@ Router.route('surveys/view-survey/:_id', {
   label: "View survey",
   parent: "surveys",
   waitOn: function () {
-    return Meteor.subscribe("survey", this.params._id);
+    return [
+      Meteor.subscribe("survey", this.params._id),
+      Meteor.subscribe("response", Meteor.userId(), this.params._id)
+    ];
   },
   action: function () {
     this.render('viewSurvey');
@@ -347,6 +350,10 @@ Router.route('surveys/view-survey/:_id', {
         });
         return question;
       });
+    }
+    if (Responses.find().fetch().length) {
+      data.alreadyResponded = true;
+      data.responseDate = Responses.find().fetch()[0].createdAt;
     }
     return data;
   }
