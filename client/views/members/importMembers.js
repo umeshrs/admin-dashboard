@@ -57,10 +57,10 @@ Template.importMembers.helpers({
     return Session.get("membersCount");
   },
   progressPercent() {
-    return Session.get("membersCount") ? Math.floor( Session.get("membersImported") / Session.get("membersCount") * 100 ) : Session.get("membersCount");
+    return Session.get("membersCount") ? Math.floor( Session.get("membersImported") / Session.get("membersCount") * 100 ) : 0;
   },
   invalidPercent() {
-    return Session.get("membersImported") ? Math.floor( Session.get("membersInvalid") / Session.get("membersImported") * 100 ) : Session.get("membersInvalid");
+    return Session.get("membersImported") ? Math.floor( Session.get("membersInvalid") / Session.get("membersImported") * 100 ) : 0;
   }
 });
 
