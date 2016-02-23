@@ -158,27 +158,30 @@ Template.addMember.events({
         console.log(`Could not get result from geocoding API. Error: ${error.message}`);
       } else {
         console.log("Result from geocoding API:", result.data);
-        if (result.data.status === "OK" && result.data.results[0].geometry.location_type === "ROOFTOP") {
-          address.lat = result.data.results[0].geometry.location.lat;
-          address.lng = result.data.results[0].geometry.location.lng;
-          result.data.results[0].address_components.forEach(function (element) {
-            switch (element.types[0]) {
-              case "street_number":
-                address.street = element.long_name;
-                break;
-              case "route":
-                address.street = (address.street) ? address.street + " " + element.long_name : element.long_name;
-                break;
-              case "locality":
-                address.city = element.long_name;
-                break;
-              case "postal_code":
-                address.postalCode = element.long_name;
-            }
-          });
-          template.$("#postal-code").val(address.postalCode);
-          template.$("#latitude").val(address.lat);
-          template.$("#longitude").val(address.lng);
+        if (result.data.status === "OK") {
+          let locationType = result.data.results[0].geometry.location_type;
+          if (locationType === "ROOFTOP" || locationType === "RANGE_INTERPOLATED" || locationType === "GEOMETRIC_CENTER") {
+            address.lat = result.data.results[0].geometry.location.lat;
+            address.lng = result.data.results[0].geometry.location.lng;
+            result.data.results[0].address_components.forEach(function (element) {
+              switch (element.types[0]) {
+                case "street_number":
+                  address.street = element.long_name;
+                  break;
+                case "route":
+                  address.street = (address.street) ? address.street + " " + element.long_name : element.long_name;
+                  break;
+                case "locality":
+                  address.city = element.long_name;
+                  break;
+                case "postal_code":
+                  address.postalCode = element.long_name;
+              }
+            });
+            template.$("#postal-code").val(address.postalCode);
+            template.$("#latitude").val(address.lat);
+            template.$("#longitude").val(address.lng);
+          }
         }
       }
     });
